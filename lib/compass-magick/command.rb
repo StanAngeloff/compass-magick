@@ -7,3 +7,4 @@ module Compass::Magick
 end
 
 require 'compass-magick/commands/erase'
+require 'compass-magick/commands/gradients'
