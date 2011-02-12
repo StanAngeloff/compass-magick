@@ -8,7 +8,8 @@ module Compass::Magick::Functions::Image
       self.background_color = 'none'
     end
     commands.each do |command|
-      command.invoke(image)
+      result = command.invoke(image)
+      image  = result if result.is_a?(Magick::Image)
     end
     path = File.join(Compass.configuration.images_path, filename.value);
     FileUtils.mkpath File.dirname(path)
