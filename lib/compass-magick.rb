@@ -1,18 +1,12 @@
-module Compass::Magick; end
+require 'RMagick'
 
-begin
-  # Gem install
-  require 'rubygems'
-  require 'RMagick'
-  require 'compass-magick/command'
-  require 'compass-magick/functions'
-rescue LoadError
-  # Local install
+module Compass::Magick;
   $LOAD_PATH.unshift File.dirname(__FILE__)
-  require 'RMagick'
-  require 'compass-magick/command'
-  require 'compass-magick/functions'
 end
+
+require 'compass-magick/util'
+require 'compass-magick/command'
+require 'compass-magick/functions'
 
 Compass::Frameworks.register('compass-magick',
   :stylesheets_directory => File.join(File.dirname(__FILE__), 'stylesheets'),
