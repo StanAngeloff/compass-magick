@@ -8,3 +8,4 @@ end
 
 require 'compass-magick/commands/erase'
 require 'compass-magick/commands/gradients'
+require 'compass-magick/commands/corners'
