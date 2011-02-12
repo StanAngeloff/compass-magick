@@ -11,7 +11,12 @@ module Compass::Magick::Commands
     def invoke(image)
       draw = Magick::Draw.new
       draw.fill = @color.to_s
-      draw.rectangle(@x || 0, @y || 0, @width || image.columns, @height || image.rows)
+      draw.rectangle(
+        Compass::Magick::Util.number_value(@x,      image.columns, 0),
+        Compass::Magick::Util.number_value(@y,      image.rows,    0),
+        Compass::Magick::Util.number_value(@width,  image.columns, image.columns),
+        Compass::Magick::Util.number_value(@height, image.rows,    image.rows)
+      )
       draw.draw(image)
     end
   end
