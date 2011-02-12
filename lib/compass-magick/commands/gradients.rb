@@ -1,6 +1,6 @@
 module Compass::Magick::Commands::Gradients
   class Linear < Compass::Magick::Command
-    def initialize(start, stop, angle = 90, x1 = nil, y1 = nil, x2 = nil, y2 = nil, mode = Sass::Script::String.new('SrcOver'))
+    def initialize(start, stop, angle = nil, x1 = nil, y1 = nil, x2 = nil, y2 = nil, mode = Sass::Script::String.new('SrcOver'))
       @start = start
       @stop  = stop
       @angle = angle
