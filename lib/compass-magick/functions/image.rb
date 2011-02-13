@@ -11,7 +11,7 @@ module Compass::Magick::Functions::Image
       result = command.invoke(image)
       image  = result if result.is_a?(Magick::Image)
     end
-    path = File.join(Compass.configuration.images_path, filename.value);
+    path = File.join(Compass.configuration.images_path, filename.value.split('?').shift());
     FileUtils.mkpath File.dirname(path)
     image.write(path)
     image_url(filename)
