@@ -6,7 +6,7 @@ module Compass::Magick::Commands
     end
 
     def invoke(image)
-      radius = Compass::Magick::Util.number_value(@radius, [image.rows, image.columns].max, 10)
+      radius = Compass::Magick::Util.number_value(@radius, [image.rows, image.columns].max - 1, 10)
       mask = Magick::Image.new(image.columns, image.rows) do
         self.background_color = 'black'
       end

@@ -12,10 +12,10 @@ module Compass::Magick::Commands
       draw = Magick::Draw.new
       draw.fill = @color.to_s
       draw.rectangle(
-        Compass::Magick::Util.number_value(@x1, image.columns, 0),
-        Compass::Magick::Util.number_value(@y1, image.rows,    0),
-        Compass::Magick::Util.number_value(@x2, image.columns, image.columns),
-        Compass::Magick::Util.number_value(@y2, image.rows,    image.rows)
+        Compass::Magick::Util.number_value(@x1, image.columns - 1, 0),
+        Compass::Magick::Util.number_value(@y1, image.rows - 1,    0),
+        Compass::Magick::Util.number_value(@x2, image.columns - 1, image.columns - 1),
+        Compass::Magick::Util.number_value(@y2, image.rows - 1,    image.rows - 1)
       )
       draw.draw(image)
     end
