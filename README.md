@@ -35,9 +35,11 @@ Read more about [Installing Ad-hoc Extensions](http://compass-style.org/docs/tut
 Usage
 -----
 
-* **magick-image**(filename, width, height, *commands)  
-  Create a new image with the given `width` and `height` and save it as
-  `filename`.
+* **magick-image**([filename, ]width, height[, format], *commands)  
+  Create a new image with the given `width` and `height`. If `filename` is
+  set, save the image on disk and return the path to it. If `filename` is
+  missing, return a Base64 encoded image in `format`, or assume 'PNG' if not
+  specified.
 
 * **magick-erase**(color[, x1, y1, x2, y2])  
   Erase the given region, or the entire image, with `color`. RGBA values are
