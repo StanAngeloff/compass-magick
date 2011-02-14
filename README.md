@@ -24,6 +24,12 @@ A sample command looks like this:
 **THIS IS VERY MUCH A WORK IN PROGRESS.  
   MORE DOCUMENTATION WILL BE ADDED SOON.**
 
+Demo
+----
+
+A quick & dirty demo is available at:  
+**[StanAngeloff.github.com/compass-magick/](http://stanangeloff.github.com/compass-magick/)**
+
 Installation
 ------------
 
