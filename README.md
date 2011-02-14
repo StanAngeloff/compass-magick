@@ -10,6 +10,7 @@ while authoring their stylesheets. Compass Magick currently supports:
 * 2-point linear gradients incl. support for rgba(..)
 * Rounded corners
 * Borders incl. rounded borders
+* Image composing, i.e., drawing images on top of the canvas
 
 A sample command looks like this:
 
@@ -75,6 +76,13 @@ Usage
   Draw a (rounded) border around the given region, or the entire image, with
   the specified `width`. If you want rounded corners and a border on your
   image, you should use this command after `magick-corner`.
+
+* **magick-composite**(source[, x, y][, invert][, mode])  
+  Load external image from `source` and put it on top of the canvas at the
+  specified position, or the top-left corner. The image is blended using
+  `mode` which defaults to 'SrcOver'. See [RMagick's documentation](http://studio.imagemagick.org/RMagick/doc/constants.html#CompositeOperator)
+  for more options.  
+  If `invert` is `true`, `source` is used as the destination.
 
 License
 -------
