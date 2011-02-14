@@ -6,6 +6,7 @@ require 'compass-magick/functions/corners'
 require 'compass-magick/functions/crop'
 require 'compass-magick/functions/erase'
 require 'compass-magick/functions/gradients'
+require 'compass-magick/functions/grayscale'
 require 'compass-magick/functions/image'
 
 module Sass::Script::Functions
@@ -15,5 +16,6 @@ module Sass::Script::Functions
   include Compass::Magick::Functions::Crop
   include Compass::Magick::Functions::Erase
   include Compass::Magick::Functions::Gradients
+  include Compass::Magick::Functions::Grayscale
   include Compass::Magick::Functions::Image
 end
