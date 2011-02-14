@@ -11,6 +11,8 @@ while authoring their stylesheets. Compass Magick currently supports:
 * Rounded corners
 * Borders incl. rounded borders
 * Image composing, i.e., drawing images on top of the canvas
+* Cropping
+* Filters, currently only grayscale supported
 
 A sample command looks like this:
 
@@ -93,6 +95,12 @@ Usage
 
 * **magick-crop**([x1[, y1[, x2[, y2]]]])  
   Crop the image to the given region.
+
+* **magick-grayscale**()  
+  Convert the image to a 256-color grayscale format. No dithering is
+  performed.  
+  **NOTE**: you must include the parentheses at the end when using this
+  command.
 
 License
 -------
