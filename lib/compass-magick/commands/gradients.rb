@@ -17,10 +17,10 @@ module Compass::Magick::Commands::Gradients
     end
 
     def invoke(image)
-      x1 = number_value(@x1, image.columns - 1, 0);
-      y1 = number_value(@y1, image.rows - 1,    0);
-      x2 = number_value(@x2, image.columns - 1, image.columns - 1);
-      y2 = number_value(@y2, image.rows - 1,    image.rows - 1);
+      x1 = number_value(@x1, image.columns, 0);
+      y1 = number_value(@y1, image.rows,    0);
+      x2 = number_value(@x2, image.columns, image.columns);
+      y2 = number_value(@y2, image.rows,    image.rows);
       angle    = number_value(@angle, 0, 90)
       width    = x2 - x1
       height   = y2 - y1
