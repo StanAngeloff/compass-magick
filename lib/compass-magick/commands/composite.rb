@@ -35,7 +35,9 @@ module Compass::Magick::Commands
           blob    = Base64.decode64(encoded)
           Magick::Image.from_blob(blob)[0]
         else
-          puts "(Magick) Unsupported composite source '#{source}'"
+          filename = source.gsub(/^url\(['"]?|["']?\)$/, '')
+          path     = File.join(Compass.configuration.css_path, filename.split(/[?\[]/).shift());
+          Magick::Image.read(path)[0]
         end
       else
         layer = (source.include?('[') ? source.match(/\[(\d+)\]/)[1].to_i : 0)
