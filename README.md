@@ -51,16 +51,16 @@ Usage
   at least one color stop at the specified angle. RGBA values are supported. 
   You can either specify color values:
 
-        magick-linear-gradient(orange, blue, yellow)
+      magick-linear-gradient(orange, blue, yellow)
 
   which will generate color stops at 0%, 50% and 100% or you can set the stops
   yourself:
 
-        magick-linear-gradient(
-          magick-color-stop(0%,  orange),
-          magick-color-stop(25%, blue),
-          magick-color-stop(35%, yellow)
-        )
+      magick-linear-gradient(
+        magick-color-stop(0%,  orange),
+        magick-color-stop(25%, blue),
+        magick-color-stop(35%, yellow)
+      )
 
   Gradients work best with two color stops.
 
