@@ -29,7 +29,7 @@ module Compass::Magick::Commands
         blob = image.to_blob do
           self.format = (@format ? @format.value.upcase : 'PNG32')
         end
-        Sass::Script::String.new("url('data:image/#{image.format.downcase.gsub /\d+/, ''};base64,#{Base64.encode64(blob)}')")
+        Sass::Script::String.new("url('data:image/#{ image.format.downcase.gsub /\d+/, '' };base64,#{ Base64.encode64(blob).gsub("\n", '') }')")
       else
         path = File.join(Compass.configuration.images_path, @filename.value.split('?').shift());
         FileUtils.mkpath File.dirname(path)
