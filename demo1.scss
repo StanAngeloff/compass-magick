@@ -1,0 +1,104 @@
+html {
+  background: #fff magick-image('background-body.png', 10px, 480px,
+    magick-linear-gradient(#f90, #fff)
+  ) repeat-x 0 0;
+}
+
+body {
+  margin: 0;
+  padding: 10%;
+  text-align: center;
+}
+
+a {
+  background: transparent magick-image('background-button.png', 240px, 50px,
+    magick-erase(rgba(255, 255, 255, 0.25)),
+    magick-linear-gradient(
+      magick-color-stop(0%,  rgba(255, 255, 255, 0.5)),
+      magick-color-stop(50%, rgba(255, 255, 255, 0))
+    ),
+    magick-linear-gradient(
+      magick-color-stop(0%,  rgba(255, 255, 255, 0.05)),
+      magick-color-stop(50%, rgba(255, 255, 255, 0)),
+      0
+    ),
+    magick-linear-gradient(
+      magick-color-stop(100%, rgba(0, 0, 0, 0.1)),
+      magick-color-stop(75%,  rgba(0, 0, 0, 0))
+    ),
+    magick-linear-gradient(
+      magick-color-stop(100%, rgba(0, 0, 0, 0.05)),
+      magick-color-stop(75%,  rgba(0, 0, 0, 0)),
+      0
+    ),
+    magick-composite(
+      magick-image(24px, 24px,
+        magick-composite('icon-hello.png'),
+        magick-grayscale()
+      ),
+      20, 50%
+    ),
+    magick-border(rgba(0, 0, 0, 0.35), 1px, 10px),
+    magick-corner(10px)
+  );
+  display: inline-block;
+  font: normal 18px sans-serif;
+  color: #000;
+  width: 240px - 24px;
+  line-height: 48px;
+  padding: 1px 0 1px 24px;
+  text-align: center;
+  text-decoration: none;
+  -webkit-user-drag: none;
+
+  &:hover {
+    background: transparent magick-image('background-button_over.png', 240px, 50px,
+      magick-erase(rgba(255, 255, 255, 0.30)),
+      magick-linear-gradient(
+        magick-color-stop(0%,  rgba(255, 255, 255, 0.5)),
+        magick-color-stop(50%, rgba(255, 255, 255, 0))
+      ),
+      magick-linear-gradient(
+        magick-color-stop(0%,  rgba(255, 255, 255, 0.05)),
+        magick-color-stop(50%, rgba(255, 255, 255, 0)),
+        0
+      ),
+      magick-linear-gradient(
+        magick-color-stop(100%, rgba(0, 0, 0, 0.1)),
+        magick-color-stop(75%,  rgba(0, 0, 0, 0))
+      ),
+      magick-linear-gradient(
+        magick-color-stop(100%, rgba(0, 0, 0, 0.05)),
+        magick-color-stop(75%,  rgba(0, 0, 0, 0)),
+        0
+      ),
+      magick-composite('icon-hello.png', 20, 50%),
+      magick-border(rgba(0, 0, 0, 0.50), 1px, 10px),
+      magick-corner(10px)
+    );
+  }
+
+  &:active {
+    background: transparent magick-image('background-button_down.png', 240px, 50px,
+      magick-erase(rgba(255, 255, 255, 0.20)),
+      magick-linear-gradient(
+        magick-color-stop(0%,  rgba(0, 0, 0, 0.25)),
+        magick-color-stop(75%, rgba(0, 0, 0, 0))
+      ),
+      magick-linear-gradient(
+        magick-color-stop(0%,  rgba(255, 255, 255, 0.05)),
+        magick-color-stop(50%, rgba(255, 255, 255, 0)),
+        0
+      ),
+      magick-linear-gradient(
+        magick-color-stop(0%,  rgba(255, 255, 255, 0.05)),
+        magick-color-stop(50%, rgba(255, 255, 255, 0)),
+        180
+      ),
+      magick-composite('icon-hello.png', 20, 55%),
+      magick-border(rgba(0, 0, 0, 0.50), 1px, 10px),
+      magick-corner(10px)
+    );
+    padding: 2px 0 0 24px;
+  }
+}
