@@ -1,3 +1,5 @@
+require 'base64'
+
 module Compass::Magick::Commands
 
   class Util
@@ -26,9 +28,20 @@ module Compass::Magick::Commands
     end
 
     def read
-      layer = (@source.value.include?('[') ? @source.value.split('[').pop().split(']').shift().to_i : 0)
-      path  = File.join(Compass.configuration.images_path, @source.value.split(/[\?\[]/).shift());
-      Magick::Image.read(path)[layer]
+      source = @source.value
+      if source.index('url(') === 0
+        if source.include?('base64,')
+          encoded = source.match(/base64,([a-zA-Z0-9+\/=]+)/)[1]
+          blob    = Base64.decode64(encoded)
+          Magick::Image.from_blob(blob)[0]
+        else
+          puts "(Magick) Unsupported composite source '#{source}'"
+        end
+      else
+        layer = (source.include?('[') ? source.match(/\[(\d+)\]/)[1].to_i : 0)
+        path  = File.join(Compass.configuration.images_path, source.split(/[?\[]/).shift());
+        Magick::Image.read(path)[layer]
+      end
     end
 
     def number_value(number, dst_length, src_length, default = nil)
