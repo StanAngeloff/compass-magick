@@ -1,5 +1,7 @@
 module Compass::Magick::Commands
   class Erase < Compass::Magick::Command
+    include Compass::Magick::Util
+
     def initialize(color, x1 = nil, y1 = nil, x2 = nil, y2 = nil)
       @color = color
       @x1    = x1
@@ -12,10 +14,10 @@ module Compass::Magick::Commands
       draw = Magick::Draw.new
       draw.fill = @color.to_s
       draw.rectangle(
-        Compass::Magick::Util.number_value(@x1, image.columns - 1, 0),
-        Compass::Magick::Util.number_value(@y1, image.rows - 1,    0),
-        Compass::Magick::Util.number_value(@x2, image.columns - 1, image.columns - 1),
-        Compass::Magick::Util.number_value(@y2, image.rows - 1,    image.rows - 1)
+        number_value(@x1, image.columns - 1, 0),
+        number_value(@y1, image.rows - 1,    0),
+        number_value(@x2, image.columns - 1, image.columns - 1),
+        number_value(@y2, image.rows - 1,    image.rows - 1)
       )
       draw.draw(image)
     end

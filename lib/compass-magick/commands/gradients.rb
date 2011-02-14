@@ -1,6 +1,8 @@
 module Compass::Magick::Commands::Gradients
 
   class Linear < Compass::Magick::Command
+    include Compass::Magick::Util
+
     def initialize(*args)
       @stops = []
       while args.length && (args[0].is_a?(Sass::Script::Color) || args[0].is_a?(ColorStop))
@@ -15,11 +17,11 @@ module Compass::Magick::Commands::Gradients
     end
 
     def invoke(image)
-      x1 = Compass::Magick::Util.number_value(@x1, image.columns, 0);
-      y1 = Compass::Magick::Util.number_value(@y1, image.rows,    0);
-      x2 = Compass::Magick::Util.number_value(@x2, image.columns, image.columns);
-      y2 = Compass::Magick::Util.number_value(@y2, image.rows,    image.rows);
-      angle    = Compass::Magick::Util.number_value(@angle, 0, 90)
+      x1 = number_value(@x1, image.columns, 0);
+      y1 = number_value(@y1, image.rows,    0);
+      x2 = number_value(@x2, image.columns, image.columns);
+      y2 = number_value(@y2, image.rows,    image.rows);
+      angle    = number_value(@angle, 0, 90)
       width    = x2 - x1
       height   = y2 - y1
       args     = sparse_args angle, width, height

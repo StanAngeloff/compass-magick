@@ -1,12 +1,14 @@
 module Compass::Magick::Commands
   class Corners < Compass::Magick::Command
+    include Compass::Magick::Util
+
     def initialize(corners, radius = nil)
       @corners = corners
       @radius  = radius
     end
 
     def invoke(image)
-      radius = Compass::Magick::Util.number_value(@radius, [image.rows, image.columns].max - 1, 10)
+      radius = number_value(@radius, [image.rows, image.columns].max - 1, 10)
       mask = Magick::Image.new(image.columns, image.rows) do
         self.background_color = 'black'
       end
