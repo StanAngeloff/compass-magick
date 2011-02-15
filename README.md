@@ -95,7 +95,7 @@ Usage
 * **magick-crop**([x1[, y1[, x2[, y2]]]])  
   Crop the image to the given region.
 
-* **magick-grayscale**([strength])  
+* **magick-desaturate**([strength])  
   Desaturate the image.
 
 License

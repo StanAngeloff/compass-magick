@@ -1,5 +1,5 @@
 module Compass::Magick::Commands::Filters
-  class Grayscale < Compass::Magick::Command
+  class Desaturate < Compass::Magick::Command
     include Compass::Magick::Util
 
     def initialize(strength = nil)
