@@ -1,7 +1,7 @@
 module Compass::Magick::Commands::Filters
   class Grayscale < Compass::Magick::Command
     def invoke(image)
-      image.quantize(256, Magick::GRAYColorspace, Magick::NoDitherMethod)
+      image.modulate(1.0, 0.0, 1.0)
     end
   end
 end
