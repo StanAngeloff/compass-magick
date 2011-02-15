@@ -12,6 +12,6 @@ module Compass::Magick::Commands
   require 'compass-magick/commands/corners'
   require 'compass-magick/commands/crop'
   require 'compass-magick/commands/fill'
-  require 'compass-magick/commands/grayscale'
+  require 'compass-magick/commands/filters'
   require 'compass-magick/commands/image'
 end
