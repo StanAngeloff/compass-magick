@@ -1,5 +1,5 @@
 module Compass::Magick::Commands
-  class Erase < Compass::Magick::Command
+  class Fill < Compass::Magick::Command
     include Compass::Magick::Util
 
     def initialize(color, x1 = nil, y1 = nil, x2 = nil, y2 = nil)
