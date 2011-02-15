@@ -17,8 +17,8 @@ while authoring their stylesheets. Compass Magick currently supports:
 A sample command looks like this:
 
     background: transparent magick-image('nav.png', 940px, 50px,
-      magick-erase(blue),
-      magick-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)),
+      magick-fill(blue),
+      magick-fill(magick-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0))),
       magick-top-left-corner(10px),
       magick-top-right-corner(10px)
     );
@@ -50,14 +50,13 @@ Usage
   missing, return a Base64 encoded image in `format`, or assume 'PNG' if not
   specified.
 
-* **magick-erase**(color[, x1, y1, x2, y2])  
-  Erase the given region, or the entire image, with `color`. RGBA values are
+* **magick-fill**(color[, x1, y1, x2, y2])  
+  Fill the given region, or the entire image, with `color`. RGBA values are
   supported.
 
-* **magick-linear-gradient**(*stops[, angle[, x1, x2, y1, y2]])  
-  Generate a linear gradient in the given region, or the entire image, with
-  at least one color stop at the specified angle. RGBA values are supported. 
-  You can either specify color values:
+* **magick-linear-gradient**(*stops[, angle][, mode])  
+  Generate a linear gradient with at least one color stop at the specified 
+  angle. RGBA values are supported.  You can either specify color values:
 
       magick-linear-gradient(orange, blue, yellow)
 
@@ -76,7 +75,7 @@ Usage
   **magick-top-right-corner**(radius)  
   **magick-bottom-right-corner**(radius)  
   **magick-bottom-left-corner**(radius)  
-  **magick-corner**(radius)  
+  **magick-corners**(radius)  
   Generate a rounded corner in the given edge, or all, at the specified
   `radius`.
 
