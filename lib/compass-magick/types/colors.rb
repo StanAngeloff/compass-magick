@@ -1,6 +1,6 @@
-module Compass::Magick::Commands::Colors
+module Compass::Magick::Types::Colors
 
-  class LinearGradient < Compass::Magick::Command
+  class LinearGradient < Compass::Magick::Type
     include Compass::Magick::Util
 
     def initialize(*args)
@@ -114,7 +114,7 @@ module Compass::Magick::Commands::Colors
     end
   end
 
-  class Stop < Compass::Magick::Command
+  class Stop < Compass::Magick::Type
     def initialize(position, color)
       @position = position
       @color    = color

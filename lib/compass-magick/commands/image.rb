@@ -22,7 +22,7 @@ module Compass::Magick::Commands
           result = command.invoke(image)
           image  = result if result.is_a?(Magick::Image)
         else
-          puts "(Magick) Unsupported command: '#{command}'"
+          puts "(Magick) Unsupported operation: '#{command.class.to_s.gsub('Compass::Magick::', '')}'"
         end
       end
       if @filename.nil?

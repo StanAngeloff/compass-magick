@@ -5,7 +5,8 @@ module Compass::Magick;
 end
 
 require 'compass-magick/util'
-require 'compass-magick/command'
+require 'compass-magick/types'
+require 'compass-magick/commands'
 require 'compass-magick/functions'
 
 Compass::Frameworks.register('compass-magick',
