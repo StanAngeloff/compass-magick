@@ -9,21 +9,11 @@ module Compass::Magick::Types::Colors
         @stops.push args.shift
       end
       @angle = args.shift
-      @x1    = args.shift
-      @y1    = args.shift
-      @x2    = args.shift
-      @y2    = args.shift
       @mode  = args.shift
     end
 
-    def invoke(image)
-      x1 = number_value(@x1, image.columns, 0);
-      y1 = number_value(@y1, image.rows,    0);
-      x2 = number_value(@x2, image.columns, image.columns);
-      y2 = number_value(@y2, image.rows,    image.rows);
+    def invoke(width, height)
       angle    = number_value(@angle, 0, 90)
-      width    = x2 - x1
-      height   = y2 - y1
       args     = sparse_args angle, width, height
       gradient = Magick::Image.new(width, height) do
         self.background_color = 'none'
@@ -37,10 +27,17 @@ module Compass::Magick::Types::Colors
         mask = mask.sparse_color(Magick::BarycentricColorInterpolate, *args)
         mask.matte     = false
         gradient.matte = true
-        gradient.composite!(mask, Magick::CenterGravity, Magick::CopyOpacityCompositeOp)
+        gradient.composite(mask, Magick::CenterGravity, Magick::CopyOpacityCompositeOp)
+      else
+        gradient
       end
-      image.composite(gradient, x1, y1, Magick.const_get("#{@mode ? @mode.value : 'SrcOver'}CompositeOp"))
     end
+
+    def mode
+      Magick.const_get("#{@mode ? @mode.value : 'SrcOver'}CompositeOp")
+    end
+
+    private
 
     def sparse_args(angle, width, height, options = {})
       points        = []

@@ -1,6 +1,6 @@
 module Compass::Magick
   class Type < Sass::Script::Literal
-    def invoke(image)
+    def invoke(*args)
       raise NotImplementedError.new("#{self.class} must implement #invoke")
     end
 
