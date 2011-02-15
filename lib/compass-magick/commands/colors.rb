@@ -1,11 +1,11 @@
-module Compass::Magick::Commands::Gradients
+module Compass::Magick::Commands::Colors
 
-  class Linear < Compass::Magick::Command
+  class LinearGradient < Compass::Magick::Command
     include Compass::Magick::Util
 
     def initialize(*args)
       @stops = []
-      while args.length && (args[0].is_a?(Sass::Script::Color) || args[0].is_a?(ColorStop))
+      while args.length && (args[0].is_a?(Sass::Script::Color) || args[0].is_a?(Stop))
         @stops.push args.shift
       end
       @angle = args.shift
@@ -55,7 +55,7 @@ module Compass::Magick::Commands::Gradients
               next_position = nil
               @stops.slice(points.length, @stops.length).each do |next_stop|
                 next_index = next_index + 1
-                if next_stop.is_a?(ColorStop)
+                if next_stop.is_a?(Stop)
                   next_position = next_stop.position
                   break
                 end
@@ -66,7 +66,7 @@ module Compass::Magick::Commands::Gradients
           else
             position = 0
           end
-          points.push ColorStop.new(Sass::Script::Number.new(position), stop)
+          points.push Stop.new(Sass::Script::Number.new(position), stop)
           last_position = position
         else
           points.push stop
@@ -114,7 +114,7 @@ module Compass::Magick::Commands::Gradients
     end
   end
 
-  class ColorStop < Compass::Magick::Command
+  class Stop < Compass::Magick::Command
     def initialize(position, color)
       @position = position
       @color    = color
