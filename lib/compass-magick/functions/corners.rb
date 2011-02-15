@@ -15,7 +15,7 @@ module Compass::Magick::Functions::Corners
     Compass::Magick::Commands::Corners.new ['bottom-right'], *args
   end
 
-  def magick_corner(*args)
+  def magick_corners(*args)
     Compass::Magick::Commands::Corners.new ['top-left', 'top-right', 'bottom-left', 'bottom-right'], *args
   end
 end
