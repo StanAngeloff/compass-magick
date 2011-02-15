@@ -95,11 +95,8 @@ Usage
 * **magick-crop**([x1[, y1[, x2[, y2]]]])  
   Crop the image to the given region.
 
-* **magick-grayscale**()  
-  Convert the image to a 256-color grayscale format. No dithering is
-  performed.  
-  **NOTE**: you must include the parentheses at the end when using this
-  command.
+* **magick-grayscale**([strength])  
+  Desaturate the image.
 
 License
 -------
