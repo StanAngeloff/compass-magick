@@ -3,6 +3,10 @@ module Compass::Magick
     def invoke(image)
       raise NotImplementedError.new("#{self.class} must implement #invoke")
     end
+
+    def to_s
+      puts "(Magick) Using '#{self.class.to_s.gsub('Compass::Magick::Commands::', '')}' outside of 'magick-image', did you forget a comma?"
+    end
   end
 end
 
