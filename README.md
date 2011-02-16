@@ -48,7 +48,8 @@ Usage
   Create a new image with the given `width` and `height`. If `filename` is
   set, save the image on disk and return the path to it. If `filename` is
   missing, return a Base64 encoded image in `format`, or assume 'PNG' if not
-  specified.
+  specified. You can set the quality of JPEG images by using the syntax
+  'JPEG:quality[%]', e.g., 'JPEG:50' or 'JPEG:75%'.
 
 * **magick-fill**(color[, x1, y1, x2, y2])  
   Fill the given region, or the entire image, with `color`. RGBA values are

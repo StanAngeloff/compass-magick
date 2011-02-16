@@ -25,17 +25,24 @@ module Compass::Magick::Commands
           puts "(Magick) Unsupported operation: '#{command.class.to_s.gsub('Compass::Magick::', '')}'"
         end
       end
+      format  = (@format ? @format.value.upcase : 'PNG32')
+      quality = 100
+      if format.include?(':')
+        format, quality = format.split(':')
+                quality = quality.gsub('%', '').to_i
+      end
       if @filename.nil?
         blob = image.to_blob do
-          self.format = (@format ? @format.value.upcase : 'PNG32')
+          self.format  = format
+          self.quality = quality
         end
         Sass::Script::String.new("url('data:image/#{ image.format.downcase.gsub /\d+/, '' };base64,#{ Base64.encode64(blob).gsub("\n", '') }')")
       else
-        format = (@format ? @format.value.upcase : 'PNG32')
-        path   = File.join(Compass.configuration.images_path, @filename.value.split('?').shift());
+        path    = File.join(Compass.configuration.images_path, @filename.value.split('?').shift());
         FileUtils.mkpath File.dirname(path)
         image.write(path) do
-          self.format = format
+          self.format  = format
+          self.quality = quality
         end
         image_url(@filename)
       end
