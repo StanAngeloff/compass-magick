@@ -70,7 +70,9 @@ Usage
         magick-color-stop(35%, yellow)
       )
 
-  Gradients work best with two color stops.
+  Gradients can be used in most places where colors are accepted:
+
+      magick-Fill(magick-linear-gradient(red, yellow, 180))
 
 * **magick-top-left-corner**(radius)  
   **magick-top-right-corner**(radius)  

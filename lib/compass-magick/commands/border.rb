@@ -16,9 +16,20 @@ module Compass::Magick::Commands
       radius = number_value(@radius, [image.rows, image.columns].max - 1, 0)
       width  = number_value(@width,  [image.rows, image.columns].max - 1, 1)
       offset = (width.to_f - 1) / 2;
-      draw = Magick::Draw.new
-      draw.fill   = 'none'
-      draw.stroke = @color.to_s
+      draw   = Magick::Draw.new
+      if @color.is_a?(Compass::Magick::Types::Colors::LinearGradient)
+        mask = Magick::Image.new(image.columns, image.rows) do
+          self.background_color = 'black'
+        end
+        x1 = number_value(@x1, image.columns, 0)
+        y1 = number_value(@y1, image.rows,    0)
+        x2 = number_value(@x2, image.columns, image.columns)
+        y2 = number_value(@y2, image.rows,    image.rows)
+        gradient = @color.invoke x2 - x1, y2 - y1
+        draw.stroke('white').fill('black')
+      else
+        draw.stroke(@color.to_s).fill('none')
+      end
       draw.stroke_width = width
       draw.roundrectangle(
         number_value(@x1, image.columns - 1, 0) + offset,
@@ -27,7 +38,14 @@ module Compass::Magick::Commands
         number_value(@y2, image.rows - 1,    image.rows - 1) - offset,
         radius, radius
       )
-      draw.draw(image)
+      if gradient
+        draw.draw(mask)
+        mask.alpha(Magick::CopyAlphaChannel)
+        mask.composite!(gradient, Magick::CenterGravity, Magick::InCompositeOp)
+        image.composite(mask, x1, y1, @color.mode)
+      else
+        draw.draw(image)
+      end
     end
   end
 end
