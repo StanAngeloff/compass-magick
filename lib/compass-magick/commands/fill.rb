@@ -11,7 +11,6 @@ module Compass::Magick::Commands
     end
 
     def invoke(image)
-      draw = Magick::Draw.new
       if @color.is_a?(Compass::Magick::Types::Colors::LinearGradient)
         x1 = number_value(@x1, image.columns, 0)
         y1 = number_value(@y1, image.rows,    0)
@@ -20,12 +19,14 @@ module Compass::Magick::Commands
         gradient = @color.invoke x2 - x1, y2 - y1
         image.composite(gradient, x1, y1, @color.mode)
       else
-        x1 = number_value(@x1, image.columns - 1, 0)
-        y1 = number_value(@y1, image.rows - 1,    0)
-        x2 = number_value(@x2, image.columns - 1, image.columns - 1)
-        y2 = number_value(@y2, image.rows - 1,    image.rows - 1)
+        draw = Magick::Draw.new
         draw.fill = @color.to_s
-        draw.rectangle(x1, y1, x2, y2)
+        draw.rectangle(
+          number_value(@x1, image.columns - 1, 0),
+          number_value(@y1, image.rows - 1,    0),
+          number_value(@x2, image.columns - 1, image.columns - 1),
+          number_value(@y2, image.rows - 1,    image.rows - 1)
+        )
         draw.draw(image)
       end
     end
