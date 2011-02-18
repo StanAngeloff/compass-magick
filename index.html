@@ -8,19 +8,60 @@
 
 <script>
 (function(ctx) {
-  var point_start       = { x: 0,                    y: ctx.canvas.height / 3 },
-      point_end         = { x: ctx.canvas.width / 2, y: ctx.canvas.height };
+  var i, x, y, direction, point;
+  var width  = ctx.canvas.width,
+      height = ctx.canvas.height;
+  var angle  = 21;
+  var point_start, point_end,
+      point_center = { x: width / 2, y: height / 2 };
+  var length_diagonal    = Math.sqrt(Math.pow(width, 2), Math.pow(height, 2)),
+      segments_rectangle = [
+        [{ x: 0,     y: 0 },      { x: width, y: 0 }],
+        [{ x: width, y: 0 },      { x: width, y: height }],
+        [{ x: width, y: height }, { x: 0, y: height }],
+        [{ x: 0,     y: height }, { x: 0, y: 0 }]
+      ];
+  function intersect(segment1, segment2) {
+    // Andre LeMothe
+    // http://www.amazon.com/dp/0672323699/?tag=stackoverfl08-20
+    // http://stackoverflow.com/questions/563198/how-do-you-detect-where-two-line-segments-intersect#answer-1968345
+    var s1_x = segment1[1].x - segment1[0].x,
+        s1_y = segment1[1].y - segment1[0].y,
+        s2_x = segment2[1].x - segment2[0].x,
+        s2_y = segment2[1].y - segment2[0].y;
+    var s = (- s1_y * (segment1[0].x - segment2[0].x) + s1_x * (segment1[0].y - segment2[0].y)) / (- s2_x * s1_y + s1_x * s2_y);
+    var t = (  s2_x * (segment1[0].y - segment2[0].y) - s2_y * (segment1[0].x - segment2[0].x)) / (- s2_x * s1_y + s1_x * s2_y);
+    if (s >= 0 && s <= 1 && t >= 0 && t <= 1) {
+      return {
+        x: segment1[0].x + (t * s1_x),
+        y: segment1[0].y + (t * s1_y)
+      };
+    }
+    return null;
+  }
+  for (direction = -1; direction <= 1; direction += 2) {
+    var segment = [
+      { x: point_center.x, y: point_center.y },
+      { x: point_center.x + direction * length_diagonal * Math.cos(angle * Math.PI / 180), y: point_center.y + direction * length_diagonal * Math.sin(angle * Math.PI / 180) }
+    ];
+    for (i = 0; i < segments_rectangle.length; i ++) {
+      point = intersect(segment, segments_rectangle[i]);
+      point && (point_end && (point_start = point) || (point_end = point));
+    }
+  }
+  // Michael Madsen & dash-tom-bang
+  // http://stackoverflow.com/questions/2869785/point-to-point-linear-gradient#answer-2870275
   var vector_gradient   = [point_end.x - point_start.x, point_end.y - point_start.y],
       length_gradient   = Math.sqrt(Math.pow(vector_gradient[0], 2) + Math.pow(vector_gradient[1], 2)),
       vector_normalized = [vector_gradient[0] / length_gradient, vector_gradient[1] / length_gradient];
   var vector_this, result_scalar, result_normalized;
-  var pixels = ctx.createImageData(ctx.canvas.width, ctx.canvas.height), offset;
-  for (var y = 0; y < ctx.canvas.height; y ++) {
-    for (var x = 0; x < ctx.canvas.width; x ++) {
+  var pixels = ctx.createImageData(width, height), offset;
+  for (y = 0; y < height; y ++) {
+    for (x = 0; x < width; x ++) {
       vector_this       = [x - point_start.x, y - point_start.y],
       result_scalar     = (vector_normalized[0] * vector_this[0]) + (vector_normalized[1] * vector_this[1]),
       result_normalized = result_scalar / length_gradient;
-      offset            = (x + y * ctx.canvas.width) * 4;
+      offset            = (x + y * width) * 4;
       pixels.data[offset + 0] =
       pixels.data[offset + 1] =
       pixels.data[offset + 2] = 255 * Math.max(0, Math.min(1, result_normalized));
@@ -28,6 +69,12 @@
     }
   }
   ctx.putImageData(pixels, 0, 0);
+  ctx.moveTo(point_start.x, point_start.y);
+  ctx.lineTo(point_end.x, point_end.y);
+  ctx.strokeStyle = 'yellow';
+  ctx.stroke();
+  ctx.fillStyle = 'yellow';
+  ctx.fillRect(point_center.x - 4, point_center.y - 4, 8, 8);
   ctx.fillStyle = 'red';
   ctx.fillRect(point_start.x - 4, point_start.y - 4, 8, 8);
   ctx.fillStyle = 'blue';
