@@ -4,10 +4,11 @@
 </head>
 <body>
 
-<canvas width="345" height="234"></canvas>
+<canvas id="gradient" width="345" height="234"></canvas>
 
 <script>
-(function(ctx) {
+(function() {
+  var ctx = document.getElementById('gradient').getContext('2d');
   var angle  = 21;
   var colors = [
     { lambda: 0,    rgba: [255,   0,   0, 255] },
@@ -25,12 +26,12 @@
       segments_rectangle = [
         [{ x: 0,     y: 0 },      { x: width, y: 0 }],
         [{ x: width, y: 0 },      { x: width, y: height }],
-        [{ x: width, y: height }, { x: 0, y: height }],
-        [{ x: 0,     y: height }, { x: 0, y: 0 }]
+        [{ x: width, y: height }, { x: 0,     y: height }],
+        [{ x: 0,     y: height }, { x: 0,     y: 0 }]
       ];
   function intersect(segment1, segment2) {
     // Andre LeMothe
-    // http://www.amazon.com/dp/0672323699/?tag=stackoverfl08-20
+    // http://www.amazon.com/dp/0672323699/
     // http://stackoverflow.com/questions/563198/how-do-you-detect-where-two-line-segments-intersect#answer-1968345
     var s1_x = segment1[1].x - segment1[0].x,
         s1_y = segment1[1].y - segment1[0].y,
@@ -114,7 +115,7 @@
   ctx.fillRect(point_center.x - 4, point_center.y - 4, 8, 8);
   ctx.fillRect(point_start.x - 4, point_start.y - 4, 8, 8);
   ctx.fillRect(point_end.x - 4, point_end.y - 4, 8, 8);
-})(ctx = document.getElementsByTagName('canvas')[0].getContext('2d'));
+})();
 </script>
 
 </body>
