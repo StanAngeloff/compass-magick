@@ -8,10 +8,17 @@
 
 <script>
 (function(ctx) {
+  var angle  = 21;
+  var colors = [
+    { lambda: 0,    rgba: [255,   0,   0, 255] },
+    { lambda: 0.32, rgba: [255, 255,   0, 255] },
+    { lambda: 0.55, rgba: [  0, 255,   0, 255] },
+    { lambda: 0.64, rgba: [  0, 255, 255, 255] },
+    { lambda: 1,    rgba: [  0,   0, 255, 255] }
+  ];
   var i, x, y, direction, point;
   var width  = ctx.canvas.width,
       height = ctx.canvas.height;
-  var angle  = 21;
   var point_start, point_end,
       point_center = { x: width / 2, y: height / 2 };
   var length_diagonal    = Math.sqrt(Math.pow(width, 2), Math.pow(height, 2)),
@@ -54,30 +61,58 @@
   var vector_gradient   = [point_end.x - point_start.x, point_end.y - point_start.y],
       length_gradient   = Math.sqrt(Math.pow(vector_gradient[0], 2) + Math.pow(vector_gradient[1], 2)),
       vector_normalized = [vector_gradient[0] / length_gradient, vector_gradient[1] / length_gradient];
-  var vector_this, result_scalar, result_normalized;
+  var vector_this, result_scalar, result_normalized, color_interpolated;
   var pixels = ctx.createImageData(width, height), offset;
+  function interpolate(colors, lambda) {
+    var i, start, end;
+    for (i = 0; i < colors.length; i ++) {
+      if (lambda >= colors[i].lambda) {
+        (start && start.lambda > colors[i].lambda) || (start = colors[i]);
+      }
+    }
+    for (i = 0; i < colors.length; i ++) {
+      if (lambda <= colors[i].lambda) {
+        (end && end.lambda < colors[i].lambda) || (end = colors[i]);
+      }
+    }
+    if ( ! start) {
+      return colors[0].rgba;
+    } else if ( ! end) {
+      return colors[colors.length - 1].rgba;
+    } else if (start.lambda === end.lambda) {
+      return end.rgba;
+    }
+    // walkytalky
+    // http://stackoverflow.com/questions/3017019/non-linear-color-interpolation#answer-3030245
+    var result = [];
+    for (var j = 0; j < 4; j ++) {
+      result.push(
+        start.rgba[j] + (lambda - start.lambda) * (end.rgba[j] - start.rgba[j]) / (end.lambda - start.lambda)
+      );
+    }
+    return result;
+  }
   for (y = 0; y < height; y ++) {
     for (x = 0; x < width; x ++) {
-      vector_this       = [x - point_start.x, y - point_start.y],
-      result_scalar     = (vector_normalized[0] * vector_this[0]) + (vector_normalized[1] * vector_this[1]),
-      result_normalized = result_scalar / length_gradient;
-      offset            = (x + y * width) * 4;
-      pixels.data[offset + 0] =
-      pixels.data[offset + 1] =
-      pixels.data[offset + 2] = 255 * Math.max(0, Math.min(1, result_normalized));
-      pixels.data[offset + 3] = 255;
+      vector_this        = [x - point_start.x, y - point_start.y],
+      result_scalar      = (vector_normalized[0] * vector_this[0]) + (vector_normalized[1] * vector_this[1]),
+      result_normalized  = result_scalar / length_gradient;
+      offset             = (x + y * width) * 4;
+      color_interpolated = interpolate(colors, Math.max(0, Math.min(1, result_normalized)));
+      pixels.data[offset + 0] = color_interpolated[0];
+      pixels.data[offset + 1] = color_interpolated[1];
+      pixels.data[offset + 2] = color_interpolated[2];
+      pixels.data[offset + 3] = color_interpolated[3];
     }
   }
   ctx.putImageData(pixels, 0, 0);
+  ctx.strokeStyle = 'white';
+  ctx.fillStyle = 'white';
   ctx.moveTo(point_start.x, point_start.y);
   ctx.lineTo(point_end.x, point_end.y);
-  ctx.strokeStyle = 'yellow';
   ctx.stroke();
-  ctx.fillStyle = 'yellow';
   ctx.fillRect(point_center.x - 4, point_center.y - 4, 8, 8);
-  ctx.fillStyle = 'red';
   ctx.fillRect(point_start.x - 4, point_start.y - 4, 8, 8);
-  ctx.fillStyle = 'blue';
   ctx.fillRect(point_end.x - 4, point_end.y - 4, 8, 8);
 })(ctx = document.getElementsByTagName('canvas')[0].getContext('2d'));
 </script>
