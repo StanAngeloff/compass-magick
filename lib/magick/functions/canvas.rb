@@ -1,8 +1,8 @@
 module Compass::Magick
   module Functions
-    # Methods for creating a new {Compass::Magick::Canvas Canvas}.
+    # Methods for creating a new {Compass::Magick::Canvas}.
     module Canvas
-      # Create a new {Compass::Magick::Canvas Canvas} and execute all
+      # Create a new {Compass::Magick::Canvas} and execute all
       # commands on the instance.
       #
       # @param [Integer] width The width of the Canvas.

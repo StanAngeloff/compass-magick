@@ -3,10 +3,10 @@ module Compass::Magick
   module Utils
     extend self
 
-    # Checks if <tt>arg</tt> is of the expected <tt>type</tt> or raises a
+    # Checks if <tt>arg</tt> is of the expected <tt>type</tt> and raises a
     # {TypeMismatch} exception otherwise.
     #
-    # @param [String] name The argument name used in the exception message.
+    # @param [String] name The argument name (used in the exception message).
     # @param [Object] arg The argument to validate.
     # @param [Object] type The expected <tt>arg</tt> type.
     def assert_type(name, arg, type)

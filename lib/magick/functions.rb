@@ -12,7 +12,7 @@ end
 # Functions defined in this module are exported for usage in stylesheets
 # (.sass and .scss documents).
 #
-# Compass Magick exports all defined {Compass::Magick::Functions function}.
+# Compass Magick exports all available {Compass::Magick::Functions functions}.
 module Sass::Script::Functions
   include Compass::Magick::Functions
 end

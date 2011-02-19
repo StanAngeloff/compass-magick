@@ -9,7 +9,7 @@ require 'magick/functions'
 
 # Compass Magick, a library for dynamic image generation.
 #
-# The Compass::Magick modules defines constants and exception used throughout
+# The Compass::Magick module defines constants and exception used throughout
 # the project.
 #
 # @author Stan Angeloff
