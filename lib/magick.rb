@@ -31,6 +31,10 @@ module Compass::Magick
   # Exception that is raised when an abstract method is called.
   class AbstractMethod < Exception; end
 
+  # Exception that is raised when a method is called with arguments it does
+  # not support.
+  class NotSupported < Exception; end
+
   # Exception that is raised when a method is called in a context it does not
   # support.
   class NotAllowed < Exception; end

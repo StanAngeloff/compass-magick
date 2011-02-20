@@ -21,6 +21,23 @@ module Compass::Magick
       ChunkyPNG::Color.rgba(color.red, color.green, color.blue, color.alpha * 255)
     end
 
+    # Converts the Sass::Script::Number to a fixed value.
+    #
+    # @param [Sass::Script::Number] number The number to convert.
+    # @param [Float] max The maximum allowed value for this number.
+    # @param [Float] default The default value for this number.
+    # @return [Float]
+    #   If <tt>number</tt> is <tt>nil</tt>, <tt>true</tt> or <tt>false</tt>, the <tt>default</tt> is returned.
+    #   If <tt>number</tt>'s units are '%', it is calculated as a percentage of <tt>max</tt>.
+    #   If the value is negative, it is calculated as an offset against <tt>max</tt>.
+    #   Otherwise, the value is returned as-is.
+    def value_of(number, max, default = nil)
+      return default if number.nil? || number.kind_of?(Sass::Script::Bool)
+      return max * (number.value.to_f / 100) if number.unit_str == '%'
+      return max + number.value if number.value < 0
+      number.value
+    end
+
     # A helper Point(x, y) structure.
     class Point < Struct.new(:x, :y); end
   end
