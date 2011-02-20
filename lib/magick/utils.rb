@@ -12,5 +12,13 @@ module Compass::Magick
     def assert_type(name, arg, type)
       raise TypeMismatch.new "(#{self.class}) Type mismatch for argument '#{name}'; expected #{type} got #{arg.class}(#{arg.inspect}) instead" unless arg.kind_of? type
     end
+
+    # Converts a Sass::Script::Color to ChunkyPNG::Color object.
+    #
+    # @param [Sass::Script::Color] color The source color in Sass' format.
+    # @return [ChunkyPNG::Color] The source color in ChunkyPNG's format.
+    def to_chunky_color(color)
+      ChunkyPNG::Color.rgba(color.red, color.green, color.blue, color.alpha * 255)
+    end
   end
 end

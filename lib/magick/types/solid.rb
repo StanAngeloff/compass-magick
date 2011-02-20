@@ -26,7 +26,7 @@ module Compass::Magick
       def to_canvas(width, height)
         assert_type 'width',  width,  Sass::Script::Number
         assert_type 'height', height, Sass::Script::Number
-        color = ChunkyPNG::Color.rgba(@color.red, @color.green, @color.blue, @color.alpha * 255)
+        color  = to_chunky_color(@color)
         Canvas.new(width, height).rect(0, 0, width.value - 1, height.value - 1, ChunkyPNG::Color::TRANSPARENT, color)
       end
     end
