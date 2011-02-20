@@ -9,6 +9,29 @@ module Compass::Magick
     # two points are determined automatically such as the center of the
     # linear gradient is the center if the given region as well.
     module Gradients
+      # A type that is used when constructing gradients to have precise
+      # control over color stops.
+      class ColorStop < Type
+        include Compass::Magick::Utils
+
+        # Initializes a new ColorStop instance.
+        #
+        # @param [Sass::Script::Number] offset The color stop offset, 0-100.
+        # @param [Sass::Script::Color] color The color at the offset.
+        def initialize(offset, color)
+          assert_type 'offset', offset, Sass::Script::Number
+          assert_type 'color',  color,  Sass::Script::Color
+          @offset = offset
+          @color  = color
+        end
+
+        # @return [Sass::Script::Number] The color stop offset, 0-100.
+        attr_reader :offset
+
+        # @return [Sass::Script::Color] The color at the offset.
+        attr_reader :color
+      end
+
       # A type that generates a {Canvas} from a region filled using
       # point-to-point linear gradient at an angle.
       #
@@ -16,9 +39,9 @@ module Compass::Magick
       #
       #     Linear.new(
       #       Sass::Script::Number.new(45), [
-      #         [Sass::Script::Number.new(0),   Sass::Script::Color.new([255,   0,   0])],
-      #         [Sass::Script::Number.new(50),  Sass::Script::Color.new([  0, 255,   0])],
-      #         [Sass::Script::Number.new(100), Sass::Script::Color.new([  0,   0, 255])]
+      #         ColorStop.new(Sass::Script::Number.new(0),   Sass::Script::Color.new([255,   0,   0])),
+      #         ColorStop.new(Sass::Script::Number.new(50),  Sass::Script::Color.new([  0, 255,   0])),
+      #         ColorStop.new(Sass::Script::Number.new(100), Sass::Script::Color.new([  0,   0, 255]))
       #       ]
       #     )
       class Linear < Type
@@ -34,6 +57,7 @@ module Compass::Magick
         def initialize(angle, stops)
           assert_type 'angle', angle, Sass::Script::Number
           assert_type 'stops', stops, Array
+          stops.each_with_index { |stop, index| assert_type "stop[#{index}]", stop, ColorStop }
           @angle = angle
           @stops = stops
         end
@@ -49,12 +73,6 @@ module Compass::Magick
         def to_canvas(width, height)
           assert_type 'width',  width,  Sass::Script::Number
           assert_type 'height', height, Sass::Script::Number
-          @stops.each do |stop|
-            assert_type 'stop',    stop,    Array
-            raise ::ArgumentError.new("(#{self.class}) Color stop expected to be a two-element array, got #{stop.class}(#{stop.inspect}) instead") unless stop.size == 2
-            assert_type 'stop[0]', stop[0], Sass::Script::Number
-            assert_type 'stop[1]', stop[1], Sass::Script::Color
-          end
           canvas = Canvas.new(width, height)
           point_center    = Point.new(canvas.width  / 2,  canvas.height  / 2)
           length_diagonal = Math.sqrt(canvas.width ** 2 + canvas.height ** 2);
@@ -115,37 +133,37 @@ module Compass::Magick
           end
         end
 
-        def interpolate(value)
+        def interpolate(offset)
           start  = nil
           finish = nil
           @stops.each do |stop|
-            if value >= stop[0].value
+            if offset >= stop.offset.value
               if start
-                start = stop unless start[0].value > stop[0].value
+                start = stop unless start.offset.value > stop.offset.value
               else
                 start = stop
               end
             end
-            if value <= stop[0].value
+            if offset <= stop.offset.value
               if finish
-                finish = stop unless finish[0].value < stop[0].value
+                finish = stop unless finish.offset.value < stop.offset.value
               else
                 finish = stop
               end
             end
           end
-          return to_chunky_color(@stops[0][1])  unless start
-          return to_chunky_color(@stops[-1][1]) unless finish
-          return to_chunky_color(finish[1])         if start[0] == finish[0]
-          start_rgba   = [start[1].red,  start[1].green,  start[1].blue,  255 * start[1].alpha]
-          finish_rgba  = [finish[1].red, finish[1].green, finish[1].blue, 255 * finish[1].alpha]
-          start_value  = start[0].value
-          finish_value = finish[0].value
-          rgba         = []
+          return to_chunky_color(@stops[0].color)  unless start
+          return to_chunky_color(@stops[-1].color) unless finish
+          return to_chunky_color(finish.color)         if start.offset == finish.offset
+          start_rgba    = [start.color.red,  start.color.green,  start.color.blue,  255 * start.color.alpha]
+          finish_rgba   = [finish.color.red, finish.color.green, finish.color.blue, 255 * finish.color.alpha]
+          start_offset  = start.offset.value
+          finish_offset = finish.offset.value
+          rgba          = []
           # walkytalky
           # http://stackoverflow.com/questions/3017019/non-linear-color-interpolation#answer-3030245
           (0..3).each do |i|
-            rgba[i] = (start_rgba[i] + (value - start_value) * (finish_rgba[i] - start_rgba[i]) / (finish_value - start_value)).to_i
+            rgba[i] = (start_rgba[i] + (offset - start_offset) * (finish_rgba[i] - start_rgba[i]) / (finish_offset - start_offset)).to_i
           end
           ChunkyPNG::Color.rgba(*rgba)
         end
