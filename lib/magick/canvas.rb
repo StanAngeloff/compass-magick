@@ -35,7 +35,7 @@ module Compass::Magick
       @options = options
     end
 
-    # Serialize the Canvas as a Base64 encoded PNG-24 Data URI.
+    # Serializes the Canvas as a Base64 encoded PNG-24 Data URI.
     #
     # @return [String] A Base64 encoded PNG-24 Data URI for the generated
     #   image.
