@@ -17,12 +17,10 @@ module Compass::Magick
 
     # Initializes a new Canvas instance.
     #
-    # @param [Integer] width The width of the Canvas.
-    # @param [Integer] height The height of the Canvas.
+    # @param [Sass::Script::Number] width The width of the Canvas.
+    # @param [Sass::Script::Number] height The height of the Canvas.
     # @param [Array<Compass::Magick::Command>] commands The list of commands
     #   to execute on the Canvas instance.
-    # @return [String] A Base64 encoded PNG-24 Data URI for the generated
-    #   image.
     def initialize(width, height, *commands)
       assert_type 'width',  width,  Sass::Script::Number
       assert_type 'height', height, Sass::Script::Number
@@ -30,7 +28,10 @@ module Compass::Magick
       @image = ChunkyPNG::Canvas.new(width.value, height.value)
     end
 
-    # Serialize the Canvas image as a Base64 encoded PNG-24 Data URI.
+    # Serialize the Canvas as a Base64 encoded PNG-24 Data URI.
+    #
+    # @return [String] A Base64 encoded PNG-24 Data URI for the generated
+    #   image.
     def to_data_uri
       data = Base64.encode64(@image.to_blob).gsub("\n", '')
       Sass::Script::String.new("url('data:image/png;base64,#{data}')")
