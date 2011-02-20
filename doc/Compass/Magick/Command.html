@@ -244,7 +244,7 @@ Raises an error if the command is used outside of a <span class='object_link'><a
   
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Utils.html" title="Compass::Magick::Utils (module)">Utils</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Utils.html#assert_type-instance_method" title="Compass::Magick::Utils#assert_type (method)">#assert_type</a></span>, <span class='object_link'><a href="Utils.html#to_chunky_color-instance_method" title="Compass::Magick::Utils#to_chunky_color (method)">#to_chunky_color</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Utils.html#assert_type-instance_method" title="Compass::Magick::Utils#assert_type (method)">#assert_type</a></span>, <span class='object_link'><a href="Utils.html#to_chunky_color-instance_method" title="Compass::Magick::Utils#to_chunky_color (method)">#to_chunky_color</a></span>, <span class='object_link'><a href="Utils.html#value_of-instance_method" title="Compass::Magick::Utils#value_of (method)">#value_of</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -466,7 +466,7 @@ Raises an error if the command is used outside of a <span class='object_link'><a
   
     <li>
       
-        <span class='type'>(<tt>NotSupported</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="NotAllowed.html" title="Compass::Magick::NotAllowed (class)">NotAllowed</a></span></tt>)</span>
       
       
       
@@ -489,7 +489,7 @@ Raises an error if the command is used outside of a <span class='object_link'><a
       <pre class="code"><span class="info file"># File 'lib/magick/command.rb', line 34</span>
 
 <span class='def def kw'>def</span> <span class='to_s identifier id'>to_s</span>
-  <span class='raise identifier id'>raise</span> <span class='NotSupported constant id'>NotSupported</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='dstring node'>&quot;#{self.class} cannot be used outside of a Compass::Magick::Canvas object&quot;</span>
+  <span class='raise identifier id'>raise</span> <span class='NotAllowed constant id'>NotAllowed</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='dstring node'>&quot;#{self.class} cannot be used outside of a Compass::Magick::Canvas object&quot;</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -502,7 +502,7 @@ Raises an error if the command is used outside of a <span class='object_link'><a
 </div>
     
     <div id="footer">
-  Generated on Sun Feb 20 16:49:36 2011 by 
+  Generated on Sun Feb 20 17:19:18 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.8.7).
 </div>

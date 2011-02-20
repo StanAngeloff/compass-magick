@@ -153,6 +153,30 @@ Converts a Sass::Script::Color to ChunkyPNG::Color object.
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#value_of-instance_method" title="#value_of (instance method)">- (Float) <strong>value_of</strong>(number, max, default = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Converts the Sass::Script::Number to a fixed value.
+</p>
+</div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -351,12 +375,138 @@ The source color in ChunkyPNG&#8217;s format.
 </table>
 </div>
     
+      <div class="method_details ">
+  <p class="signature " id="value_of-instance_method">
+  
+    - (<tt>Float</tt>) <strong>value_of</strong>(number, max, default = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Converts the Sass::Script::Number to a fixed value.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Sass::Script::Number</tt>)</span>
+      
+      
+        <span class='name'>number</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The number to convert.
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+        <span class='name'>max</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The maximum allowed value for this number.
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+        <span class='name'>default</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The default value for this number.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+If <tt>number</tt> is <tt>nil</tt>, <tt>true</tt> or <tt>false</tt>, the
+<tt>default</tt> is returned. If <tt>number</tt>&#8217;s units are
+&#8217;%&#8217;, it is calculated as a percentage of <tt>max</tt>. If the
+value is negative, it is calculated as an offset against <tt>max</tt>.
+Otherwise, the value is returned as-is.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/magick/utils.rb', line 34</span>
+
+<span class='def def kw'>def</span> <span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='number identifier id'>number</span><span class='comma token'>,</span> <span class='max identifier id'>max</span><span class='comma token'>,</span> <span class='default identifier id'>default</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='return return kw'>return</span> <span class='default identifier id'>default</span> <span class='if if_mod kw'>if</span> <span class='number identifier id'>number</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='orop op'>||</span> <span class='number identifier id'>number</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span><span class='lparen token'>(</span><span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Bool constant id'>Bool</span><span class='rparen token'>)</span>
+  <span class='return return kw'>return</span> <span class='max identifier id'>max</span> <span class='mult op'>*</span> <span class='lparen token'>(</span><span class='number identifier id'>number</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='dot token'>.</span><span class='to_f identifier id'>to_f</span> <span class='div op'>/</span> <span class='integer val'>100</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='number identifier id'>number</span><span class='dot token'>.</span><span class='unit_str identifier id'>unit_str</span> <span class='eq op'>==</span> <span class='string val'>'%'</span>
+  <span class='return return kw'>return</span> <span class='max identifier id'>max</span> <span class='plus op'>+</span> <span class='number identifier id'>number</span><span class='dot token'>.</span><span class='value identifier id'>value</span> <span class='if if_mod kw'>if</span> <span class='number identifier id'>number</span><span class='dot token'>.</span><span class='value identifier id'>value</span> <span class='lt op'>&lt;</span> <span class='integer val'>0</span>
+  <span class='number identifier id'>number</span><span class='dot token'>.</span><span class='value identifier id'>value</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
     
     <div id="footer">
-  Generated on Sun Feb 20 16:49:35 2011 by 
+  Generated on Sun Feb 20 17:19:16 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.8.7).
 </div>
