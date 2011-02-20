@@ -11,8 +11,8 @@ module Compass::Magick
       #   to execute on the Canvas instance.
       # @return [String] A Base64 encoded PNG-24 Data URI for the generated
       #   image.
-      def magick_canvas(*args)
-        Compass::Magick::Canvas.new *args
+      def magick_canvas(width, height, *commands)
+        Compass::Magick::Canvas.new width, height, *commands
       end
     end
   end
