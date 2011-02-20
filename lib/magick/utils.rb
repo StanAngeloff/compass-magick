@@ -10,7 +10,7 @@ module Compass::Magick
     # @param [Object] arg The argument to validate.
     # @param [Object] type The expected <tt>arg</tt> type.
     def assert_type(name, arg, type)
-      raise TypeMismatch.new "(#{self.class}) Type mismatch for argument '#{name}', #{arg.inspect}" unless arg.kind_of? type
+      raise TypeMismatch.new "(#{self.class}) Type mismatch for argument '#{name}'; expected #{type} got #{arg.class}(#{arg.inspect}) instead" unless arg.kind_of? type
     end
   end
 end
