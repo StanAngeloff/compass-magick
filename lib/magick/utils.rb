@@ -20,5 +20,8 @@ module Compass::Magick
     def to_chunky_color(color)
       ChunkyPNG::Color.rgba(color.red, color.green, color.blue, color.alpha * 255)
     end
+
+    # A helper Point(x, y) structure.
+    class Point < Struct.new(:x, :y); end
   end
 end

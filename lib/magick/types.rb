@@ -30,8 +30,8 @@ module Compass::Magick
   #
   # @see Compass::Magick::Types::Solid
   # @see Compass::Magick::Types::Gradients
-  module Types
-  end
+  module Types; end
 end
 
 require 'magick/types/solid'
+require 'magick/types/gradients'
