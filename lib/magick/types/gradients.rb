@@ -74,11 +74,8 @@ module Compass::Magick
             segments_rectangle.each do |edge|
               point = intersect(segment, edge)
               if point
-                if point_start
-                  point_finish ||= point
-                else
-                  point_start  ||= point
-                end
+                point_start  ||= point if direction == -1
+                point_finish ||= point if direction ==  1
               end
             end
           end
