@@ -52,8 +52,8 @@ module Compass::Magick
         # @param [Sass::Script::Number] angle The angle of the linear
         #   gradient. The two points that form the point-to-point linear fill
         #   are determined based on this value.
-        # @param [Array<Array<Sass::Script::Number, Sass::Script::Color>>]
-        #   stops A list of color stops to interpolate between.
+        # @param [Array<ColorStop>] stops A list of color stops to interpolate
+        #   between.
         def initialize(angle, stops)
           assert_type 'angle', angle, Sass::Script::Number
           assert_type 'stops', stops, Array
@@ -66,8 +66,8 @@ module Compass::Magick
         #   gradient.
         attr_reader :angle
 
-        # @return [Array<Array<Sass::Script::Number, Sass::Script::Color>>]
-        #   A list of color stops to interpolate between.
+        # @return [Array<ColorStop>] A list of color stops to interpolate
+        #   between.
         attr_reader :stops
 
         def to_canvas(width, height)
