@@ -24,7 +24,9 @@ module Compass::Magick
     def initialize(width, height, *commands)
       assert_type 'width',  width,  Sass::Script::Number
       assert_type 'height', height, Sass::Script::Number
+      commands.each_with_index { |command, index| assert_type "command[#{index}]", command, Command }
       super(width.value, height.value)
+      commands.each { |command| command.block.call(self) }
     end
 
     # Sets the options hash for this node.
