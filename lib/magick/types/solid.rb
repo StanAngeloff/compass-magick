@@ -10,7 +10,7 @@ module Compass::Magick
     #       Sass::Script::Number(200)
     #     )
     class Solid < Type
-      include Compass::Magick::Utils
+      include Utils
 
       # Initializes a new Solid instance.
       #

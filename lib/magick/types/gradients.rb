@@ -12,7 +12,7 @@ module Compass::Magick
       # A type that is used when constructing gradients to have precise
       # control over color stops.
       class ColorStop < Type
-        include Compass::Magick::Utils
+        include Utils
 
         # Initializes a new ColorStop instance.
         #
@@ -45,7 +45,7 @@ module Compass::Magick
       #       ]
       #     )
       class Linear < Type
-        include Compass::Magick::Utils
+        include Utils
 
         # Initializes a new Linear instance.
         #

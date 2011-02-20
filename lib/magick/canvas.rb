@@ -13,14 +13,14 @@ module Compass::Magick
   #
   #     Canvas.new(320, 240).to_data_uri
   class Canvas < ChunkyPNG::Canvas
-    include Compass::Magick::Utils
+    include Utils
 
     # Initializes a new Canvas instance.
     #
     # @param [Sass::Script::Number] width The width of the Canvas.
     # @param [Sass::Script::Number] height The height of the Canvas.
-    # @param [Array<Compass::Magick::Command>] commands The list of commands
-    #   to execute on the Canvas instance.
+    # @param [Array<Command>] commands The list of commands to execute on the
+    #   Canvas instance.
     def initialize(width, height, *commands)
       assert_type 'width',  width,  Sass::Script::Number
       assert_type 'height', height, Sass::Script::Number

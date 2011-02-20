@@ -11,7 +11,7 @@ module Compass::Magick
   #       canvas.rect(0, 0, canvas.width - 1, canvas.height - 1, ChunkyPNG::Color::BLACK)
   #     end
   class Command
-    include Compass::Magick::Utils
+    include Utils
 
     # Initializes a new Command instance.
     #

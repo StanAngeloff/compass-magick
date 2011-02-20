@@ -5,13 +5,13 @@ require 'magick/functions/drawing'
 module Compass::Magick
   # The Functions module includes all public Compass Magick functions.
   #
-  # @see Compass::Magick::Functions::Canvas
-  # @see Compass::Magick::Functions::Types
-  # @see Compass::Magick::Functions::Drawing
+  # @see Functions::Canvas
+  # @see Functions::Types
+  # @see Functions::Drawing
   module Functions
-    include Compass::Magick::Functions::Canvas
-    include Compass::Magick::Functions::Types
-    include Compass::Magick::Functions::Drawing
+    include Functions::Canvas
+    include Functions::Types
+    include Functions::Drawing
   end
 end
 

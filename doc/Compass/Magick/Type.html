@@ -106,7 +106,7 @@ Defines the methods all Type instances must implement.
 
 </div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
-  <p class="children"><span class='object_link'><a href="Types/Gradients/Linear.html" title="Compass::Magick::Types::Gradients::Linear (class)">s::Gradients::Linear</a></span>, <span class='object_link'><a href="Types/Solid.html" title="Compass::Magick::Types::Solid (class)">s::Solid</a></span></p>
+  <p class="children"><span class='object_link'><a href="Types/Gradients/ColorStop.html" title="Compass::Magick::Types::Gradients::ColorStop (class)">s::Gradients::ColorStop</a></span>, <span class='object_link'><a href="Types/Gradients/Linear.html" title="Compass::Magick::Types::Gradients::Linear (class)">s::Gradients::Linear</a></span>, <span class='object_link'><a href="Types/Solid.html" title="Compass::Magick::Types::Solid (class)">s::Solid</a></span></p>
 </div>
 
 
@@ -122,7 +122,31 @@ Defines the methods all Type instances must implement.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#to_canvas-instance_method" title="#to_canvas (instance method)">- (Compass::Magick::Canvas) <strong>to_canvas</strong>(width, height) </a>
+      <a href="#options%3D-instance_method" title="#options= (instance method)">- (Object) <strong>options=</strong>(options) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Sets the options hash for this node.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_canvas-instance_method" title="#to_canvas (instance method)">- (Canvas) <strong>to_canvas</strong>(width, height) </a>
     
 
     
@@ -153,9 +177,70 @@ Generates a <span class='object_link'><a href="Canvas.html" title="Compass::Magi
     
     
       <div class="method_details first">
-  <p class="signature first" id="to_canvas-instance_method">
+  <p class="signature first" id="options=-instance_method">
   
-    - (<tt><span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Compass::Magick::Canvas</a></span></tt>) <strong>to_canvas</strong>(width, height) 
+    - (<tt>Object</tt>) <strong>options=</strong>(options) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Sets the options hash for this node.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>{Symbol =&gt; Object}</tt>)</span>
+      
+      
+        <span class='name'>options</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The options hash.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/magick/types.rb', line 12</span>
+
+<span class='def def kw'>def</span> <span class='options= identifier id'>options=</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span>
+  <span class='@options ivar id'>@options</span> <span class='assign token'>=</span> <span class='options identifier id'>options</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_canvas-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span></tt>) <strong>to_canvas</strong>(width, height) 
   
 
   
@@ -216,7 +301,7 @@ The height of the Canvas.
   
     <li>
       
-        <span class='type'>(<tt><span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Compass::Magick::Canvas</a></span></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span></tt>)</span>
       
       
       
@@ -250,12 +335,12 @@ The Canvas object which is composed on top of the original image.
       <pre class="lines">
 
 
-16
-17
-18</pre>
+23
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/magick/types.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/magick/types.rb', line 23</span>
 
 <span class='def def kw'>def</span> <span class='to_canvas identifier id'>to_canvas</span><span class='lparen token'>(</span><span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='rparen token'>)</span>
   <span class='raise identifier id'>raise</span> <span class='AbstractMethod constant id'>AbstractMethod</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='dstring node'>&quot;#{self.class} must implement 'to_canvas'&quot;</span><span class='rparen token'>)</span>
@@ -271,7 +356,7 @@ The Canvas object which is composed on top of the original image.
 </div>
     
     <div id="footer">
-  Generated on Sun Feb 20 15:20:13 2011 by 
+  Generated on Sun Feb 20 16:49:35 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.8.7).
 </div>

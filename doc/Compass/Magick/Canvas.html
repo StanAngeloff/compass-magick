@@ -73,7 +73,7 @@
   
     
       <dt class="r2">Includes:</dt>
-      <dd class="r2">Utils</dd>
+      <dd class="r2"><span class='object_link'><a href="Utils.html" title="Compass::Magick::Utils (module)">Utils</a></span></dd>
       
     
   
@@ -123,6 +123,9 @@ image is returned as a Base64 encoded PNG-24 Data URI.
 
   
   
+  
+  
+  
 
   
     <h2>
@@ -161,6 +164,30 @@ Initializes a new Canvas instance.
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#options%3D-instance_method" title="#options= (instance method)">- (Object) <strong>options=</strong>(options) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Sets the options hash for this node.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#to_data_uri-instance_method" title="#to_data_uri (instance method)">- (String) <strong>to_data_uri</strong> </a>
     
 
@@ -177,7 +204,7 @@ Initializes a new Canvas instance.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Serialize the Canvas as a Base64 encoded PNG-24 Data URI.
+Serializes the Canvas as a Base64 encoded PNG-24 Data URI.
 </p>
 </div></span>
   
@@ -189,6 +216,15 @@ Serialize the Canvas as a Base64 encoded PNG-24 Data URI.
 
 
   
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Utils.html" title="Compass::Magick::Utils (module)">Utils</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Utils.html#assert_type-instance_method" title="Compass::Magick::Utils#assert_type (method)">#assert_type</a></span>, <span class='object_link'><a href="Utils.html#to_chunky_color-instance_method" title="Compass::Magick::Utils#to_chunky_color (method)">#to_chunky_color</a></span></p>
+
   <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -248,7 +284,7 @@ The height of the Canvas.
   
     <li>
       
-        <span class='type'>(<tt>Array&lt;Compass::Magick::Command&gt;</tt>)</span>
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Command.html" title="Compass::Magick::Command (class)">Command</a></span>&gt;</tt>)</span>
       
       
         <span class='name'>commands</span>
@@ -275,7 +311,9 @@ The list of commands to execute on the Canvas instance.
 25
 26
 27
-28</pre>
+28
+29
+30</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/magick/canvas.rb', line 24</span>
@@ -283,7 +321,9 @@ The list of commands to execute on the Canvas instance.
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='commands identifier id'>commands</span><span class='rparen token'>)</span>
   <span class='assert_type identifier id'>assert_type</span> <span class='string val'>'width'</span><span class='comma token'>,</span>  <span class='width identifier id'>width</span><span class='comma token'>,</span>  <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
   <span class='assert_type identifier id'>assert_type</span> <span class='string val'>'height'</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
+  <span class='commands identifier id'>commands</span><span class='dot token'>.</span><span class='each_with_index identifier id'>each_with_index</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='command identifier id'>command</span><span class='comma token'>,</span> <span class='index identifier id'>index</span><span class='bitor op'>|</span> <span class='assert_type identifier id'>assert_type</span> <span class='dstring node'>&quot;command[#{index}]&quot;</span><span class='comma token'>,</span> <span class='command identifier id'>command</span><span class='comma token'>,</span> <span class='Command constant id'>Command</span> <span class='rbrace token'>}</span>
   <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='width identifier id'>width</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
+  <span class='commands identifier id'>commands</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='command identifier id'>command</span><span class='bitor op'>|</span> <span class='command identifier id'>command</span><span class='dot token'>.</span><span class='block identifier id'>block</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -299,7 +339,68 @@ The list of commands to execute on the Canvas instance.
     
     
       <div class="method_details first">
-  <p class="signature first" id="to_data_uri-instance_method">
+  <p class="signature first" id="options=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>options=</strong>(options) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Sets the options hash for this node.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>{Symbol =&gt; Object}</tt>)</span>
+      
+      
+        <span class='name'>options</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The options hash.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/magick/canvas.rb', line 35</span>
+
+<span class='def def kw'>def</span> <span class='options= identifier id'>options=</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span>
+  <span class='@options ivar id'>@options</span> <span class='assign token'>=</span> <span class='options identifier id'>options</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_data_uri-instance_method">
   
     - (<tt>String</tt>) <strong>to_data_uri</strong> 
   
@@ -312,7 +413,7 @@ The list of commands to execute on the Canvas instance.
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Serialize the Canvas as a Base64 encoded PNG-24 Data URI.
+Serializes the Canvas as a Base64 encoded PNG-24 Data URI.
 </p>
 
 
@@ -345,13 +446,13 @@ A Base64 encoded PNG-24 Data URI for the generated image.
       <pre class="lines">
 
 
-34
-35
-36
-37</pre>
+43
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/magick/canvas.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/magick/canvas.rb', line 43</span>
 
 <span class='def def kw'>def</span> <span class='to_data_uri identifier id'>to_data_uri</span>
   <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='Base64 constant id'>Base64</span><span class='dot token'>.</span><span class='encode64 identifier id'>encode64</span><span class='lparen token'>(</span><span class='to_blob identifier id'>to_blob</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='string val'>&quot;\n&quot;</span><span class='comma token'>,</span> <span class='string val'>''</span><span class='rparen token'>)</span>
@@ -368,7 +469,7 @@ A Base64 encoded PNG-24 Data URI for the generated image.
 </div>
     
     <div id="footer">
-  Generated on Sun Feb 20 15:20:14 2011 by 
+  Generated on Sun Feb 20 16:49:35 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.8.7).
 </div>
