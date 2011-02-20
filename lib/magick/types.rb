@@ -6,6 +6,13 @@ module Compass::Magick
   # @abstract
   # @see Compass::Magick::Types
   class Type
+    # Sets the options hash for this node.
+    #
+    # @param [{Symbol => Object}] options The options hash.
+    def options=(options)
+      @options = options
+    end
+
     # Generates a {Compass::Magick::Canvas} object.
     #
     # @abstract
