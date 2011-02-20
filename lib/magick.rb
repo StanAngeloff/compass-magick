@@ -5,6 +5,7 @@ require 'chunky_png'
 
 require 'magick/utils'
 require 'magick/canvas'
+require 'magick/types'
 require 'magick/functions'
 
 # Compass Magick, a library for dynamic image generation.
@@ -25,6 +26,9 @@ module Compass::Magick
   # Exception that is raised when an argument's type does not match the
   # expected.
   class TypeMismatch < Exception; end
+
+  # Exception that is raised when an abstract method is called.
+  class AbstractMethod < Exception; end
 end
 
 # Register Compass Magick as a Compass framework.
