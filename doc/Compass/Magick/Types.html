@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta name="Content-Type" content="text/html; charset=utf-8" />
-<title>Module: Sass::Script::Functions</title>
+<title>Module: Compass::Magick::Types</title>
 <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
@@ -23,10 +23,10 @@
     <div id="header">
       <div id="menu">
   
-    <a href="../../_index.html">Index (F)</a> &raquo; 
-    <span class='title'>Sass</span> &raquo; <span class='title'>Script</span>
+    <a href="../../_index.html">Index (T)</a> &raquo; 
+    <span class='title'>Compass</span> &raquo; <span class='title'><span class='object_link'><a href="../Magick.html" title="Compass::Magick (module)">Magick</a></span></span>
      &raquo; 
-    <span class="title">Functions</span>
+    <span class="title">Types</span>
   
   
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
@@ -43,7 +43,7 @@
     
     <iframe id="search_frame"></iframe>
     
-    <div id="content"><h1>Module: Sass::Script::Functions
+    <div id="content"><h1>Module: Compass::Magick::Types
   
   
   
@@ -55,15 +55,13 @@
     
   
     
-      <dt class="r1">Includes:</dt>
-      <dd class="r1">Compass::Magick::Functions</dd>
-      
-    
   
   
   
-    <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/magick/functions.rb</dd>
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/magick/types.rb<span class="defines">,<br />
+  lib/magick/types/solid.rb</span>
+</dd>
   
 </dl>
 <div class="clear"></div>
@@ -71,11 +69,17 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     <p>
-Functions defined in this module are exported for usage in stylesheets
-(.sass and .scss documents).
+The Types module includes all fill types available in Compass Magick.
 </p>
 <p>
-Compass Magick exports all available <span class='object_link'><a href="../../Compass/Magick/Functions.html" title="Compass::Magick::Functions (module)">functions</a></span>.
+Types generate <span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span> objects with the given options,
+e.g., a solid color or a linear gradient. The resulting Canvas is then
+composed on top of the original image using alpha blending.
+</p>
+<p>
+This can be a slow operation, but it reduces the amount of work required
+and abstracts the drawing logic in four easy steps - draw B/W shape, fill
+rectangle, mask and compose on top of original image.
 </p>
 
 
@@ -83,12 +87,29 @@ Compass Magick exports all available <span class='object_link'><a href="../../Co
 </div>
 <div class="tags">
   
-</div>
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Types/Solid.html" title="Compass::Magick::Types::Solid (class)">Solid</a></span></li>
+    
+      <li>Gradients</li>
+    
+  </ul>
 
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Types/Solid.html" title="Compass::Magick::Types::Solid (class)">Solid</a></span>
+    
   
+</p>
 
 
-  
+
+
 
 </div>
     

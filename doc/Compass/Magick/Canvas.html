@@ -53,12 +53,12 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName">Sass::Script::Funcall</span>
+      <span class="inheritName">ChunkyPNG::Canvas</span>
       
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next">Sass::Script::Funcall</li>
+            <li class="next">ChunkyPNG::Canvas</li>
           
             <li class="next">Compass::Magick::Canvas</li>
           
@@ -88,11 +88,11 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     <p>
-A Canvas class that uses ChunkyPNG::Canvas internally to represent the
-image as a matrix of pixels.
+A Canvas class that inherits ChunkyPNG::Canvas to represent the image as a
+matrix of pixels.
 </p>
 <p>
-The image is constructed from a given width and height on a transparent
+The canvas is constructed from a given width and height on a transparent
 background. The list of commands is executed in order and the resulting
 image is returned as a Base64 encoded PNG-24 Data URI.
 </p>
@@ -107,7 +107,7 @@ image is returned as a Base64 encoded PNG-24 Data URI.
     
       <h4><div class='inline'></div></h4>
       <pre class="example code">
-<span class='background identifier id'>background</span><span class='colon op'>:</span> <span class='transparent identifier id'>transparent</span> <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>320</span><span class='comma token'>,</span> <span class='integer val'>200</span><span class='rparen token'>)</span><span class='semicolon token'>;</span>
+<span class='Canvas constant id'>Canvas</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='integer val'>320</span><span class='comma token'>,</span> <span class='integer val'>240</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='to_data_uri identifier id'>to_data_uri</span>
 </pre>
     
   </div>
@@ -135,7 +135,7 @@ image is returned as a Base64 encoded PNG-24 Data URI.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (String) <strong>initialize</strong>(width, height, *commands) </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Canvas) <strong>initialize</strong>(width, height, *commands) </a>
     
 
     
@@ -161,7 +161,7 @@ Initializes a new Canvas instance.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#to_data_uri-instance_method" title="#to_data_uri (instance method)">- (Object) <strong>to_data_uri</strong> </a>
+      <a href="#to_data_uri-instance_method" title="#to_data_uri (instance method)">- (String) <strong>to_data_uri</strong> </a>
     
 
     
@@ -177,7 +177,7 @@ Initializes a new Canvas instance.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Serialize the Canvas image as a Base64 encoded PNG-24 Data URI.
+Serialize the Canvas as a Base64 encoded PNG-24 Data URI.
 </p>
 </div></span>
   
@@ -195,7 +195,7 @@ Serialize the Canvas image as a Base64 encoded PNG-24 Data URI.
     <div class="method_details first">
   <p class="signature first" id="initialize-instance_method">
   
-    - (<tt>String</tt>) <strong>initialize</strong>(width, height, *commands) 
+    - (<tt><span class='object_link'><a href="" title="Compass::Magick::Canvas (class)">Canvas</a></span></tt>) <strong>initialize</strong>(width, height, *commands) 
   
 
   
@@ -214,7 +214,7 @@ Initializes a new Canvas instance.
   
     <li>
       
-        <span class='type'>(<tt>Integer</tt>)</span>
+        <span class='type'>(<tt>Sass::Script::Number</tt>)</span>
       
       
         <span class='name'>width</span>
@@ -231,7 +231,7 @@ The width of the Canvas.
   
     <li>
       
-        <span class='type'>(<tt>Integer</tt>)</span>
+        <span class='type'>(<tt>Sass::Script::Number</tt>)</span>
       
       
         <span class='name'>height</span>
@@ -271,21 +271,19 @@ The list of commands to execute on the Canvas instance.
       <pre class="lines">
 
 
+24
+25
 26
 27
-28
-29
-30
-31</pre>
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/magick/canvas.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/magick/canvas.rb', line 24</span>
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='commands identifier id'>commands</span><span class='rparen token'>)</span>
   <span class='assert_type identifier id'>assert_type</span> <span class='string val'>'width'</span><span class='comma token'>,</span>  <span class='width identifier id'>width</span><span class='comma token'>,</span>  <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
   <span class='assert_type identifier id'>assert_type</span> <span class='string val'>'height'</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
-  <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='string val'>'magick-canvas'</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='rbrack token'>]</span> <span class='plus op'>+</span> <span class='commands identifier id'>commands</span><span class='rparen token'>)</span>
-  <span class='@image ivar id'>@image</span> <span class='assign token'>=</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Canvas constant id'>Canvas</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='width identifier id'>width</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
+  <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='width identifier id'>width</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -303,7 +301,7 @@ The list of commands to execute on the Canvas instance.
       <div class="method_details first">
   <p class="signature first" id="to_data_uri-instance_method">
   
-    - (<tt>Object</tt>) <strong>to_data_uri</strong> 
+    - (<tt>String</tt>) <strong>to_data_uri</strong> 
   
 
   
@@ -314,14 +312,33 @@ The list of commands to execute on the Canvas instance.
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Serialize the Canvas image as a Base64 encoded PNG-24 Data URI.
+Serialize the Canvas as a Base64 encoded PNG-24 Data URI.
 </p>
 
 
   </div>
 </div>
 <div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
   
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+A Base64 encoded PNG-24 Data URI for the generated image.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 </div><table class="source_code">
   <tr>
     <td>
@@ -337,7 +354,7 @@ Serialize the Canvas image as a Base64 encoded PNG-24 Data URI.
       <pre class="code"><span class="info file"># File 'lib/magick/canvas.rb', line 34</span>
 
 <span class='def def kw'>def</span> <span class='to_data_uri identifier id'>to_data_uri</span>
-  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='Base64 constant id'>Base64</span><span class='dot token'>.</span><span class='encode64 identifier id'>encode64</span><span class='lparen token'>(</span><span class='@image ivar id'>@image</span><span class='dot token'>.</span><span class='to_blob identifier id'>to_blob</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='string val'>&quot;\n&quot;</span><span class='comma token'>,</span> <span class='string val'>''</span><span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='Base64 constant id'>Base64</span><span class='dot token'>.</span><span class='encode64 identifier id'>encode64</span><span class='lparen token'>(</span><span class='to_blob identifier id'>to_blob</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='string val'>&quot;\n&quot;</span><span class='comma token'>,</span> <span class='string val'>''</span><span class='rparen token'>)</span>
   <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='String constant id'>String</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='dstring node'>&quot;url('data:image/png;base64,#{data}')&quot;</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -351,7 +368,7 @@ Serialize the Canvas image as a Base64 encoded PNG-24 Data URI.
 </div>
     
     <div id="footer">
-  Generated on Sat Feb 19 14:38:53 2011 by 
+  Generated on Sun Feb 20 13:18:07 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.8.7).
 </div>
