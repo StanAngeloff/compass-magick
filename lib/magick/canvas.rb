@@ -25,6 +25,14 @@ module Compass::Magick
       assert_type 'width',  width,  Sass::Script::Number
       assert_type 'height', height, Sass::Script::Number
       super(width.value, height.value)
+      @options = []
+    end
+
+    # Sets the options hash for this node.
+    #
+    # @param [{Symbol => Object}] options The options hash.
+    def options=(options)
+      @options = options
     end
 
     # Serialize the Canvas as a Base64 encoded PNG-24 Data URI.
