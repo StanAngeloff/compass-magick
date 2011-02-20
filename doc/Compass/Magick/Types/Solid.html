@@ -371,7 +371,13 @@ The solid background color.
 28
 29
 30
-31</pre>
+31
+32
+33
+34
+35
+36
+37</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/magick/types/solid.rb', line 26</span>
@@ -379,8 +385,14 @@ The solid background color.
 <span class='def def kw'>def</span> <span class='to_canvas identifier id'>to_canvas</span><span class='lparen token'>(</span><span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='rparen token'>)</span>
   <span class='assert_type identifier id'>assert_type</span> <span class='string val'>'width'</span><span class='comma token'>,</span>  <span class='width identifier id'>width</span><span class='comma token'>,</span>  <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
   <span class='assert_type identifier id'>assert_type</span> <span class='string val'>'height'</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
-  <span class='color identifier id'>color</span> <span class='assign token'>=</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='rgba identifier id'>rgba</span><span class='lparen token'>(</span><span class='@color ivar id'>@color</span><span class='dot token'>.</span><span class='red identifier id'>red</span><span class='comma token'>,</span> <span class='@color ivar id'>@color</span><span class='dot token'>.</span><span class='green identifier id'>green</span><span class='comma token'>,</span> <span class='@color ivar id'>@color</span><span class='dot token'>.</span><span class='blue identifier id'>blue</span><span class='comma token'>,</span> <span class='@color ivar id'>@color</span><span class='dot token'>.</span><span class='alpha identifier id'>alpha</span> <span class='mult op'>*</span> <span class='integer val'>255</span><span class='rparen token'>)</span>
-  <span class='Canvas constant id'>Canvas</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='rect identifier id'>rect</span><span class='lparen token'>(</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='comma token'>,</span> <span class='width identifier id'>width</span><span class='dot token'>.</span><span class='value identifier id'>value</span> <span class='minus op'>-</span> <span class='integer val'>1</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='dot token'>.</span><span class='value identifier id'>value</span> <span class='minus op'>-</span> <span class='integer val'>1</span><span class='comma token'>,</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='colon2 op'>::</span><span class='TRANSPARENT constant id'>TRANSPARENT</span><span class='comma token'>,</span> <span class='color identifier id'>color</span><span class='rparen token'>)</span>
+  <span class='color identifier id'>color</span>  <span class='assign token'>=</span> <span class='to_chunky_color identifier id'>to_chunky_color</span><span class='lparen token'>(</span><span class='@color ivar id'>@color</span><span class='rparen token'>)</span>
+  <span class='canvas identifier id'>canvas</span> <span class='assign token'>=</span> <span class='Canvas constant id'>Canvas</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='rparen token'>)</span>
+  <span class='lparen token'>(</span><span class='integer val'>0</span><span class='dot3 op'>...</span><span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='height identifier id'>height</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='y identifier id'>y</span><span class='bitor op'>|</span>
+    <span class='lparen token'>(</span><span class='integer val'>0</span><span class='dot3 op'>...</span><span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='width identifier id'>width</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='x identifier id'>x</span><span class='bitor op'>|</span>
+      <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='set_pixel identifier id'>set_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span><span class='comma token'>,</span> <span class='color identifier id'>color</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='canvas identifier id'>canvas</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -393,7 +405,7 @@ The solid background color.
 </div>
     
     <div id="footer">
-  Generated on Sun Feb 20 13:18:06 2011 by 
+  Generated on Sun Feb 20 15:20:14 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.8.7).
 </div>

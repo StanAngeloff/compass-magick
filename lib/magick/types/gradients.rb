@@ -30,7 +30,7 @@ module Compass::Magick
         #   gradient. The two points that form the point-to-point linear fill
         #   are determined based on this value.
         # @param [Array<Array<Sass::Script::Number, Sass::Script::Color>>]
-        #   A list of color stops to interpolate between.
+        #   stops A list of color stops to interpolate between.
         def initialize(angle, stops)
           assert_type 'angle', angle, Sass::Script::Number
           assert_type 'stops', stops, Array
