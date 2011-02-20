@@ -27,7 +27,13 @@ module Compass::Magick
         assert_type 'width',  width,  Sass::Script::Number
         assert_type 'height', height, Sass::Script::Number
         color  = to_chunky_color(@color)
-        Canvas.new(width, height).rect(0, 0, width.value - 1, height.value - 1, ChunkyPNG::Color::TRANSPARENT, color)
+        canvas = Canvas.new(width, height)
+        (0...canvas.height).each do |y|
+          (0...canvas.width).each do |x|
+            canvas.set_pixel(x, y, color)
+          end
+        end
+        canvas
       end
     end
   end
