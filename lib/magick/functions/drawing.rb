@@ -29,6 +29,8 @@ module Compass::Magick
           canvas_y1 = Compass::Magick::Utils.value_of(y1, canvas.height, 0)
           canvas_x2 = Compass::Magick::Utils.value_of(x2, canvas.width,  canvas.width)
           canvas_y2 = Compass::Magick::Utils.value_of(y2, canvas.height, canvas.height)
+          canvas_x1, canvas_x2 = canvas_x2, canvas_x1 if canvas_x1 > canvas_x2
+          canvas_y1, canvas_y2 = canvas_y2, canvas_y1 if canvas_y1 > canvas_y2
           width     = Sass::Script::Number.new(canvas_x2 - canvas_x1)
           height    = Sass::Script::Number.new(canvas_y2 - canvas_y1)
           if type.kind_of?(Sass::Script::Color)
