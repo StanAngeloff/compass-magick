@@ -25,7 +25,7 @@ module Compass::Magick
       # @param [Integer] y1 The top coordinate of the crop operation.
       # @param [Integer] x2 The right coordinate of the crop operation.
       # @param [Integer] y2 The bottom coordinate of the crop operation.
-      # @return {Command} A command which applies the crop on the canvas.
+      # @return {Command} A command which applies the crop to the canvas.
       def magick_crop(x1 = nil, y1 = nil, x2 = nil, y2 = nil)
         Compass::Magick::Utils.assert_type 'x1', x1, Sass::Script::Number
         Compass::Magick::Utils.assert_type 'y1', y1, Sass::Script::Number
