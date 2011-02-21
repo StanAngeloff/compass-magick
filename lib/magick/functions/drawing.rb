@@ -25,12 +25,12 @@ module Compass::Magick
         Compass::Magick::Utils.assert_type 'x2', x2, Sass::Script::Number
         Compass::Magick::Utils.assert_type 'y2', y2, Sass::Script::Number
         Command.new do |canvas|
-          canvas_x1 = Compass::Magick::Utils.value_of(x1, canvas.width  - 1, 0)
-          canvas_y1 = Compass::Magick::Utils.value_of(y1, canvas.height - 1, 0)
-          canvas_x2 = Compass::Magick::Utils.value_of(x2, canvas.width  - 1, canvas.width - 1)
-          canvas_y2 = Compass::Magick::Utils.value_of(y2, canvas.height - 1, canvas.height - 1)
-          width     = Sass::Script::Number.new(canvas_x2 - canvas_x1 + 1)
-          height    = Sass::Script::Number.new(canvas_y2 - canvas_y1 + 1)
+          canvas_x1 = Compass::Magick::Utils.value_of(x1, canvas.width,  0)
+          canvas_y1 = Compass::Magick::Utils.value_of(y1, canvas.height, 0)
+          canvas_x2 = Compass::Magick::Utils.value_of(x2, canvas.width,  canvas.width)
+          canvas_y2 = Compass::Magick::Utils.value_of(y2, canvas.height, canvas.height)
+          width     = Sass::Script::Number.new(canvas_x2 - canvas_x1)
+          height    = Sass::Script::Number.new(canvas_y2 - canvas_y1)
           if type.kind_of?(Sass::Script::Color)
             overlay = Compass::Magick::Types::Solid.new(type).to_canvas(width, height)
           elsif type.kind_of?(Compass::Magick::Types::Solid) || type.kind_of?(Compass::Magick::Types::Gradients::Linear)
