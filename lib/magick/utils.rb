@@ -32,7 +32,8 @@ module Compass::Magick
     #   If the value is negative, it is calculated as an offset against <tt>max</tt>.
     #   Otherwise, the value is returned as-is.
     def value_of(number, max, default = nil)
-      return default if number.nil? || number.kind_of?(Sass::Script::Bool)
+      return default if number.nil? || (number.kind_of?(Sass::Script::Bool) && ! number.value)
+      assert_type 'number', number, Sass::Script::Number
       return max * (number.value.to_f / 100) if number.unit_str == '%'
       return max + number.value if number.value < 0
       number.value
