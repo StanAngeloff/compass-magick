@@ -8,6 +8,10 @@ module Compass::Magick
       #   * Sass::Script::Color
       #   * {Compass::Magick::Types::Solid}
       #   * {Compass::Magick::Types::Gradients::Linear}
+      # @param [Integer] x1 The left coordinate of the fill.
+      # @param [Integer] y1 The top coordinate of the fill.
+      # @param [Integer] x2 The right coordinate of the fill.
+      # @param [Integer] y2 The bottom coordinate of the fill.
       # @return {Command} A command which applies the fill on the canvas.
       def magick_fill(type, x1 = nil, y1 = nil, x2 = nil, y2 = nil)
         Command.new do |canvas|
