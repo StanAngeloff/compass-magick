@@ -13,8 +13,8 @@ module Compass::Magick
       def magick_composite(source, x = nil, y = nil)
         Compass::Magick::Utils::assert_type 'source', source, Compass::Magick::Canvas
         Command.new do |canvas|
-          canvas_x = Compass::Magick::Utils.value_of(x, canvas.width  - 1, 0)
-          canvas_y = Compass::Magick::Utils.value_of(y, canvas.height - 1, 0)
+          canvas_x = Compass::Magick::Utils.value_of(x, canvas.width  - source.width,  0)
+          canvas_y = Compass::Magick::Utils.value_of(y, canvas.height - source.height, 0)
           canvas.compose(source, canvas_x, canvas_y)
         end
       end
