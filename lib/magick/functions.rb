@@ -1,6 +1,7 @@
 require 'magick/functions/canvas'
 require 'magick/functions/types'
 require 'magick/functions/drawing'
+require 'magick/functions/operations'
 
 module Compass::Magick
   # The Functions module includes all public Compass Magick functions.
@@ -12,6 +13,7 @@ module Compass::Magick
     include Functions::Canvas
     include Functions::Types
     include Functions::Drawing
+    include Functions::Operations
   end
 end
 
