@@ -5,14 +5,36 @@ module Compass::Magick
       # Creates a new {Compass::Magick::Canvas} and execute all
       # commands on the instance.
       #
-      # @param [Sass::Script::Number] width The width of the Canvas.
-      # @param [Sass::Script::Number] height The height of the Canvas.
-      # @param [Array<Compass::Magick::Command>] commands The list of commands
-      #   to execute on the Canvas instance.
+      # @overload
+      #   @param [Canvas] canvas Copy image from another Canvas object.
+      #   @param [Array<Command>] commands The list of commands to execute on
+      #     new Canvas instance.
+      # @overload
+      #   @param [Sass::Script::String] data A Base64 encoded Data URL
+      #     containing the image.
+      #   @param [Array<Command>] commands The list of commands to execute on
+      #     the Canvas instance.
+      # @overload
+      #   @param [Sass::Script::String] url The URL to the image, relative to
+      #     the stylesheet.
+      #   @param [Array<Command>] commands The list of commands to execute on
+      #     the Canvas instance.
+      # @overload
+      #   @param [Sass::Script::String] path The path to the image, relative
+      #     to the configured <tt>images_dir</tt>.
+      #   @param [Array<Command>] commands The list of commands to execute on
+      #     the Canvas instance.
+      # @overload
+      #   @param [Sass::Script::Number] width The width of the new transparent
+      #     Canvas.
+      #   @param [Sass::Script::Number] height The height of the new
+      #     transparent Canvas.
+      #   @param [Array<Command>] commands The list of commands to execute on
+      #     the Canvas instance.
       # @return [String] A Base64 encoded PNG-24 Data URI for the generated
       #   image.
-      def magick_canvas(width, height, *commands)
-        Compass::Magick::Canvas.new(width, height, *commands)
+      def magick_canvas(*commands)
+        Compass::Magick::Canvas.new(*commands)
       end
     end
   end
