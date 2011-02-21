@@ -5,26 +5,26 @@ module Compass::Magick
       # Creates a new {Compass::Magick::Canvas} and execute all
       # commands on the instance.
       #
-      # @overload
+      # @overload magick_canvas(canvas, *commands)
       #   @param [Canvas] canvas Copy image from another Canvas object.
       #   @param [Array<Command>] commands The list of commands to execute on
       #     new Canvas instance.
-      # @overload
+      # @overload magick_canvas(data, *commands)
       #   @param [Sass::Script::String] data A Base64 encoded Data URL
       #     containing the image.
       #   @param [Array<Command>] commands The list of commands to execute on
       #     the Canvas instance.
-      # @overload
+      # @overload magick_canvas(url, *commands)
       #   @param [Sass::Script::String] url The URL to the image, relative to
       #     the stylesheet.
       #   @param [Array<Command>] commands The list of commands to execute on
       #     the Canvas instance.
-      # @overload
+      # @overload magick_canvas(path, *commands)
       #   @param [Sass::Script::String] path The path to the image, relative
       #     to the configured <tt>images_dir</tt>.
       #   @param [Array<Command>] commands The list of commands to execute on
       #     the Canvas instance.
-      # @overload
+      # @overload magick_canvas(width, height, *commands)
       #   @param [Sass::Script::Number] width The width of the new transparent
       #     Canvas.
       #   @param [Sass::Script::Number] height The height of the new

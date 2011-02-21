@@ -62,7 +62,7 @@
   
   
     <dt class="r2">Included in:</dt>
-    <dd class="r2"><span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span>, <span class='object_link'><a href="Command.html" title="Compass::Magick::Command (class)">Command</a></span>, <span class='object_link'><a href="Functions/Drawing.html" title="Compass::Magick::Functions::Drawing (module)">Functions::Drawing</a></span>, <span class='object_link'><a href="Types/Gradients/ColorStop.html" title="Compass::Magick::Types::Gradients::ColorStop (class)">Types::Gradients::ColorStop</a></span>, <span class='object_link'><a href="Types/Gradients/Linear.html" title="Compass::Magick::Types::Gradients::Linear (class)">Types::Gradients::Linear</a></span>, <span class='object_link'><a href="Types/Solid.html" title="Compass::Magick::Types::Solid (class)">Types::Solid</a></span>, <span class='object_link'><a href="" title="Compass::Magick::Utils (module)">Utils</a></span></dd>
+    <dd class="r2"><span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span>, <span class='object_link'><a href="Command.html" title="Compass::Magick::Command (class)">Command</a></span>, <span class='object_link'><a href="Types/Gradients/ColorStop.html" title="Compass::Magick::Types::Gradients::ColorStop (class)">Types::Gradients::ColorStop</a></span>, <span class='object_link'><a href="Types/Gradients/Linear.html" title="Compass::Magick::Types::Gradients::Linear (class)">Types::Gradients::Linear</a></span>, <span class='object_link'><a href="Types/Solid.html" title="Compass::Magick::Types::Solid (class)">Types::Solid</a></span>, <span class='object_link'><a href="" title="Compass::Magick::Utils (module)">Utils</a></span></dd>
     
   
   
@@ -484,13 +484,15 @@ Otherwise, the value is returned as-is.
 36
 37
 38
-39</pre>
+39
+40</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/magick/utils.rb', line 34</span>
 
 <span class='def def kw'>def</span> <span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='number identifier id'>number</span><span class='comma token'>,</span> <span class='max identifier id'>max</span><span class='comma token'>,</span> <span class='default identifier id'>default</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
-  <span class='return return kw'>return</span> <span class='default identifier id'>default</span> <span class='if if_mod kw'>if</span> <span class='number identifier id'>number</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='orop op'>||</span> <span class='number identifier id'>number</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span><span class='lparen token'>(</span><span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Bool constant id'>Bool</span><span class='rparen token'>)</span>
+  <span class='return return kw'>return</span> <span class='default identifier id'>default</span> <span class='if if_mod kw'>if</span> <span class='number identifier id'>number</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='orop op'>||</span> <span class='lparen token'>(</span><span class='number identifier id'>number</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span><span class='lparen token'>(</span><span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Bool constant id'>Bool</span><span class='rparen token'>)</span> <span class='andop op'>&amp;&amp;</span> <span class='notop op'>!</span> <span class='number identifier id'>number</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
+  <span class='assert_type identifier id'>assert_type</span> <span class='string val'>'number'</span><span class='comma token'>,</span> <span class='number identifier id'>number</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
   <span class='return return kw'>return</span> <span class='max identifier id'>max</span> <span class='mult op'>*</span> <span class='lparen token'>(</span><span class='number identifier id'>number</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='dot token'>.</span><span class='to_f identifier id'>to_f</span> <span class='div op'>/</span> <span class='integer val'>100</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='number identifier id'>number</span><span class='dot token'>.</span><span class='unit_str identifier id'>unit_str</span> <span class='eq op'>==</span> <span class='string val'>'%'</span>
   <span class='return return kw'>return</span> <span class='max identifier id'>max</span> <span class='plus op'>+</span> <span class='number identifier id'>number</span><span class='dot token'>.</span><span class='value identifier id'>value</span> <span class='if if_mod kw'>if</span> <span class='number identifier id'>number</span><span class='dot token'>.</span><span class='value identifier id'>value</span> <span class='lt op'>&lt;</span> <span class='integer val'>0</span>
   <span class='number identifier id'>number</span><span class='dot token'>.</span><span class='value identifier id'>value</span>
@@ -506,7 +508,7 @@ Otherwise, the value is returned as-is.
 </div>
     
     <div id="footer">
-  Generated on Sun Feb 20 17:19:16 2011 by 
+  Generated on Mon Feb 21 23:48:26 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.8.7).
 </div>

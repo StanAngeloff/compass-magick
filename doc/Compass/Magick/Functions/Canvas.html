@@ -93,7 +93,7 @@ Methods for creating a new <span class='object_link'><a href="../Canvas.html" ti
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#magick_canvas-instance_method" title="#magick_canvas (instance method)">- (String) <strong>magick_canvas</strong>(width, height, *commands) </a>
+      <a href="#magick_canvas-instance_method" title="#magick_canvas (instance method)">- (String) <strong>magick_canvas</strong>(*commands) </a>
     
 
     
@@ -127,7 +127,17 @@ instance.
       <div class="method_details first">
   <p class="signature first" id="magick_canvas-instance_method">
   
-    - (<tt>String</tt>) <strong>magick_canvas</strong>(width, height, *commands) 
+    
+      <span class="overload">- (<tt>Object</tt>) <strong>magick_canvas</strong>(canvas, *commands) </span>
+    
+      <span class="overload">- (<tt>Object</tt>) <strong>magick_canvas</strong>(data, *commands) </span>
+    
+      <span class="overload">- (<tt>Object</tt>) <strong>magick_canvas</strong>(url, *commands) </span>
+    
+      <span class="overload">- (<tt>Object</tt>) <strong>magick_canvas</strong>(path, *commands) </span>
+    
+      <span class="overload">- (<tt>Object</tt>) <strong>magick_canvas</strong>(width, height, *commands) </span>
+    
   
 
   
@@ -138,6 +148,228 @@ Creates a new <span class='object_link'><a href="../Canvas.html" title="Compass:
 instance.
 </p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+  <h3>Overloads:</h3>
+  <ul class="overload">
+    
+      
+      <li class="overload_item">
+        <span class="signature">- (<tt>Object</tt>) <strong>magick_canvas</strong>(canvas, *commands) </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Compass::Magick::Functions::Canvas (module)">Canvas</a></span></tt>)</span>
+      
+      
+        <span class='name'>canvas</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+Copy image from another Canvas object.
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="../Command.html" title="Compass::Magick::Command (class)">Command</a></span>&gt;</tt>)</span>
+      
+      
+        <span class='name'>commands</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The list of commands to execute on new Canvas instance.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">- (<tt>Object</tt>) <strong>magick_canvas</strong>(data, *commands) </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Sass::Script::String</tt>)</span>
+      
+      
+        <span class='name'>data</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+A Base64 encoded Data URL containing the image.
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="../Command.html" title="Compass::Magick::Command (class)">Command</a></span>&gt;</tt>)</span>
+      
+      
+        <span class='name'>commands</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The list of commands to execute on the Canvas instance.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">- (<tt>Object</tt>) <strong>magick_canvas</strong>(url, *commands) </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Sass::Script::String</tt>)</span>
+      
+      
+        <span class='name'>url</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The URL to the image, relative to the stylesheet.
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="../Command.html" title="Compass::Magick::Command (class)">Command</a></span>&gt;</tt>)</span>
+      
+      
+        <span class='name'>commands</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The list of commands to execute on the Canvas instance.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">- (<tt>Object</tt>) <strong>magick_canvas</strong>(path, *commands) </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Sass::Script::String</tt>)</span>
+      
+      
+        <span class='name'>path</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The path to the image, relative to the configured <tt>images_dir</tt>.
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="../Command.html" title="Compass::Magick::Command (class)">Command</a></span>&gt;</tt>)</span>
+      
+      
+        <span class='name'>commands</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The list of commands to execute on the Canvas instance.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">- (<tt>Object</tt>) <strong>magick_canvas</strong>(width, height, *commands) </span>
+        <div class="docstring">
+  <div class="discussion">
+    
 
   </div>
 </div>
@@ -156,7 +388,7 @@ instance.
       
         &mdash;
         <div class='inline'><p>
-The width of the Canvas.
+The width of the new transparent Canvas.
 </p>
 </div>
       
@@ -173,7 +405,7 @@ The width of the Canvas.
       
         &mdash;
         <div class='inline'><p>
-The height of the Canvas.
+The height of the new transparent Canvas.
 </p>
 </div>
       
@@ -181,7 +413,7 @@ The height of the Canvas.
   
     <li>
       
-        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="../Command.html" title="Compass::Magick::Command (class)">Compass::Magick::Command</a></span>&gt;</tt>)</span>
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="../Command.html" title="Compass::Magick::Command (class)">Command</a></span>&gt;</tt>)</span>
       
       
         <span class='name'>commands</span>
@@ -197,6 +429,11 @@ The list of commands to execute on the Canvas instance.
     </li>
   
 </ul>
+
+</div>
+      </li>
+    
+  </ul>
 <h3>Returns:</h3>
 <ul class="return">
   
@@ -223,15 +460,15 @@ A Base64 encoded PNG-24 Data URI for the generated image.
       <pre class="lines">
 
 
-14
-15
-16</pre>
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/magick/functions/canvas.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/magick/functions/canvas.rb', line 36</span>
 
-<span class='def def kw'>def</span> <span class='magick_canvas identifier id'>magick_canvas</span><span class='lparen token'>(</span><span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='commands identifier id'>commands</span><span class='rparen token'>)</span>
-  <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Canvas constant id'>Canvas</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='commands identifier id'>commands</span><span class='rparen token'>)</span>
+<span class='def def kw'>def</span> <span class='magick_canvas identifier id'>magick_canvas</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='commands identifier id'>commands</span><span class='rparen token'>)</span>
+  <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Canvas constant id'>Canvas</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='commands identifier id'>commands</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -244,7 +481,7 @@ A Base64 encoded PNG-24 Data URI for the generated image.
 </div>
     
     <div id="footer">
-  Generated on Sun Feb 20 17:19:18 2011 by 
+  Generated on Mon Feb 21 23:48:27 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.8.7).
 </div>
