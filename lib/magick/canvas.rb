@@ -46,7 +46,10 @@ module Compass::Magick
     def initialize(*commands)
       from_any(commands)
       commands.each_with_index { |command, index| assert_type "command[#{index}]", command, Command }
-      commands.each { |command| command.block.call(self) }
+      commands.each do |command|
+        result = command.block.call(self)
+        inherit result, false if result.kind_of?(ChunkyPNG::Canvas) unless result == self
+      end
     end
 
     # Sets the options hash for this node.
@@ -69,16 +72,19 @@ module Compass::Magick
 
     private
 
+    def inherit(canvas, copy = true)
+      @width  = canvas.width
+      @height = canvas.height
+      @pixels = (copy ? canvas.pixels.dup : canvas.pixels)
+      self
+    end
+
     def from_any(args)
       source = args.shift
       if source.kind_of?(Canvas)
-        @width  = source.width
-        @height = source.height
-        @pixels = source.pixels.dup
+        inherit source
       elsif source.kind_of?(Sass::Script::Number)
-        @width  = source.value
-        @height = args.shift.value
-        @pixels = Array.new(@width * @height, ChunkyPNG::Color::TRANSPARENT)
+        inherit ChunkyPNG::Canvas.new(source.value, args.shift.value), false
       elsif source.kind_of?(Sass::Script::String)
         if source.value.include?('url(')
           if source.value.include?('base64,')
@@ -94,9 +100,7 @@ module Compass::Magick
           path   = File.join(Compass.configuration.images_path, source.value.split('?').shift())
           canvas = ChunkyPNG::Canvas.from_file(path)
         end
-        @width   = canvas.width
-        @height  = canvas.height
-        @pixels  = canvas.pixels
+        inherit canvas, false
       else
         raise NotSupported.new("Canvas.new(..) expected argument of type " +
           "Compass::Magick::Canvas, Sass::Script::Number or Sass::Script::String " +
