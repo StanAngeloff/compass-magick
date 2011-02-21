@@ -98,9 +98,9 @@ module Compass::Magick
         @height  = canvas.height
         @pixels  = canvas.pixels
       else
-        raise NotSupported.new "Canvas.new(..) expected argument of type " +
+        raise NotSupported.new("Canvas.new(..) expected argument of type " +
           "Compass::Magick::Canvas, Sass::Script::Number or Sass::Script::String " +
-          "got #{source.class}(#{source.inspect}) instead"
+          "got #{source.class}(#{source.inspect}) instead")
       end
     end
   end

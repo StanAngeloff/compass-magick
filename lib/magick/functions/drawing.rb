@@ -14,6 +14,16 @@ module Compass::Magick
       # @param [Integer] y2 The bottom coordinate of the fill.
       # @return {Command} A command which applies the fill on the canvas.
       def magick_fill(type, x1 = nil, y1 = nil, x2 = nil, y2 = nil)
+        raise NotSupported.new("magick_fill(..) expected argument of type " +
+            "Sass::Script::Color, Compass::Magick::Types::Solid or Compass::Magick::Types::Gradients::Linear " +
+            "got #{type.class}(#{type.inspect}) instead") unless
+          type.kind_of?(Sass::Script::Color)           ||
+          type.kind_of?(Compass::Magick::Types::Solid) ||
+          type.kind_of?(Compass::Magick::Types::Gradients::Linear)
+        Compass::Magick::Utils.assert_type 'x1', x1, Sass::Script::Number
+        Compass::Magick::Utils.assert_type 'y1', y1, Sass::Script::Number
+        Compass::Magick::Utils.assert_type 'x2', x2, Sass::Script::Number
+        Compass::Magick::Utils.assert_type 'y2', y2, Sass::Script::Number
         Command.new do |canvas|
           canvas_x1 = Compass::Magick::Utils.value_of(x1, canvas.width  - 1, 0)
           canvas_y1 = Compass::Magick::Utils.value_of(y1, canvas.height - 1, 0)
@@ -25,10 +35,6 @@ module Compass::Magick
             overlay = Compass::Magick::Types::Solid.new(type).to_canvas(width, height)
           elsif type.kind_of?(Compass::Magick::Types::Solid) || type.kind_of?(Compass::Magick::Types::Gradients::Linear)
             overlay = type.to_canvas(width, height)
-          else
-            raise NotSupported.new "magick_fill(..) expected argument of type " +
-              "Sass::Script::Color, Compass::Magick::Types::Solid or Compass::Magick::Types::Gradients::Linear " +
-              "got #{type.class}(#{type.inspect}) instead"
           end
           canvas.compose(overlay, canvas_x1, canvas_y1)
         end

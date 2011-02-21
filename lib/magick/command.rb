@@ -32,7 +32,7 @@ module Compass::Magick
 
     # Raises an error if the command is used outside of a {Canvas} object.
     def to_s
-      raise NotAllowed.new "#{self.class} cannot be used outside of a Compass::Magick::Canvas object"
+      raise NotAllowed.new("#{self.class} cannot be used outside of a Compass::Magick::Canvas object")
     end
   end
 end
