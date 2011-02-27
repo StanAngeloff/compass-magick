@@ -5,19 +5,36 @@ module Compass::Magick
     module Operations
       # Composes one {Canvas} on top of another.
       #
-      # @param [Canvas] canvas The Canvas object to compose.
-      # @param [Integer] x The left coordinate of the composition operation.
-      # @param [Integer] y The top coordinate of the composition operation.
+      # @overload magick_compose(another, invert, x = nil, y = nil)
+      #   @param [Canvas] another The Canvas object to compose.
+      #   @param [Bool] invert <tt>true</tt> to use the target canvas as the
+      #     source, <tt>false</tt> (default) otherwise.
+      #   @param [Integer] x The left coordinate of the composition
+      #     operation.
+      #   @param [Integer] y The top coordinate of the composition operation.
+      # @overload magick_compose(another, x = nil, y = nil)
+      #   @param [Canvas] another The Canvas object to compose.
+      #   @param [Integer] x The left coordinate of the composition
+      #     operation.
+      #   @param [Integer] y The top coordinate of the composition operation.
       # @return {Command} A command which composes the two canvas objects
       #   together.
-      def magick_compose(source, x = nil, y = nil)
-        Compass::Magick::Utils.assert_type 'source', source, Compass::Magick::Canvas
-        Compass::Magick::Utils.assert_type 'x',       x,     Sass::Script::Number
-        Compass::Magick::Utils.assert_type 'y',       y,     Sass::Script::Number
+      def magick_compose(another, *args)
+        Compass::Magick::Utils.assert_type 'another', another, Compass::Magick::Canvas
+        invert = args.shift.value if args.first.kind_of?(Sass::Script::Bool)
+        x, y   = args
+        Compass::Magick::Utils.assert_type 'x', x, Sass::Script::Number
+        Compass::Magick::Utils.assert_type 'y', y, Sass::Script::Number
         Command.new do |canvas|
-          canvas_x = Compass::Magick::Utils.value_of(x, canvas.width  - source.width,  0)
-          canvas_y = Compass::Magick::Utils.value_of(y, canvas.height - source.height, 0)
-          canvas.compose(source, canvas_x, canvas_y)
+          if invert
+            another_x = Compass::Magick::Utils.value_of(x, another.width  - canvas.width,  0)
+            another_y = Compass::Magick::Utils.value_of(y, another.height - canvas.height, 0)
+            another.compose(canvas, another_x, another_y)
+          else
+            canvas_x = Compass::Magick::Utils.value_of(x, canvas.width  - another.width,  0)
+            canvas_y = Compass::Magick::Utils.value_of(y, canvas.height - another.height, 0)
+            canvas.compose(another, canvas_x, canvas_y)
+          end
         end
       end
 
