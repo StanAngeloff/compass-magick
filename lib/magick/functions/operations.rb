@@ -11,7 +11,9 @@ module Compass::Magick
       # @return {Command} A command which composes the two canvas objects
       #   together.
       def magick_compose(source, x = nil, y = nil)
-        Compass::Magick::Utils::assert_type 'source', source, Compass::Magick::Canvas
+        Compass::Magick::Utils.assert_type 'source', source, Compass::Magick::Canvas
+        Compass::Magick::Utils.assert_type 'x',       x,     Sass::Script::Number
+        Compass::Magick::Utils.assert_type 'y',       y,     Sass::Script::Number
         Command.new do |canvas|
           canvas_x = Compass::Magick::Utils.value_of(x, canvas.width  - source.width,  0)
           canvas_y = Compass::Magick::Utils.value_of(y, canvas.height - source.height, 0)
