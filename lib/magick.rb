@@ -4,6 +4,7 @@ $: << File.dirname(__FILE__)
 require 'chunky_png'
 
 require 'magick/utils'
+require 'magick/scriptable'
 require 'magick/command'
 require 'magick/canvas'
 require 'magick/types'

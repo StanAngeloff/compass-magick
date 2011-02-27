@@ -11,6 +11,7 @@ module Compass::Magick
   #       canvas.rect(0, 0, canvas.width - 1, canvas.height - 1, ChunkyPNG::Color::BLACK)
   #     end
   class Command
+    include Scriptable
     include Utils
 
     # Initializes a new Command instance.
@@ -23,15 +24,8 @@ module Compass::Magick
     # @return [Proc] The block to execute.
     attr_reader :block
 
-    # Sets the options hash for this node.
-    #
-    # @param [{Symbol => Object}] options The options hash.
-    def options=(options)
-      @options = options
-    end
-
     # Raises an error if the command is used outside of a {Canvas} object.
-    def to_s
+    def to_s(options = {})
       raise NotAllowed.new("#{self.class} cannot be used outside of a Compass::Magick::Canvas object")
     end
   end

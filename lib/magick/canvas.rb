@@ -13,6 +13,7 @@ module Compass::Magick
   #
   #     Canvas.new(320, 240).to_data_uri
   class Canvas < ChunkyPNG::Canvas
+    include Scriptable
     include Utils
 
     # Initializes a new Canvas instance.
@@ -52,18 +53,11 @@ module Compass::Magick
       end
     end
 
-    # Sets the options hash for this node.
-    #
-    # @param [{Symbol => Object}] options The options hash.
-    def options=(options)
-      @options = options
-    end
-
     # Serializes the Canvas as a Base64 encoded PNG-24 Data URI.
     #
     # @return [String] A Base64 encoded PNG-24 Data URI for the generated
     #   image.
-    def to_data_uri
+    def to_data_uri(options = {})
       data = Base64.encode64(to_blob).gsub("\n", '')
       "url('data:image/png;base64,#{data}')"
     end
