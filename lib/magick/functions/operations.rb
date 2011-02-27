@@ -1,7 +1,7 @@
 module Compass::Magick
   module Functions
     # Methods for operating on a {Compass::Magick::Canvas}, e.g., crop,
-    # composite, etc.
+    # compose, etc.
     module Operations
       # Composes one {Canvas} on top of another.
       #
@@ -10,7 +10,7 @@ module Compass::Magick
       # @param [Integer] y The top coordinate of the composition operation.
       # @return {Command} A command which composes the two canvas objects
       #   together.
-      def magick_composite(source, x = nil, y = nil)
+      def magick_compose(source, x = nil, y = nil)
         Compass::Magick::Utils::assert_type 'source', source, Compass::Magick::Canvas
         Command.new do |canvas|
           canvas_x = Compass::Magick::Utils.value_of(x, canvas.width  - source.width,  0)
