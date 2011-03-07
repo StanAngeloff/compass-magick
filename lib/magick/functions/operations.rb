@@ -62,6 +62,38 @@ module Compass::Magick
           canvas.crop(canvas_x1, canvas_y1, width, height)
         end
       end
+
+      # Applies the mask on the {Canvas}.
+      #
+      # Composes the alpha channel from the <tt>mask</tt> image with the
+      # one from the canvas and return the original canvas with the
+      # alpha-channel modified.
+      #
+      # @param [Integer] x The left coordinate of the mask operation.
+      # @param [Integer] y The top coordinate of the mask operation.
+      # @return {Command} A command which applies the mask on the canvas.
+      def magick_mask(mask, x = nil, y = nil)
+        Compass::Magick::Utils.assert_type 'mask', mask, Compass::Magick::Canvas
+        Compass::Magick::Utils.assert_type 'x',    x,    Sass::Script::Number
+        Compass::Magick::Utils.assert_type 'y',    y,    Sass::Script::Number
+        Command.new do |canvas|
+          canvas_x = Compass::Magick::Utils.value_of(x, canvas.width  - 1,  0)
+          canvas_y = Compass::Magick::Utils.value_of(y, canvas.height - 1, 0)
+          raise ChunkyPNG::OutOfBounds, 'Canvas image width is too small to fit mask'  if canvas.width  < mask.width  + canvas_x
+          raise ChunkyPNG::OutOfBounds, 'Canvas image height is too small to fit mask' if canvas.height < mask.height + canvas_y
+          for y in 0...mask.width do
+            for x in 0...mask.height do
+              canvas_pixel = canvas.get_pixel(x + canvas_x, y + canvas_y)
+              mask_alpha   = ChunkyPNG::Color.a(mask.get_pixel(x, y))
+              canvas_red   = ChunkyPNG::Color.r(canvas_pixel)
+              canvas_green = ChunkyPNG::Color.g(canvas_pixel)
+              canvas_blue  = ChunkyPNG::Color.b(canvas_pixel)
+              canvas_alpha = ChunkyPNG::Color.a(canvas_pixel) * (ChunkyPNG::Color.a(mask.get_pixel(x, y)).to_f / 255)
+              canvas.set_pixel(x + canvas_x, y + canvas_y, ChunkyPNG::Color.rgba(canvas_red, canvas_green, canvas_blue, canvas_alpha))
+            end
+          end
+        end
+      end
     end
   end
 end
