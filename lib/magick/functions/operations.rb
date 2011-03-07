@@ -38,7 +38,7 @@ module Compass::Magick
         end
       end
 
-      # Crop the {Canvas} to the given region.
+      # Crops the {Canvas} to the given region.
       #
       # @param [Integer] x1 The left coordinate of the crop operation.
       # @param [Integer] y1 The top coordinate of the crop operation.
