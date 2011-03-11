@@ -16,12 +16,48 @@ module Compass::Magick
         arg.kind_of?(type)
     end
 
+    # Checks if <tt>arg</tt> is a sub-class of any of the supported
+    # <tt>types</tt> and raises a {NotSupported} exception otherwise.
+    #
+    # @param [String] name The argument name or method signature (used in the
+    #   exception message).
+    # @param [Object] arg The argument to validate.
+    # @param [Array<Object>] types The list of supported <tt>arg</tt> types.
+    def assert_one_of(name, arg, *types)
+      for type in types do
+        return if arg.kind_of?(type)
+      end
+      raise NotSupported.new("#{name} expected argument of type [#{types.join ', '}] got #{arg.class}(#{arg.inspect}) instead")
+    end
+
     # Converts a Sass::Script::Color to ChunkyPNG::Color object.
     #
     # @param [Sass::Script::Color] color The source color in Sass' format.
     # @return [ChunkyPNG::Color] The source color in ChunkyPNG's format.
     def to_chunky_color(color)
       ChunkyPNG::Color.rgba(color.red, color.green, color.blue, color.alpha * 255)
+    end
+
+    # Converts a fill type (solid color or gradient) to a {Canvas} object.
+    #
+    # @param [Object] type The type of fill type to convert. Supported:
+    #   * Sass::Script::Color
+    #   * {Compass::Magick::Types::Solid}
+    #   * {Compass::Magick::Types::Gradients::Linear}
+    # @param [Sass::Script::Number] width The width of the generated
+    #   {Canvas}.
+    # @param [Sass::Script::Number] height The height of the generated
+    #   {Canvas}.
+    # @return [Canvas] The canvas in the dimensions given with the fill
+    #   type applied.
+    def to_canvas(type, width, height)
+      if type.kind_of?(Sass::Script::Color)
+        Compass::Magick::Types::Solid.new(type).to_canvas(width, height)
+      elsif type.kind_of?(Compass::Magick::Types::Solid) || type.kind_of?(Compass::Magick::Types::Gradients::Linear)
+        type.to_canvas(width, height)
+      else
+        nil
+      end
     end
 
     # Converts the Sass::Script::Number to a fixed value.

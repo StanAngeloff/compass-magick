@@ -75,7 +75,7 @@ module Compass::Magick
 
     def from_any(args)
       source = args.shift
-      if source.kind_of?(Canvas)
+      if source.kind_of?(ChunkyPNG::Canvas)
         inherit source
       elsif source.kind_of?(Sass::Script::Number)
         inherit ChunkyPNG::Canvas.new(source.value, args.shift.value), false

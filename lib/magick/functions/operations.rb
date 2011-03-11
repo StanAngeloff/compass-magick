@@ -20,7 +20,7 @@ module Compass::Magick
       # @return {Command} A command which composes the two canvas objects
       #   together.
       def magick_compose(another, *args)
-        Compass::Magick::Utils.assert_type 'another', another, Compass::Magick::Canvas
+        Compass::Magick::Utils.assert_type 'another', another, ChunkyPNG::Canvas
         invert = args.shift.value if args.first.kind_of?(Sass::Script::Bool)
         x, y   = args
         Compass::Magick::Utils.assert_type 'x', x, Sass::Script::Number
@@ -73,7 +73,7 @@ module Compass::Magick
       # @param [Integer] y The top coordinate of the mask operation.
       # @return {Command} A command which applies the mask on the canvas.
       def magick_mask(mask, x = nil, y = nil)
-        Compass::Magick::Utils.assert_type 'mask', mask, Compass::Magick::Canvas
+        Compass::Magick::Utils.assert_type 'mask', mask, ChunkyPNG::Canvas
         Compass::Magick::Utils.assert_type 'x',    x,    Sass::Script::Number
         Compass::Magick::Utils.assert_type 'y',    y,    Sass::Script::Number
         Command.new do |canvas|
