@@ -7,6 +7,7 @@ require 'magick/utils'
 require 'magick/scriptable'
 require 'magick/command'
 require 'magick/canvas'
+require 'magick/shapes'
 require 'magick/types'
 require 'magick/functions'
 

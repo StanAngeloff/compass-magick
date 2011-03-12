@@ -41,15 +41,6 @@ module Compass::Magick
       # {Canvas}. E.g., <tt>100%, 100%</tt> would put the circle at the
       # bottom-right corner of the {Canvas}.
       #
-      # Copyright (c) 2003 by Nils Haeck M.Sc. (Simdesign)
-      # http://www.simdesign.nl
-      #
-      # “The [..] DrawDisk routines is optimized quite well but do not claim
-      # to be the fastest solution :) It is a floating point precision
-      # implementation. Further optimisation would be possible if an
-      # integer approach was chosen (but that would also loose
-      # functionality).”
-      #
       # @param [Object] type The type of fill to apply. Supported:
       #   * Sass::Script::Color
       #   * {Compass::Magick::Types::Solid}
@@ -70,32 +61,7 @@ module Compass::Magick
         Command.new do |canvas|
           circle_radius  = Compass::Magick::Utils.value_of(radius,  [canvas.width, canvas.height].min, 1)
           circle_feather = Compass::Magick::Utils.value_of(feather, [canvas.width, canvas.height].min, 1).to_f
-          circle_half = (circle_radius - 1).to_f / 2
-          rpf2 = (circle_half + circle_feather / 2) ** 2
-          rmf2 = (circle_half - circle_feather / 2) ** 2
-          lx   = [(circle_half - rpf2).floor, 0].max
-          ly   = [(circle_half - rpf2).floor, 0].max
-          rx   = [(circle_half + rpf2).ceil, circle_radius - 1].min
-          ry   = [(circle_half + rpf2).ceil, circle_radius - 1].min
-          sqx  = Array.new(rx - lx + 1)
-          for x in lx..rx
-            sqx[x - lx] = (x - circle_half) ** 2
-          end
-          mask = ChunkyPNG::Canvas.new(circle_radius, circle_radius, ChunkyPNG::Color.rgba(0, 0, 0, 0))
-          for y in ly..ry
-            sqy = (y - circle_half) ** 2
-            for x in lx..rx
-              sqdist = sqy + sqx[x - lx]
-              if sqdist < rmf2
-                mask.set_pixel(x, y, ChunkyPNG::Color::WHITE)
-              else
-                if sqdist < rpf2
-                  fact = (((circle_half - Math.sqrt(sqdist)) * 2 / circle_feather) * 0.5 + 0.5)
-                  mask.set_pixel(x, y, ChunkyPNG::Color.rgba(255, 255, 255, 255 * [0, [fact, 1].min].max))
-                end
-              end
-            end
-          end
+          mask    = Compass::Magick::Shapes.circle(circle_radius, circle_feather)
           overlay = Compass::Magick::Utils.to_canvas(type, Sass::Script::Number.new(circle_radius), Sass::Script::Number.new(circle_radius))
           Compass::Magick::Canvas.new(overlay, magick_mask(mask), magick_compose(canvas, Sass::Script::Bool.new(true), compose_x, compose_y))
         end
