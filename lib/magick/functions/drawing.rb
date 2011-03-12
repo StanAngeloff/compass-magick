@@ -14,7 +14,6 @@ module Compass::Magick
       # @param [Sass::Script::Number] y2 The bottom coordinate of the fill.
       # @return {Command} A command which applies the fill on the canvas.
       def magick_fill(type, x1 = nil, y1 = nil, x2 = nil, y2 = nil)
-        Compass::Magick::Utils.assert_one_of 'magick_fill(..)', type, Sass::Script::Color, Compass::Magick::Type
         Compass::Magick::Utils.assert_type 'x1', x1, Sass::Script::Number
         Compass::Magick::Utils.assert_type 'y1', y1, Sass::Script::Number
         Compass::Magick::Utils.assert_type 'x2', x2, Sass::Script::Number
@@ -55,7 +54,6 @@ module Compass::Magick
       # @return {Command} A command(-set) which composes a circle on the
       #   canvas.
       def magick_circle(type, compose_x, compose_y, radius, feather = nil)
-        Compass::Magick::Utils.assert_one_of 'magick_circle(..)', type, Sass::Script::Color, Compass::Magick::Type
         Compass::Magick::Utils.assert_type 'radius',   radius,   Sass::Script::Number
         Compass::Magick::Utils.assert_type 'feather',  feather,  Sass::Script::Number
         Command.new do |canvas|

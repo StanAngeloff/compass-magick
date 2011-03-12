@@ -51,12 +51,11 @@ module Compass::Magick
     # @return [Canvas] The canvas in the dimensions given with the fill
     #   type applied.
     def to_canvas(type, width, height)
+      Compass::Magick::Utils.assert_one_of 'to_canvas(..)', type, Sass::Script::Color, Compass::Magick::Type
       if type.kind_of?(Sass::Script::Color)
         Compass::Magick::Types::Solid.new(type).to_canvas(width, height)
       elsif type.kind_of?(Compass::Magick::Types::Solid) || type.kind_of?(Compass::Magick::Types::Gradients::Linear)
         type.to_canvas(width, height)
-      else
-        nil
       end
     end
 
