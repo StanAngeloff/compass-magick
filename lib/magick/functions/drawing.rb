@@ -6,6 +6,7 @@ module Compass::Magick
       #
       # @param [Object] type The type of fill to apply. Supported:
       #   * Sass::Script::Color
+      #   * Sass::Script::String
       #   * {Compass::Magick::Types::Solid}
       #   * {Compass::Magick::Types::Gradients::Linear}
       # @param [Sass::Script::Number] x1 The left coordinate of the fill.
@@ -42,6 +43,7 @@ module Compass::Magick
       #
       # @param [Object] type The type of fill to apply. Supported:
       #   * Sass::Script::Color
+      #   * Sass::Script::String
       #   * {Compass::Magick::Types::Solid}
       #   * {Compass::Magick::Types::Gradients::Linear}
       # @param [Sass::Script::Number] x The composite X coordinate of the
@@ -62,6 +64,84 @@ module Compass::Magick
           mask    = Compass::Magick::Shapes.circle(circle_radius, circle_feather)
           overlay = Compass::Magick::Utils.to_canvas(type, Sass::Script::Number.new(circle_radius), Sass::Script::Number.new(circle_radius))
           Compass::Magick::Canvas.new(overlay, magick_mask(mask), magick_compose(canvas, Sass::Script::Bool.new(true), compose_x, compose_y))
+        end
+      end
+
+      # Draws a (rounded) border around the {Canvas} with the given width and
+      # fill {Compass::Magick::Type}.
+      #
+      # When <tt>width</tt> is not given, the border fills the entire image.
+      # You can specify <tt>type</tt> to be <tt>transparent</tt> which won't
+      # draw any border on the {Canvas}, but will apply the resulting mask,
+      # e.g., you will get rounded corners on the source.
+      #
+      # @param [Object] type The type of fill to apply. Supported:
+      #   * Sass::Script::Color
+      #   * Sass::Script::String - e.g., 'transparent'
+      #   * {Compass::Magick::Types::Solid}
+      #   * {Compass::Magick::Types::Gradients::Linear}
+      # @param [Sass::Script::Number] radius The border radius.
+      # @param [Sass::Script::Number] will The border width, defaults to
+      #   filling the entire image.
+      # @param [Sass::Script::Bool] top_left Controls the top-left border
+      #   radius effect (default <tt>true</tt>)
+      # @param [Sass::Script::Bool] top_right Controls the top-right border
+      #   radius effect (default <tt>true</tt>)
+      # @param [Sass::Script::Bool] bottom_right Controls the bottom-right
+      #   border radius effect (default <tt>true</tt>)
+      # @param [Sass::Script::Bool] bottom_left Controls the bottom-left
+      #   border radius effect (default <tt>true</tt>)
+      # @return {Command} A command(-set) which composes and masks a border
+      #   on the canvas.
+      def magick_border(type, radius = nil, width = nil, top_left = nil, top_right = nil, bottom_right = nil, bottom_left = nil)
+        Compass::Magick::Utils.assert_type 'radius',       radius,       Sass::Script::Number
+        Compass::Magick::Utils.assert_type 'width',        width,        Sass::Script::Number
+        Compass::Magick::Utils.assert_type 'top_left',     top_left,     Sass::Script::Bool
+        Compass::Magick::Utils.assert_type 'top_right',    top_right,    Sass::Script::Bool
+        Compass::Magick::Utils.assert_type 'bottom_left',  bottom_left,  Sass::Script::Bool
+        Compass::Magick::Utils.assert_type 'bottom_right', bottom_right, Sass::Script::Bool
+        Command.new do |canvas|
+          max = [canvas.width, canvas.height].max
+          min = [canvas.width, canvas.height].min
+          border_width  = Compass::Magick::Utils.value_of(width,   max, max)
+          border_radius = [Compass::Magick::Utils.value_of(radius, min, 10), border_width].min
+          border_top_left     = (top_left.nil?     || top_left.value)
+          border_top_right    = (top_right.nil?    || top_right.value)
+          border_bottom_right = (bottom_right.nil? || bottom_right.value)
+          border_bottom_left  = (bottom_left.nil?  || bottom_left.value)
+          right_x  = canvas.width - border_radius
+          bottom_y = canvas.height - border_radius
+          mask = ChunkyPNG::Canvas.new(canvas.width, canvas.height, ChunkyPNG::Color.rgba(0, 0, 0, 0))
+          for x in 0...canvas.width
+            for y in 0...canvas.height
+              unless (border_top_left     && (y < border_radius && x < border_radius)) ||
+                     (border_top_right    && (y < border_radius && x > right_x))       ||
+                     (border_bottom_right && (y > bottom_y && x > right_x))            ||
+                     (border_bottom_left  && (y > bottom_y && x < border_radius))
+                if y < border_width || y > canvas.height - border_width ||
+                   x < border_width || x > canvas.width - border_width
+                  mask.set_pixel(x, y, ChunkyPNG::Color::WHITE)
+                end
+              end
+            end
+          end
+          if border_radius > 0
+            radius_mask = Compass::Magick::Shapes.circle(border_radius * 2)
+            if border_top_left
+              mask.compose(radius_mask.crop(0, 0, border_radius, border_radius), 0, 0)
+            end
+            if border_top_right
+              mask.compose(radius_mask.crop(border_radius, 0, border_radius, border_radius), mask.width - border_radius, 0)
+            end
+            if border_bottom_right
+              mask.compose(radius_mask.crop(border_radius, border_radius, border_radius, border_radius), mask.width - border_radius, mask.height - border_radius)
+            end
+            if border_bottom_left
+              mask.compose(radius_mask.crop(0, border_radius, border_radius, border_radius), 0, mask.height - border_radius)
+            end
+          end
+          overlay = Compass::Magick::Utils.to_canvas(type, Sass::Script::Number.new(canvas.width), Sass::Script::Number.new(canvas.height))
+          Compass::Magick::Canvas.new(overlay, magick_mask(mask), magick_compose(canvas, Sass::Script::Bool.new(true)), magick_mask(mask))
         end
       end
     end

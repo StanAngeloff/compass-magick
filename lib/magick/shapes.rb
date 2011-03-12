@@ -19,10 +19,10 @@ module Compass::Magick
     # > functionality).
     #
     # @param [Integer] radius The radius of the circle.
-    # @param [Integer] feather The feater value determines the
-    #   anti-aliasing the circle will get, defaults to <tt>1</tt>.
+    # @param [Float] feather The feater value determines the
+    #   anti-aliasing the circle will get, defaults to <tt>1.0</tt>.
     # @return {Canvas} A Canvas with a circle B/W mask.
-    def circle(radius, feather = 1)
+    def circle(radius, feather = 1.0)
       middle = (radius - 1).to_f / 2
       rpf2   = (middle + feather / 2) ** 2
       rmf2   = (middle - feather / 2) ** 2

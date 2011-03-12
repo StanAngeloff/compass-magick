@@ -42,6 +42,7 @@ module Compass::Magick
     #
     # @param [Object] type The type of fill type to convert. Supported:
     #   * Sass::Script::Color
+    #   * Sass::Script::String
     #   * {Compass::Magick::Types::Solid}
     #   * {Compass::Magick::Types::Gradients::Linear}
     # @param [Sass::Script::Number] width The width of the generated
@@ -51,9 +52,15 @@ module Compass::Magick
     # @return [Canvas] The canvas in the dimensions given with the fill
     #   type applied.
     def to_canvas(type, width, height)
-      Compass::Magick::Utils.assert_one_of 'to_canvas(..)', type, Sass::Script::Color, Compass::Magick::Type
+      Compass::Magick::Utils.assert_one_of 'to_canvas(..)', type, Sass::Script::Color, Sass::Script::String,Compass::Magick::Type
       if type.kind_of?(Sass::Script::Color)
         Compass::Magick::Types::Solid.new(type).to_canvas(width, height)
+      elsif type.kind_of?(Sass::Script::String)
+        if type.value == 'transparent'
+          ChunkyPNG::Canvas.new(width.value, height.value, ChunkyPNG::Color.rgba(0, 0, 0, 0))
+        else
+          raise NotSupported.new("to_canvas(..) supports String argument of values ['transparent'] got '#{type}' instead")
+        end
       elsif type.kind_of?(Compass::Magick::Types::Solid) || type.kind_of?(Compass::Magick::Types::Gradients::Linear)
         type.to_canvas(width, height)
       end
