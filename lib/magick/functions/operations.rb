@@ -5,19 +5,27 @@ module Compass::Magick
     module Operations
       # Composes one {Canvas} on top of another.
       #
-      # @param [Canvas] another The Canvas object to compose.
+      # @param [Canvas] overlay The Canvas object to compose.
       # @param [Integer] x The left coordinate of the composition operation.
       # @param [Integer] y The top coordinate of the composition operation.
       # @return {Command} A command which composes the two canvas objects
       #   together.
-      def magick_compose(another, x = nil, y = nil)
-        Compass::Magick::Utils.assert_type 'another', another, ChunkyPNG::Canvas
+      def magick_compose(overlay, x = nil, y = nil)
+        Compass::Magick::Utils.assert_type 'overlay', overlay, ChunkyPNG::Canvas
         Compass::Magick::Utils.assert_type 'x', x, Sass::Script::Number
         Compass::Magick::Utils.assert_type 'y', y, Sass::Script::Number
         Command.new do |canvas|
-          canvas_x = Compass::Magick::Utils.value_of(x, canvas.width  - another.width,  0)
-          canvas_y = Compass::Magick::Utils.value_of(y, canvas.height - another.height, 0)
-          canvas.compose(another, canvas_x, canvas_y)
+          canvas_x = Compass::Magick::Utils.value_of(x, canvas.width  - overlay.width,  0)
+          canvas_y = Compass::Magick::Utils.value_of(y, canvas.height - overlay.height, 0)
+          raise ChunkyPNG::OutOfBounds, 'Canvas image width is too small to compose overlay'  if canvas.width  < overlay.width  + canvas_x
+          raise ChunkyPNG::OutOfBounds, 'Canvas image height is too small to compose overlay' if canvas.height < overlay.height + canvas_y
+          for y in 0...overlay.height do
+            for x in 0...overlay.width do
+              overlay_pixel = overlay.get_pixel(x, y)
+              canvas_pixel  = canvas.get_pixel(x + canvas_x, y + canvas_y)
+              canvas.set_pixel(x + canvas_x, y + canvas_y, ChunkyPNG::Color.compose_precise(overlay_pixel, canvas_pixel))
+            end
+          end
         end
       end
 
