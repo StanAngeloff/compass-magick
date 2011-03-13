@@ -1,3 +1,5 @@
+require 'magick/functions/operations/effects'
+
 module Compass::Magick
   module Functions
     # Methods for operating on a {Compass::Magick::Canvas}, e.g., crop,
@@ -98,7 +100,7 @@ module Compass::Magick
     # @return {Effect} A command which applies the effect to the canvas.
     def magick_effect(name, *args)
       Compass::Magick::Utils.assert_type 'name', name, Sass::Script::String
-      Compass::Magick::Functions::Effects.send(name.value, *args)
+      Compass::Magick::Functions::Operations::Effects.send(name.value, *args)
     end
   end
 end

@@ -1,5 +1,5 @@
 module Compass::Magick
-  module Functions
+  module Functions::Operations
     # Methods for performing various visual effects on a
     # {Compass::Magick::Canvas}, e.g., fade, desaturate, etc.
     module Effects
