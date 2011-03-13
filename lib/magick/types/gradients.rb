@@ -1,5 +1,3 @@
-require 'matrix'
-
 module Compass::Magick
   module Types
     # The Gradients module defines all available Compass Magick gradient
@@ -59,7 +57,7 @@ module Compass::Magick
           assert_type 'stops', stops, Array
           stops.each_with_index { |stop, index| assert_type "stop[#{index}]", stop, ColorStop }
           @angle = angle
-          @stops = stops
+          @stops = cache_stops(stops)
         end
 
         # @return [Sass::Script::Number] angle The angle of the linear
@@ -99,19 +97,34 @@ module Compass::Magick
           end
           # Michael Madsen & dash-tom-bang
           # http://stackoverflow.com/questions/2869785/point-to-point-linear-gradient#answer-2870275
-          vector_gradient   = Vector[point_finish.x - point_start.x, point_finish.y - point_start.y]
-          length_gradient   = vector_gradient.r
-          vector_normalized = vector_gradient * (1 / length_gradient)
+          vector_gradient   = [point_finish.x - point_start.x, point_finish.y - point_start.y]
+          length_gradient   = Math.sqrt(vector_gradient[0] * vector_gradient[0] + vector_gradient[1] * vector_gradient[1])
+          vector_normalized = [vector_gradient[0] * (1 / length_gradient), vector_gradient[1] * (1 / length_gradient)]
           (0...canvas.height).each do |y|
             (0...canvas.width).each do |x|
-              result_normalized = vector_normalized.inner_product(Vector[x - point_start.x, y - point_start.y]) / length_gradient
-              canvas.set_pixel(x, y, interpolate(100 * [0, [1, result_normalized].min].max))
+              result_normalized = (vector_normalized[0] * (x - point_start.x) + vector_normalized[1] * (y - point_start.y)) / length_gradient
+              canvas.set_pixel(x, y, interpolate(100 * (result_normalized < 0 ? 0 : result_normalized > 1 ? 1 : result_normalized)))
             end
           end
           canvas
         end
 
         private
+
+        def cache_stops(stops)
+          @stops = stops.sort { |left, right| left.offset.value <=> right.offset.value }.map do |stop|
+            {
+              :color  => to_chunky_color(stop.color),
+              :offset => stop.offset.value,
+              :rgba   => [
+                stop.color.red,
+                stop.color.green,
+                stop.color.blue,
+                stop.color.alpha * 255
+              ]
+            }
+          end
+        end
 
         def intersect(segment1, segment2)
           # Andre LeMothe
@@ -137,33 +150,29 @@ module Compass::Magick
           start  = nil
           finish = nil
           @stops.each do |stop|
-            if offset >= stop.offset.value
+            if offset >= stop[:offset]
               if start
-                start = stop unless start.offset.value > stop.offset.value
+                start = stop unless start[:offset] > stop[:offset]
               else
                 start = stop
               end
             end
-            if offset <= stop.offset.value
+            if offset <= stop[:offset]
               if finish
-                finish = stop unless finish.offset.value < stop.offset.value
+                finish = stop unless finish[:offset] < stop[:offset]
               else
                 finish = stop
               end
             end
           end
-          return to_chunky_color(@stops[0].color)  unless start
-          return to_chunky_color(@stops[-1].color) unless finish
-          return to_chunky_color(finish.color)         if start.offset == finish.offset
-          start_rgba    = [start.color.red,  start.color.green,  start.color.blue,  255 * start.color.alpha]
-          finish_rgba   = [finish.color.red, finish.color.green, finish.color.blue, 255 * finish.color.alpha]
-          start_offset  = start.offset.value
-          finish_offset = finish.offset.value
-          rgba          = []
+          return @stops[0][:color]  unless start
+          return @stops[-1][:color] unless finish
+          return finish[:color]     if     start[:offset] == finish[:offset]
+          rgba = []
           # walkytalky
           # http://stackoverflow.com/questions/3017019/non-linear-color-interpolation#answer-3030245
-          (0..3).each do |i|
-            rgba[i] = (start_rgba[i] + (offset - start_offset) * (finish_rgba[i] - start_rgba[i]) / (finish_offset - start_offset)).to_i
+          for i in (0..3)
+            rgba[i] = (start[:rgba][i] + (offset - start[:offset]) * (finish[:rgba][i] - start[:rgba][i]) / (finish[:offset] - start[:offset])).to_i
           end
           ChunkyPNG::Color.rgba(*rgba)
         end
