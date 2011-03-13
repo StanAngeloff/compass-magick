@@ -1,142 +1,91 @@
-html {
-  background: #fff magick-image('background-body.jpg', 1600px, 480px, 'JPEG:75%',
-    magick-fill(magick-linear-gradient(red, green, blue, 0)),
-    magick-fill(magick-linear-gradient(#000, #fff, 90, 'Screen'))
-  ) no-repeat 50% 0;
-}
+@import 'compass';
 
 body {
+  background: #fff;
   margin: 0;
   padding: 10%;
   text-align: center;
 }
 
 a {
+  $background: #c31;
   $width: 320px;
   $height: 80px;
 
-  background: transparent magick-image('background-button.png', $width, $height,
-    magick-fill(rgba(255, 255, 255, 0.25)),
-    magick-fill(magick-linear-gradient(
-      magick-color-stop(0%,  rgba(255, 255, 255, 0.5)),
-      magick-color-stop(50%, rgba(255, 255, 255, 0))
-    )),
-    magick-fill(
-      magick-linear-gradient(
-        magick-color-stop(0%,  rgba(255, 255, 255, 0.25)),
-        magick-color-stop(50%, rgba(255, 255, 255, 0)),
-        0
-      ),
-      0, 0, 50%),
-    magick-fill(magick-linear-gradient(
-      magick-color-stop(100%, rgba(0, 0, 0, 0.15)),
-      magick-color-stop(75%,  rgba(0, 0, 0, 0))
-    )),
-    magick-fill(
-      magick-linear-gradient(
-        magick-color-stop(100%, rgba(0, 0, 0, 0.05)),
-        magick-color-stop(75%,  rgba(0, 0, 0, 0)),
-        0
-      ),
-      50%, 0, 100%
-    ),
-    magick-composite(
-      magick-image(24px, 24px,
-        magick-composite('icon-hello.png'),
-        magick-desaturate(50%)
-      ),
-      20px, 50%
-    ),
-    magick-border(
-      magick-linear-gradient(
-        rgba(0, 0, 0, 0.5),
-        rgba(0, 0, 0, 0.25)
-      ),
-      2px, 10px
-    ),
-    magick-corners(10px)
-  );
   display: inline-block;
-  font: normal round($height / 2.5) sans-serif;
-  color: #000;
-  width: $width - 24px;
+  background: transparent magick-canvas($width, $height,
+    magick-fill(magick-linear-gradient(
+      magick-color-stop(0%,  lighten($background, 25%)),
+      magick-color-stop(3%,  lighten($background, 10%)),
+      magick-color-stop(70%, $background)
+    )),
+    magick-compose(
+      magick-canvas($width - 2, 10px,
+        magick-border(magick-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)), 10px, 1px)
+      ),
+      50%, 1px
+    ),
+    magick-compose(magick-canvas(image-url('icon-blank_page.png')), 24px, ($height - 32px) / 2),
+    magick-corners(10px),
+    magick-border(darken($background, 10%), 10px, 1px)
+  );
+  color: #fff;
+  @include text-shadow(0 1px 1px darken($background, 25%));
+  font: normal round($height / 2.5) verdana, tahoma, helvetica, arial, sans-serif;
+  width: $width - 24px * 2;
   line-height: $height - 2px;
-  padding: 1px 0 1px 24px;
+  padding: 1px 24px;
   text-align: center;
   text-decoration: none;
   -webkit-user-drag: none;
 
   &:hover {
-    background: transparent magick-image('background-button_over.png', $width, $height,
-      magick-fill(rgba(255, 255, 255, 0.40)),
+    $highlight: 10%;
+
+    background: transparent magick-canvas($width, $height,
       magick-fill(magick-linear-gradient(
-        magick-color-stop(0%,  rgba(255, 255, 255, 0.5)),
-        magick-color-stop(50%, rgba(255, 255, 255, 0))
+        magick-color-stop(0%,  lighten($background, 25% + $highlight)),
+        magick-color-stop(3%,  lighten($background, 10% + $highlight)),
+        magick-color-stop(70%, lighten($background, $highlight))
       )),
-      magick-fill(
-        magick-linear-gradient(
-          magick-color-stop(0%,  rgba(255, 255, 255, 0.25)),
-          magick-color-stop(50%, rgba(255, 255, 255, 0)),
-          0
+      magick-compose(
+        magick-canvas($width - 2, 10px,
+          magick-border(magick-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)), 10px, 1px)
         ),
-        0, 0, 50%),
-      magick-fill(magick-linear-gradient(
-        magick-color-stop(100%, rgba(0, 0, 0, 0.15)),
-        magick-color-stop(75%,  rgba(0, 0, 0, 0))
-      )),
-      magick-fill(
-        magick-linear-gradient(
-          magick-color-stop(100%, rgba(0, 0, 0, 0.05)),
-          magick-color-stop(75%,  rgba(0, 0, 0, 0)),
-          0
-        ),
-        50%, 0, 100%
+        50%, 1px
       ),
-      magick-composite('icon-hello.png', 20px, 50%),
-      magick-border(
-        magick-linear-gradient(
-          rgba(0, 0, 0, 0.65),
-          rgba(0, 0, 0, 0.40)
-        ),
-        2px, 10px
-      ),
-      magick-corners(10px)
+      magick-compose(magick-canvas(image-url('icon-blank_page.png')), 24px, ($height - 32px) / 2),
+      magick-corners(10px),
+      magick-border(darken($background, 10% + $highlight), 10px, 1px)
     );
   }
 
   &:active {
-    background: transparent magick-image('background-button_down.png', $width, $height,
-      magick-fill(rgba(255, 255, 255, 0.20)),
+    background: transparent magick-canvas($width, $height,
       magick-fill(magick-linear-gradient(
-        magick-color-stop(0%,  rgba(0, 0, 0, 0.35)),
-        magick-color-stop(75%, rgba(0, 0, 0, 0))
+        magick-color-stop(0%,  darken($background, 10%)),
+        magick-color-stop(3%,  darken($background, 5%)),
+        magick-color-stop(70%, $background)
       )),
-      magick-fill(
-        magick-linear-gradient(
-          magick-color-stop(100%, rgba(0, 0, 0, 0.05)),
-          magick-color-stop(75%,  rgba(0, 0, 0, 0)),
-          180
+      magick-fill(magick-linear-gradient(
+        magick-color-stop(0%,  rgba(0, 0, 0, 0.25)),
+        magick-color-stop(10%, rgba(0, 0, 0, 0))
+      )),
+      magick-fill(magick-linear-gradient(
+        magick-color-stop(0%,  rgba(0, 0, 0, 0.25)),
+        magick-color-stop(35%, rgba(0, 0, 0, 0))
+      )),
+      magick-compose(
+        magick-canvas($width - 2, 10px,
+          magick-border(magick-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.25)), 10px, 1px)
         ),
-        0%, 0, 50%
+        50%, $height - 11px
       ),
-      magick-fill(
-        magick-linear-gradient(
-          magick-color-stop(100%, rgba(0, 0, 0, 0.05)),
-          magick-color-stop(75%,  rgba(0, 0, 0, 0)),
-          0
-        ),
-        50%, 0, 100%
-      ),
-      magick-composite('icon-hello.png', 20px, 53%),
-      magick-border(
-        magick-linear-gradient(
-          rgba(0, 0, 0, 0.50),
-          rgba(0, 0, 0, 0.25)
-        ),
-        2px, 10px
-      ),
-      magick-corners(10px)
+      magick-compose(magick-canvas(image-url('icon-blank_page.png')), 24px, ($height - 32px) / 2 + 1px),
+      magick-corners(10px),
+      magick-border(darken($background, 10%), 10px, 1px)
     );
-    padding: 2px 0 0 24px;
+    @include text-shadow(0 -1px 1px darken($background, 10%));
+    padding: 2px 24px 0;
   }
 }
