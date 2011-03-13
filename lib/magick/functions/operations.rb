@@ -90,5 +90,15 @@ module Compass::Magick
         end
       end
     end
+
+    # Apply an effect on the {Canvas}.
+    #
+    # @param [Sass::Script::String] name The name of the effect to apply.
+    # @param [Array] args The arguments to pass to the effect.
+    # @return {Effect} A command which applies the effect to the canvas.
+    def magick_effect(name, *args)
+      Compass::Magick::Utils.assert_type 'name', name, Sass::Script::String
+      Compass::Magick::Functions::Effects.send(name.value, *args)
+    end
   end
 end

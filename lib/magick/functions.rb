@@ -2,6 +2,7 @@ require 'magick/functions/canvas'
 require 'magick/functions/types'
 require 'magick/functions/drawing'
 require 'magick/functions/operations'
+require 'magick/functions/effects'
 
 require 'magick/plugins'
 
