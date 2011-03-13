@@ -67,7 +67,9 @@ module Compass::Magick
       #
       # Composes the alpha channel from the <tt>mask</tt> image with the
       # one from the canvas and return the original canvas with the
-      # alpha-channel modified.
+      # alpha-channel modified. Any opaque pixels from the <tt>mask</tt> are
+      # converted to grayscale using BT709 luminosity factors, i.e. black is
+      # fully transparent and white is fully opaque.
       #
       # @param [Integer] x The left coordinate of the mask operation.
       # @param [Integer] y The top coordinate of the mask operation.
@@ -81,15 +83,21 @@ module Compass::Magick
           canvas_y = Compass::Magick::Utils.value_of(y, canvas.height - 1, 0)
           raise ChunkyPNG::OutOfBounds, 'Canvas image width is too small to fit mask'  if canvas.width  < mask.width  + canvas_x
           raise ChunkyPNG::OutOfBounds, 'Canvas image height is too small to fit mask' if canvas.height < mask.height + canvas_y
-          for y in 0...mask.width do
-            for x in 0...mask.height do
+          for y in 0...mask.height do
+            for x in 0...mask.width do
               canvas_pixel = canvas.get_pixel(x + canvas_x, y + canvas_y)
-              mask_alpha   = ChunkyPNG::Color.a(mask.get_pixel(x, y))
-              canvas_red   = ChunkyPNG::Color.r(canvas_pixel)
-              canvas_green = ChunkyPNG::Color.g(canvas_pixel)
-              canvas_blue  = ChunkyPNG::Color.b(canvas_pixel)
-              canvas_alpha = ChunkyPNG::Color.a(canvas_pixel) * (ChunkyPNG::Color.a(mask.get_pixel(x, y)).to_f / 255)
-              canvas.set_pixel(x + canvas_x, y + canvas_y, ChunkyPNG::Color.rgba(canvas_red, canvas_green, canvas_blue, canvas_alpha))
+              mask_pixel   = mask.get_pixel(x, y)
+              if ChunkyPNG::Color.opaque?(mask_pixel)
+                mask_alpha = (ChunkyPNG::Color.r(mask_pixel) * 0.2125 + ChunkyPNG::Color.g(mask_pixel) * 0.7154 + ChunkyPNG::Color.b(mask_pixel) * 0.0721)
+              else
+                mask_alpha = ChunkyPNG::Color.a(mask_pixel)
+              end
+              canvas.set_pixel(x + canvas_x, y + canvas_y, ChunkyPNG::Color.rgba(
+                ChunkyPNG::Color.r(canvas_pixel),
+                ChunkyPNG::Color.g(canvas_pixel),
+                ChunkyPNG::Color.b(canvas_pixel),
+                ChunkyPNG::Color.a(canvas_pixel) * (mask_alpha / 255.0)
+              ))
             end
           end
         end
