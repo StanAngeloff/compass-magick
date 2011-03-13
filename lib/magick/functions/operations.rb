@@ -91,115 +91,115 @@ module Compass::Magick
           end
         end
       end
-    end
 
-    # Apply an effect on the {Canvas}.
-    #
-    # @param [Sass::Script::String] name The name of the effect to apply.
-    # @param [Array] args The arguments to pass to the effect.
-    # @return {Effect} A command which applies the effect to the canvas.
-    def magick_effect(name, *args)
-      Compass::Magick::Utils.assert_type 'name', name, Sass::Script::String
-      Compass::Magick::Functions::Operations::Effects.send(name.value, *args)
-    end
+      # Apply an effect on the {Canvas}.
+      #
+      # @param [Sass::Script::String] name The name of the effect to apply.
+      # @param [Array] args The arguments to pass to the effect.
+      # @return {Effect} A command which applies the effect to the canvas.
+      def magick_effect(name, *args)
+        Compass::Magick::Utils.assert_type 'name', name, Sass::Script::String
+        Compass::Magick::Functions::Operations::Effects.send(name.value, *args)
+      end
 
-    # Apply drop shadow on the {Canvas}.
-    #
-    # The alpha channel is used to construct a mask of the original image
-    # which is then used as a base for the horizontal/vertical shadow pass.
-    #
-    # @param [Sass::Script::Number] angle The angle of the shadow.
-    # @param [Sass::Script::Number] distance The distance of the shadow from
-    #   the original canvas.
-    # @param [Sass::Script::Number] size The size (blur) of the shadow.
-    # @param [Sass::Script::Color] color The color of the shadow.
-    # @return {Command} A command which applies the drop shadow to the
-    #   canvas.
-    def magick_drop_shadow(angle = nil, distance = nil, size = nil, color = nil)
-      Compass::Magick::Utils.assert_type 'angle',    angle,    Sass::Script::Number
-      Compass::Magick::Utils.assert_type 'distance', distance, Sass::Script::Number
-      Compass::Magick::Utils.assert_type 'size',     size,     Sass::Script::Number
-      Compass::Magick::Utils.assert_type 'color',    color,    Sass::Script::Color
-      Command.new do |canvas|
-        shadow_angle    = Compass::Magick::Utils.value_of(angle,    360,                               0)
-        shadow_distance = Compass::Magick::Utils.value_of(distance, [canvas.width, canvas.height].min, 5)
-        shadow_size     = Compass::Magick::Utils.value_of(size,     [canvas.width, canvas.height].min, 5)
-        shadow_color    = Compass::Magick::Utils.to_chunky_color(color.nil? ? Sass::Script::Color.new([0, 0, 0, 1]) : color)
-        shadow_canvas   = ChunkyPNG::Canvas.new(canvas.width + shadow_size * 2, canvas.height + shadow_size * 2).replace(canvas, shadow_size, shadow_size)
-        shadow_pixels   = shadow_canvas.pixels
-        shadow_red      = ChunkyPNG::Color.r(shadow_color)
-        shadow_green    = ChunkyPNG::Color.g(shadow_color)
-        shadow_blue     = ChunkyPNG::Color.b(shadow_color)
-        shadow_alpha    = ChunkyPNG::Color.a(shadow_color)
-        angle_radians   = shadow_angle * Math::PI / 180
-        distance_x      = (Math.cos(angle_radians) * shadow_distance).to_i
-        distance_y      = (Math.sin(angle_radians) * shadow_distance).to_i
-        left            = (shadow_size - 1) >> 1
-        right           = shadow_size - left
-        x_start         = left
-        x_finish        = shadow_canvas.width - right
-        y_start         = left
-        y_finish        = shadow_canvas.height - right
-        a_history       = Array.new(shadow_size)
-        history_index   = 0
-        sum_divider     = (shadow_alpha / 255.0) / shadow_size
-        buffer_offset   = 0
-        last_pixel_offset = right * shadow_canvas.width
-        for y in (0...shadow_canvas.height)
-          a_sum         = 0
-          history_index = 0
-          for x in (0...shadow_size)
-            a = ChunkyPNG::Color.a(shadow_pixels[buffer_offset])
-            a_history[x]  = a
-            a_sum         = a_sum + a
-            buffer_offset = buffer_offset + 1
+      # Apply drop shadow on the {Canvas}.
+      #
+      # The alpha channel is used to construct a mask of the original image
+      # which is then used as a base for the horizontal/vertical shadow pass.
+      #
+      # @param [Sass::Script::Number] angle The angle of the shadow.
+      # @param [Sass::Script::Number] distance The distance of the shadow from
+      #   the original canvas.
+      # @param [Sass::Script::Number] size The size (blur) of the shadow.
+      # @param [Sass::Script::Color] color The color of the shadow.
+      # @return {Command} A command which applies the drop shadow to the
+      #   canvas.
+      def magick_drop_shadow(angle = nil, distance = nil, size = nil, color = nil)
+        Compass::Magick::Utils.assert_type 'angle',    angle,    Sass::Script::Number
+        Compass::Magick::Utils.assert_type 'distance', distance, Sass::Script::Number
+        Compass::Magick::Utils.assert_type 'size',     size,     Sass::Script::Number
+        Compass::Magick::Utils.assert_type 'color',    color,    Sass::Script::Color
+        Command.new do |canvas|
+          shadow_angle    = Compass::Magick::Utils.value_of(angle,    360,                               0)
+          shadow_distance = Compass::Magick::Utils.value_of(distance, [canvas.width, canvas.height].min, 5)
+          shadow_size     = Compass::Magick::Utils.value_of(size,     [canvas.width, canvas.height].min, 5)
+          shadow_color    = Compass::Magick::Utils.to_chunky_color(color.nil? ? Sass::Script::Color.new([0, 0, 0, 1]) : color)
+          shadow_canvas   = ChunkyPNG::Canvas.new(canvas.width + shadow_size * 2, canvas.height + shadow_size * 2).replace(canvas, shadow_size, shadow_size)
+          shadow_pixels   = shadow_canvas.pixels
+          shadow_red      = ChunkyPNG::Color.r(shadow_color)
+          shadow_green    = ChunkyPNG::Color.g(shadow_color)
+          shadow_blue     = ChunkyPNG::Color.b(shadow_color)
+          shadow_alpha    = ChunkyPNG::Color.a(shadow_color)
+          angle_radians   = shadow_angle * Math::PI / 180
+          distance_x      = (Math.cos(angle_radians) * shadow_distance).to_i
+          distance_y      = (Math.sin(angle_radians) * shadow_distance).to_i
+          left            = (shadow_size - 1) >> 1
+          right           = shadow_size - left
+          x_start         = left
+          x_finish        = shadow_canvas.width - right
+          y_start         = left
+          y_finish        = shadow_canvas.height - right
+          a_history       = Array.new(shadow_size)
+          history_index   = 0
+          sum_divider     = (shadow_alpha / 255.0) / shadow_size
+          buffer_offset   = 0
+          last_pixel_offset = right * shadow_canvas.width
+          for y in (0...shadow_canvas.height)
+            a_sum         = 0
+            history_index = 0
+            for x in (0...shadow_size)
+              a = ChunkyPNG::Color.a(shadow_pixels[buffer_offset])
+              a_history[x]  = a
+              a_sum         = a_sum + a
+              buffer_offset = buffer_offset + 1
+            end
+            buffer_offset = buffer_offset - right
+            for x in (x_start...x_finish)
+              a = a_sum * sum_divider
+              shadow_pixels[buffer_offset] = ChunkyPNG::Color.rgba(shadow_red, shadow_green, shadow_blue, (shadow_alpha * (a / 255.0)).to_i)
+              a_sum = a_sum - a_history[history_index]
+              a = ChunkyPNG::Color.a(shadow_pixels[buffer_offset + right])
+              a_history[history_index] = a
+              a_sum = a_sum + a
+              history_index = history_index + 1
+              history_index = history_index - shadow_size if history_index >= shadow_size
+              buffer_offset = buffer_offset + 1
+            end
+            buffer_offset = y * shadow_canvas.width
           end
-          buffer_offset = buffer_offset - right
-          for x in (x_start...x_finish)
-            a = a_sum * sum_divider
-            shadow_pixels[buffer_offset] = ChunkyPNG::Color.rgba(shadow_red, shadow_green, shadow_blue, (shadow_alpha * (a / 255.0)).to_i)
-            a_sum = a_sum - a_history[history_index]
-            a = ChunkyPNG::Color.a(shadow_pixels[buffer_offset + right])
-            a_history[history_index] = a
-            a_sum = a_sum + a
-            history_index = history_index + 1
-            history_index = history_index - shadow_size if history_index >= shadow_size
-            buffer_offset = buffer_offset + 1
+          buffer_offset = 0
+          for x in (0...shadow_canvas.width)
+            a_sum         = 0
+            history_index = 0
+            for y in (0...shadow_size)
+              a = ChunkyPNG::Color.a(shadow_pixels[buffer_offset])
+              a_history[y]  = a
+              a_sum         = a_sum + a
+              buffer_offset = buffer_offset + shadow_canvas.width
+            end
+            buffer_offset = buffer_offset - last_pixel_offset
+            for y in (y_start...y_finish)
+              a = a_sum * sum_divider
+              shadow_pixels[buffer_offset] = ChunkyPNG::Color.rgba(shadow_red, shadow_green, shadow_blue, (shadow_alpha * (a / 255.0)).to_i)
+              a_sum = a_sum - a_history[history_index]
+              a = ChunkyPNG::Color.a(shadow_pixels[buffer_offset + last_pixel_offset])
+              a_history[history_index] = a
+              a_sum = a_sum + a
+              history_index = history_index + 1
+              history_index = history_index - shadow_size if history_index >= shadow_size
+              buffer_offset = buffer_offset + shadow_canvas.width
+            end
+            buffer_offset = x
           end
-          buffer_offset = y * shadow_canvas.width
-        end
-        buffer_offset = 0
-        for x in (0...shadow_canvas.width)
-          a_sum         = 0
-          history_index = 0
-          for y in (0...shadow_size)
-            a = ChunkyPNG::Color.a(shadow_pixels[buffer_offset])
-            a_history[y]  = a
-            a_sum         = a_sum + a
-            buffer_offset = buffer_offset + shadow_canvas.width
-          end
-          buffer_offset = buffer_offset - last_pixel_offset
-          for y in (y_start...y_finish)
-            a = a_sum * sum_divider
-            shadow_pixels[buffer_offset] = ChunkyPNG::Color.rgba(shadow_red, shadow_green, shadow_blue, (shadow_alpha * (a / 255.0)).to_i)
-            a_sum = a_sum - a_history[history_index]
-            a = ChunkyPNG::Color.a(shadow_pixels[buffer_offset + last_pixel_offset])
-            a_history[history_index] = a
-            a_sum = a_sum + a
-            history_index = history_index + 1
-            history_index = history_index - shadow_size if history_index >= shadow_size
-            buffer_offset = buffer_offset + shadow_canvas.width
-          end
-          buffer_offset = x
-        end
-        for y in 0...canvas.height do
-          for x in 0...canvas.width do
-            shadow_x = x + shadow_size + distance_x
-            shadow_y = y + shadow_size + distance_y
-            canvas.set_pixel(x, y, ChunkyPNG::Color.compose_precise(
-              canvas.get_pixel(x, y),
-              shadow_pixels[shadow_y * shadow_canvas.width + shadow_x]
-            ))
+          for y in 0...canvas.height do
+            for x in 0...canvas.width do
+              shadow_x = x + shadow_size + distance_x
+              shadow_y = y + shadow_size + distance_y
+              canvas.set_pixel(x, y, ChunkyPNG::Color.compose_precise(
+                canvas.get_pixel(x, y),
+                shadow_pixels[shadow_y * shadow_canvas.width + shadow_x]
+              ))
+            end
           end
         end
       end
