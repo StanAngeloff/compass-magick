@@ -33,7 +33,7 @@ APIs
   `magick_canvas(path, *commands)`  
   `magick_canvas(width, height, *commands)`
 
-  Creates a new Canvas and execute all commands on the instance. The resulting image is returned as a Base64 encoded Data URL.
+  Creates a new canvas and execute all commands on the instance. The resulting image is returned as a Base64 encoded Data URL.
 
   **Compass Magick** does not support saving files on disk at this time as the main focus is adding functionality before refining the APIs.
 
@@ -44,7 +44,7 @@ APIs
 
 - `magick_fill(type, x1 = nil, y1 = nil, x2 = nil, y2 = nil)`
 
-  Fills the Canvas region with the given `type`. Supported types as:
+  Fills the canvas region with the given `type`. Supported types as:
 
     * Solid color
     * Linear gradient
@@ -62,7 +62,7 @@ APIs
 
 - `magick_border(type, radius = nil, width = nil, top_left = nil, top_right = nil, bottom_right = nil, bottom_left = nil)`
 
-  Draws a (rounded) border around the Canvas with the given width and fill `type`. Supported types as:
+  Draws a (rounded) border around the canvas with the given width and fill `type`. Supported types as:
 
     * Solid color
     * Linear gradient.
@@ -79,7 +79,7 @@ APIs
 
 - `magick_corners(radius, top_left = nil, top_right = nil, bottom_right = nil, bottom_left = nil)`
 
-  Applies rounded corners around the Canvas. Can be used in combination with `magick-border` to create buttons.
+  Applies rounded corners around the canvas. Can be used in combination with `magick-border` to create buttons.
 
   **Example:**
 
@@ -91,7 +91,7 @@ APIs
 
 - `magick_compose(overlay, x = nil, y = nil)`
 
-  Composes one Canvas on top of another.
+  Composes one canvas on top of another.
 
   **Example:**
 
@@ -126,6 +126,51 @@ APIs
           magick-color-stop(50%, red)
         ))
       )
+
+- `magick_drop_shadow(angle = nil, distance = nil, size = nil, color = nil)`
+
+  Apply a drop shadow effect on the canvas.
+
+  The alpha channel is used to construct a mask of the original image which is then used as a base for the horizontal/vertical shadow pass.
+
+  **Example:**
+
+      magick-canvas(300px, 300px,
+        magick-compose('sample.png', 50%, 50%),
+        magick-drop-shadow(90deg, 5px, 5px, black)
+      )
+
+- `magick_effect(fade, adjust)`  
+  `magick_effect(brightness, adjust)`  
+  `magick_effect(contrast, adjust)`
+
+  Apply the selected effect on canvas.
+
+    * `fade` lowers the alpha channel by `adjust` (0%—100% or 0—1.0)
+    * `brightness` changes brightness by adjusting the [R, G, B] channels by `adjust` (-100%—100% or -255—255)
+    * `contrast` changes contrast by adjusting the [R, G, B] channels by `adjust` (at least 0%, can be above 100% to achieve over-exposure)
+
+  **Example:**
+
+      magick-canvas('sample.png', magick-effect(contrast, 50%))
+
+- `magick_crop(x1 = nil, y1 = nil, x2 = nil, y2 = nil)`
+
+  Crops the canvas to the given region.
+
+  **Example:**
+
+      magick-canvas('sample.png', magick-crop(10px, 10px, -10px, -10px))
+
+- `magick_mask(mask, x = nil, y = nil)`
+
+  Applies the mask on the canvas.
+
+  Composes the alpha channel from the `mask` image with the one from the canvas and return the original canvas with the alpha-channel modified. Any opaque pixels from the `mask` are converted to grayscale using BT709 luminosity factors, i.e. black is fully transparent and white is fully opaque.
+
+  **Example:**
+
+      magick-canvas('sample.png', magick-mask('mask.png'))
 
 RDoc is [available for the entire project](http://stanangeloff.github.com/compass-magick/doc/frames.html).
 
