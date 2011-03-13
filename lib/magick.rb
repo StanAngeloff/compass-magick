@@ -1,15 +1,18 @@
 # Local development requires we have the current directory on $LOAD_PATH.
 $: << File.dirname(__FILE__)
 
-require 'chunky_png'
-
-require 'magick/utils'
-require 'magick/scriptable'
-require 'magick/command'
-require 'magick/canvas'
-require 'magick/shapes'
-require 'magick/types'
-require 'magick/functions'
+begin
+  require 'chunky_png'
+rescue LoadError
+  require 'rubygems'
+  begin
+    require 'chunky_png'
+  rescue LoadError
+    puts 'Unable to load ChunkyPNG. Please install it with one of the following commands:'
+    puts '  gem install chunky_png'
+    raise
+  end
+end
 
 # Compass Magick, a library for dynamic image generation.
 #
@@ -22,6 +25,14 @@ module Compass::Magick
   # release. If you are using a Git clone, the version will always end with
   # '.git'.
   VERSION = '0.1.0.git'
+
+  # The locations where plug-ins are located. These paths are scanned for
+  # *.rb files and loaded in order.
+  PLUGINS_PATH = [
+    File.join(File.dirname(__FILE__), 'plugins'),
+    File.join(ENV['HOME'], '.magick', 'plugins'),
+    File.join(Dir.getwd,              'plugins')
+  ]
 
   # Default exception class for Compass Magick
   class Exception < ::StandardError; end
@@ -41,6 +52,14 @@ module Compass::Magick
   # support.
   class NotAllowed < Exception; end
 end
+
+require 'magick/utils'
+require 'magick/scriptable'
+require 'magick/command'
+require 'magick/canvas'
+require 'magick/shapes'
+require 'magick/types'
+require 'magick/functions'
 
 # Register Compass Magick as a Compass framework.
 #
