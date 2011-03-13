@@ -63,7 +63,7 @@ module Compass::Magick
           circle_feather = Compass::Magick::Utils.value_of(feather, [canvas.width, canvas.height].min, 1).to_f
           mask    = Compass::Magick::Shapes.circle(circle_radius, circle_radius, circle_feather)
           overlay = Compass::Magick::Utils.to_canvas(type, Sass::Script::Number.new(circle_radius), Sass::Script::Number.new(circle_radius))
-          Compass::Magick::Canvas.new(overlay, magick_mask(mask), magick_compose(canvas, Sass::Script::Bool.new(true), compose_x, compose_y))
+          Compass::Magick::Canvas.new(canvas, magick_compose(Compass::Magick::Canvas.new(overlay, magick_mask(mask)), compose_x, compose_y))
         end
       end
 
@@ -138,7 +138,7 @@ module Compass::Magick
             end
           end
           overlay = Compass::Magick::Utils.to_canvas(type, Sass::Script::Number.new(canvas.width), Sass::Script::Number.new(canvas.height))
-          Compass::Magick::Canvas.new(overlay, magick_mask(mask), magick_compose(canvas, Sass::Script::Bool.new(true)))
+          Compass::Magick::Canvas.new(canvas, magick_compose(Compass::Magick::Canvas.new(overlay, magick_mask(mask))))
         end
       end
     end
