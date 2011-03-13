@@ -87,11 +87,7 @@ module Compass::Magick
             for x in 0...mask.width do
               canvas_pixel = canvas.get_pixel(x + canvas_x, y + canvas_y)
               mask_pixel   = mask.get_pixel(x, y)
-              if ChunkyPNG::Color.opaque?(mask_pixel)
-                mask_alpha = (ChunkyPNG::Color.r(mask_pixel) * 0.2125 + ChunkyPNG::Color.g(mask_pixel) * 0.7154 + ChunkyPNG::Color.b(mask_pixel) * 0.0721)
-              else
-                mask_alpha = ChunkyPNG::Color.a(mask_pixel)
-              end
+              mask_alpha   = (ChunkyPNG::Color.r(mask_pixel) * 0.2125 + ChunkyPNG::Color.g(mask_pixel) * 0.7154 + ChunkyPNG::Color.b(mask_pixel) * 0.0721) * (ChunkyPNG::Color.a(mask_pixel) / 255.0)
               canvas.set_pixel(x + canvas_x, y + canvas_y, ChunkyPNG::Color.rgba(
                 ChunkyPNG::Color.r(canvas_pixel),
                 ChunkyPNG::Color.g(canvas_pixel),
