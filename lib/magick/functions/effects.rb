@@ -39,6 +39,28 @@ module Compass::Magick
           )
         end
       end
+
+      # Adjusts the contrast of a color by changing its [R, G, B] components
+      # by a given value.
+      #
+      # Copyright (c) 2010, Ryan LeFevre
+      # http://www.camanjs.com
+      #
+      # @param [Sass::Script::Number] adjust Contrast value as a float,
+      #   above 0.0.
+      # @return {Effect} A command which applies the contrast to the canvas.
+      def contrast(adjust = nil)
+        Compass::Magick::Utils.assert_type 'adjust', adjust, Sass::Script::Number
+        contrast_adjust = (1.0 + Compass::Magick::Utils.value_of(adjust, 1.0, 0.5))
+        Effect.new do |pixel|
+          ChunkyPNG::Color.rgba(
+            [0, [(((ChunkyPNG::Color.r(pixel) / 255.0 - 0.5) * contrast_adjust + 0.5) * 255).to_i, 255].min].max,
+            [0, [(((ChunkyPNG::Color.g(pixel) / 255.0 - 0.5) * contrast_adjust + 0.5) * 255).to_i, 255].min].max,
+            [0, [(((ChunkyPNG::Color.b(pixel) / 255.0 - 0.5) * contrast_adjust + 0.5) * 255).to_i, 255].min].max,
+            ChunkyPNG::Color.a(pixel)
+          )
+        end
+      end
     end
   end
 end
