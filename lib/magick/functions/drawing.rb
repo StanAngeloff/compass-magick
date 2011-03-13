@@ -61,7 +61,7 @@ module Compass::Magick
         Command.new do |canvas|
           circle_radius  = Compass::Magick::Utils.value_of(radius,  [canvas.width, canvas.height].min, 1)
           circle_feather = Compass::Magick::Utils.value_of(feather, [canvas.width, canvas.height].min, 1).to_f
-          mask    = Compass::Magick::Shapes.circle(circle_radius, circle_feather)
+          mask    = Compass::Magick::Shapes.circle(circle_radius, circle_radius, circle_feather)
           overlay = Compass::Magick::Utils.to_canvas(type, Sass::Script::Number.new(circle_radius), Sass::Script::Number.new(circle_radius))
           Compass::Magick::Canvas.new(overlay, magick_mask(mask), magick_compose(canvas, Sass::Script::Bool.new(true), compose_x, compose_y))
         end
@@ -100,30 +100,30 @@ module Compass::Magick
         Command.new do |canvas|
           max = [canvas.width, canvas.height].max
           min = [canvas.width, canvas.height].min
-          border_width  = Compass::Magick::Utils.value_of(width,   max, max)
-          border_radius = [Compass::Magick::Utils.value_of(radius, min, 10), border_width].min
+          border_width  = Compass::Magick::Utils.value_of(width,  max, max)
+          border_radius = Compass::Magick::Utils.value_of(radius, min, 10)
           border_top_left     = (top_left.nil?     || top_left.value)
           border_top_right    = (top_right.nil?    || top_right.value)
           border_bottom_right = (bottom_right.nil? || bottom_right.value)
           border_bottom_left  = (bottom_left.nil?  || bottom_left.value)
-          right_x  = canvas.width - border_radius
+          right_x  = canvas.width  - border_radius
           bottom_y = canvas.height - border_radius
           mask = ChunkyPNG::Canvas.new(canvas.width, canvas.height, ChunkyPNG::Color.rgba(0, 0, 0, 0))
-          for x in 0...canvas.width
-            for y in 0...canvas.height
+          for y in 0...canvas.height
+            for x in 0...canvas.width
               unless (border_top_left     && (y < border_radius && x < border_radius)) ||
                      (border_top_right    && (y < border_radius && x > right_x))       ||
                      (border_bottom_right && (y > bottom_y && x > right_x))            ||
                      (border_bottom_left  && (y > bottom_y && x < border_radius))
-                if y < border_width || y > canvas.height - border_width ||
-                   x < border_width || x > canvas.width - border_width
+                if y < border_width || y >= canvas.height - border_width ||
+                   x < border_width || x >= canvas.width - border_width
                   mask.set_pixel(x, y, ChunkyPNG::Color::WHITE)
                 end
               end
             end
           end
           if border_radius > 0
-            radius_mask = Compass::Magick::Shapes.circle(border_radius * 2)
+            radius_mask = Compass::Magick::Shapes.circle(border_radius * 2, border_width)
             if border_top_left
               mask.compose(radius_mask.crop(0, 0, border_radius, border_radius), 0, 0)
             end
