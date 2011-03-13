@@ -71,13 +71,10 @@ module Compass::Magick
       # fill {Compass::Magick::Type}.
       #
       # When <tt>width</tt> is not given, the border fills the entire image.
-      # You can specify <tt>type</tt> to be <tt>transparent</tt> which won't
-      # draw any border on the {Canvas}, but will apply the resulting mask,
-      # e.g., you will get rounded corners on the source.
       #
       # @param [Object] type The type of fill to apply. Supported:
       #   * Sass::Script::Color
-      #   * Sass::Script::String - e.g., 'transparent'
+      #   * Sass::Script::String
       #   * {Compass::Magick::Types::Solid}
       #   * {Compass::Magick::Types::Gradients::Linear}
       # @param [Sass::Script::Number] radius The border radius.
@@ -91,8 +88,8 @@ module Compass::Magick
       #   border radius effect (default <tt>true</tt>)
       # @param [Sass::Script::Bool] bottom_left Controls the bottom-left
       #   border radius effect (default <tt>true</tt>)
-      # @return {Command} A command(-set) which composes and masks a border
-      #   on the canvas.
+      # @return {Command} A command(-set) which composes the border on the
+      #   canvas.
       def magick_border(type, radius = nil, width = nil, top_left = nil, top_right = nil, bottom_right = nil, bottom_left = nil)
         Compass::Magick::Utils.assert_type 'radius',       radius,       Sass::Script::Number
         Compass::Magick::Utils.assert_type 'width',        width,        Sass::Script::Number
@@ -141,7 +138,7 @@ module Compass::Magick
             end
           end
           overlay = Compass::Magick::Utils.to_canvas(type, Sass::Script::Number.new(canvas.width), Sass::Script::Number.new(canvas.height))
-          Compass::Magick::Canvas.new(overlay, magick_mask(mask), magick_compose(canvas, Sass::Script::Bool.new(true)), magick_mask(mask))
+          Compass::Magick::Canvas.new(overlay, magick_mask(mask), magick_compose(canvas, Sass::Script::Bool.new(true)))
         end
       end
     end
