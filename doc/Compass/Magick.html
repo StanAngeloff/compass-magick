@@ -60,7 +60,7 @@
   
     <dt class="r1 last">Defined in:</dt>
     <dd class="r1 last">lib/magick.rb<span class="defines">,<br />
-  lib/magick/utils.rb,<br /> lib/magick/types.rb,<br /> lib/magick/shapes.rb,<br /> lib/magick/canvas.rb,<br /> lib/magick/command.rb,<br /> lib/magick/functions.rb,<br /> lib/magick/scriptable.rb,<br /> lib/magick/types/solid.rb,<br /> lib/magick/types/gradients.rb,<br /> lib/magick/functions/types.rb,<br /> lib/magick/functions/canvas.rb,<br /> lib/magick/functions/drawing.rb,<br /> lib/magick/functions/operations.rb</span>
+  lib/magick/types.rb,<br /> lib/magick/utils.rb,<br /> lib/magick/canvas.rb,<br /> lib/magick/shapes.rb,<br /> lib/magick/command.rb,<br /> lib/magick/plugins.rb,<br /> lib/plugins/corners.rb,<br /> lib/magick/functions.rb,<br /> lib/magick/scriptable.rb,<br /> lib/magick/types/solid.rb,<br /> lib/magick/types/gradients.rb,<br /> lib/magick/functions/types.rb,<br /> lib/magick/functions/canvas.rb,<br /> lib/magick/functions/drawing.rb,<br /> lib/magick/functions/operations.rb</span>
 </dd>
   
 </dl>
@@ -102,7 +102,7 @@ Stan Angeloff
 <p class="children">
    
     
-      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Magick/Functions.html" title="Compass::Magick::Functions (module)">Functions</a></span>, <span class='object_link'><a href="Magick/Scriptable.html" title="Compass::Magick::Scriptable (module)">Scriptable</a></span>, <span class='object_link'><a href="Magick/Shapes.html" title="Compass::Magick::Shapes (module)">Shapes</a></span>, <span class='object_link'><a href="Magick/Types.html" title="Compass::Magick::Types (module)">Types</a></span>, <span class='object_link'><a href="Magick/Utils.html" title="Compass::Magick::Utils (module)">Utils</a></span>
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Magick/Functions.html" title="Compass::Magick::Functions (module)">Functions</a></span>, <span class='object_link'><a href="Magick/Plugins.html" title="Compass::Magick::Plugins (module)">Plugins</a></span>, <span class='object_link'><a href="Magick/Scriptable.html" title="Compass::Magick::Scriptable (module)">Scriptable</a></span>, <span class='object_link'><a href="Magick/Shapes.html" title="Compass::Magick::Shapes (module)">Shapes</a></span>, <span class='object_link'><a href="Magick/Types.html" title="Compass::Magick::Types (module)">Types</a></span>, <span class='object_link'><a href="Magick/Utils.html" title="Compass::Magick::Utils (module)">Utils</a></span>
     
    
     
@@ -134,6 +134,28 @@ release. If you are using a Git clone, the version will always end with
         <dd><pre class="code"><span class='string val'>'0.1.0.git'</span>
 </pre></dd>
       
+        <dt id="PLUGINS_PATH-constant" class="">PLUGINS_PATH =
+          <div class="docstring">
+  <div class="discussion">
+    <p>
+The locations where plug-ins are located. These paths are scanned for *.rb
+files and loaded in order.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrack token'>[</span>
+  <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='File constant id'>File</span><span class='dot token'>.</span><span class='dirname identifier id'>dirname</span><span class='lparen token'>(</span><span class='__FILE__ __file__ kw'>__FILE__</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='string val'>'plugins'</span><span class='rparen token'>)</span><span class='comma token'>,</span>
+  <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='ENV constant id'>ENV</span><span class='lbrack token'>[</span><span class='string val'>'HOME'</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='string val'>'.magick'</span><span class='comma token'>,</span> <span class='string val'>'plugins'</span><span class='rparen token'>)</span><span class='comma token'>,</span>
+  <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='Dir constant id'>Dir</span><span class='dot token'>.</span><span class='getwd identifier id'>getwd</span><span class='comma token'>,</span>              <span class='string val'>'plugins'</span><span class='rparen token'>)</span>
+<span class='rbrack token'>]</span>
+</pre></dd>
+      
     </dl>
   
 
@@ -144,7 +166,7 @@ release. If you are using a Git clone, the version will always end with
 </div>
     
     <div id="footer">
-  Generated on Sat Mar 12 19:32:58 2011 by 
+  Generated on Sun Mar 13 18:33:55 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.8.7).
 </div>

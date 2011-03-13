@@ -331,23 +331,23 @@ A list of color stops to interpolate between.
       <pre class="lines">
 
 
+55
+56
 57
 58
 59
 60
-61
-62
-63</pre>
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/magick/types/gradients.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'lib/magick/types/gradients.rb', line 55</span>
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='angle identifier id'>angle</span><span class='comma token'>,</span> <span class='stops identifier id'>stops</span><span class='rparen token'>)</span>
   <span class='assert_type identifier id'>assert_type</span> <span class='string val'>'angle'</span><span class='comma token'>,</span> <span class='angle identifier id'>angle</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
   <span class='assert_type identifier id'>assert_type</span> <span class='string val'>'stops'</span><span class='comma token'>,</span> <span class='stops identifier id'>stops</span><span class='comma token'>,</span> <span class='Array constant id'>Array</span>
   <span class='stops identifier id'>stops</span><span class='dot token'>.</span><span class='each_with_index identifier id'>each_with_index</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='stop identifier id'>stop</span><span class='comma token'>,</span> <span class='index identifier id'>index</span><span class='bitor op'>|</span> <span class='assert_type identifier id'>assert_type</span> <span class='dstring node'>&quot;stop[#{index}]&quot;</span><span class='comma token'>,</span> <span class='stop identifier id'>stop</span><span class='comma token'>,</span> <span class='ColorStop constant id'>ColorStop</span> <span class='rbrace token'>}</span>
   <span class='@angle ivar id'>@angle</span> <span class='assign token'>=</span> <span class='angle identifier id'>angle</span>
-  <span class='@stops ivar id'>@stops</span> <span class='assign token'>=</span> <span class='stops identifier id'>stops</span>
+  <span class='@stops ivar id'>@stops</span> <span class='assign token'>=</span> <span class='cache_stops identifier id'>cache_stops</span><span class='lparen token'>(</span><span class='stops identifier id'>stops</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -406,12 +406,12 @@ angle The angle of the linear gradient.
       <pre class="lines">
 
 
-67
-68
-69</pre>
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/magick/types/gradients.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/magick/types/gradients.rb', line 65</span>
 
 <span class='def def kw'>def</span> <span class='angle identifier id'>angle</span>
   <span class='@angle ivar id'>@angle</span>
@@ -468,12 +468,12 @@ A list of color stops to interpolate between.
       <pre class="lines">
 
 
-71
-72
-73</pre>
+69
+70
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/magick/types/gradients.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/magick/types/gradients.rb', line 69</span>
 
 <span class='def def kw'>def</span> <span class='stops identifier id'>stops</span>
   <span class='@stops ivar id'>@stops</span>
@@ -504,6 +504,8 @@ A list of color stops to interpolate between.
       <pre class="lines">
 
 
+71
+72
 73
 74
 75
@@ -541,12 +543,10 @@ A list of color stops to interpolate between.
 107
 108
 109
-110
-111
-112</pre>
+110</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/magick/types/gradients.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/magick/types/gradients.rb', line 71</span>
 
 <span class='def def kw'>def</span> <span class='to_canvas identifier id'>to_canvas</span><span class='lparen token'>(</span><span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='rparen token'>)</span>
   <span class='assert_type identifier id'>assert_type</span> <span class='string val'>'width'</span><span class='comma token'>,</span>  <span class='width identifier id'>width</span><span class='comma token'>,</span>  <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
@@ -577,13 +577,13 @@ A list of color stops to interpolate between.
   <span class='end end kw'>end</span>
   <span class='comment val'># Michael Madsen &amp; dash-tom-bang</span>
   <span class='comment val'># http://stackoverflow.com/questions/2869785/point-to-point-linear-gradient#answer-2870275</span>
-  <span class='vector_gradient identifier id'>vector_gradient</span>   <span class='assign token'>=</span> <span class='Vector constant id'>Vector</span><span class='lbrack token'>[</span><span class='point_finish identifier id'>point_finish</span><span class='dot token'>.</span><span class='x identifier id'>x</span> <span class='minus op'>-</span> <span class='point_start identifier id'>point_start</span><span class='dot token'>.</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='point_finish identifier id'>point_finish</span><span class='dot token'>.</span><span class='y identifier id'>y</span> <span class='minus op'>-</span> <span class='point_start identifier id'>point_start</span><span class='dot token'>.</span><span class='y identifier id'>y</span><span class='rbrack token'>]</span>
-  <span class='length_gradient identifier id'>length_gradient</span>   <span class='assign token'>=</span> <span class='vector_gradient identifier id'>vector_gradient</span><span class='dot token'>.</span><span class='r identifier id'>r</span>
-  <span class='vector_normalized identifier id'>vector_normalized</span> <span class='assign token'>=</span> <span class='vector_gradient identifier id'>vector_gradient</span> <span class='mult op'>*</span> <span class='lparen token'>(</span><span class='integer val'>1</span> <span class='div op'>/</span> <span class='length_gradient identifier id'>length_gradient</span><span class='rparen token'>)</span>
+  <span class='vector_gradient identifier id'>vector_gradient</span>   <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='point_finish identifier id'>point_finish</span><span class='dot token'>.</span><span class='x identifier id'>x</span> <span class='minus op'>-</span> <span class='point_start identifier id'>point_start</span><span class='dot token'>.</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='point_finish identifier id'>point_finish</span><span class='dot token'>.</span><span class='y identifier id'>y</span> <span class='minus op'>-</span> <span class='point_start identifier id'>point_start</span><span class='dot token'>.</span><span class='y identifier id'>y</span><span class='rbrack token'>]</span>
+  <span class='length_gradient identifier id'>length_gradient</span>   <span class='assign token'>=</span> <span class='Math constant id'>Math</span><span class='dot token'>.</span><span class='sqrt identifier id'>sqrt</span><span class='lparen token'>(</span><span class='vector_gradient identifier id'>vector_gradient</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span> <span class='mult op'>*</span> <span class='vector_gradient identifier id'>vector_gradient</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span> <span class='plus op'>+</span> <span class='vector_gradient identifier id'>vector_gradient</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span> <span class='mult op'>*</span> <span class='vector_gradient identifier id'>vector_gradient</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='vector_normalized identifier id'>vector_normalized</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='vector_gradient identifier id'>vector_gradient</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span> <span class='mult op'>*</span> <span class='lparen token'>(</span><span class='integer val'>1</span> <span class='div op'>/</span> <span class='length_gradient identifier id'>length_gradient</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='vector_gradient identifier id'>vector_gradient</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span> <span class='mult op'>*</span> <span class='lparen token'>(</span><span class='integer val'>1</span> <span class='div op'>/</span> <span class='length_gradient identifier id'>length_gradient</span><span class='rparen token'>)</span><span class='rbrack token'>]</span>
   <span class='lparen token'>(</span><span class='integer val'>0</span><span class='dot3 op'>...</span><span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='height identifier id'>height</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='y identifier id'>y</span><span class='bitor op'>|</span>
     <span class='lparen token'>(</span><span class='integer val'>0</span><span class='dot3 op'>...</span><span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='width identifier id'>width</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='x identifier id'>x</span><span class='bitor op'>|</span>
-      <span class='result_normalized identifier id'>result_normalized</span> <span class='assign token'>=</span> <span class='vector_normalized identifier id'>vector_normalized</span><span class='dot token'>.</span><span class='inner_product identifier id'>inner_product</span><span class='lparen token'>(</span><span class='Vector constant id'>Vector</span><span class='lbrack token'>[</span><span class='x identifier id'>x</span> <span class='minus op'>-</span> <span class='point_start identifier id'>point_start</span><span class='dot token'>.</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span> <span class='minus op'>-</span> <span class='point_start identifier id'>point_start</span><span class='dot token'>.</span><span class='y identifier id'>y</span><span class='rbrack token'>]</span><span class='rparen token'>)</span> <span class='div op'>/</span> <span class='length_gradient identifier id'>length_gradient</span>
-      <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='set_pixel identifier id'>set_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span><span class='comma token'>,</span> <span class='interpolate identifier id'>interpolate</span><span class='lparen token'>(</span><span class='integer val'>100</span> <span class='mult op'>*</span> <span class='lbrack token'>[</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='integer val'>1</span><span class='comma token'>,</span> <span class='result_normalized identifier id'>result_normalized</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='min identifier id'>min</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='max identifier id'>max</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+      <span class='result_normalized identifier id'>result_normalized</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='vector_normalized identifier id'>vector_normalized</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span> <span class='mult op'>*</span> <span class='lparen token'>(</span><span class='x identifier id'>x</span> <span class='minus op'>-</span> <span class='point_start identifier id'>point_start</span><span class='dot token'>.</span><span class='x identifier id'>x</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='vector_normalized identifier id'>vector_normalized</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span> <span class='mult op'>*</span> <span class='lparen token'>(</span><span class='y identifier id'>y</span> <span class='minus op'>-</span> <span class='point_start identifier id'>point_start</span><span class='dot token'>.</span><span class='y identifier id'>y</span><span class='rparen token'>)</span><span class='rparen token'>)</span> <span class='div op'>/</span> <span class='length_gradient identifier id'>length_gradient</span>
+      <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='set_pixel identifier id'>set_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span><span class='comma token'>,</span> <span class='interpolate identifier id'>interpolate</span><span class='lparen token'>(</span><span class='integer val'>100</span> <span class='mult op'>*</span> <span class='lparen token'>(</span><span class='result_normalized identifier id'>result_normalized</span> <span class='lt op'>&lt;</span> <span class='integer val'>0</span> <span class='question op'>?</span> <span class='integer val'>0</span> <span class='colon op'>:</span> <span class='result_normalized identifier id'>result_normalized</span> <span class='gt op'>&gt;</span> <span class='integer val'>1</span> <span class='question op'>?</span> <span class='integer val'>1</span> <span class='colon op'>:</span> <span class='result_normalized identifier id'>result_normalized</span><span class='rparen token'>)</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
     <span class='end end kw'>end</span>
   <span class='end end kw'>end</span>
   <span class='canvas identifier id'>canvas</span>
@@ -599,7 +599,7 @@ A list of color stops to interpolate between.
 </div>
     
     <div id="footer">
-  Generated on Sat Mar 12 19:33:01 2011 by 
+  Generated on Sun Mar 13 18:33:57 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.8.7).
 </div>

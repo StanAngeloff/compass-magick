@@ -94,7 +94,7 @@ etc.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#magick_compose-instance_method" title="#magick_compose (instance method)">- (Command) <strong>magick_compose</strong>(another, *args) </a>
+      <a href="#magick_compose-instance_method" title="#magick_compose (instance method)">- (Command) <strong>magick_compose</strong>(overlay, x = nil, y = nil) </a>
     
 
     
@@ -109,54 +109,6 @@ etc.
   
     <span class="summary_desc"><div class='inline'><p>
 Composes one <span class='object_link'><a href="Canvas.html" title="Compass::Magick::Functions::Canvas (module)">Canvas</a></span> on top of another.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#magick_crop-instance_method" title="#magick_crop (instance method)">- (Command) <strong>magick_crop</strong>(x1 = nil, y1 = nil, x2 = nil, y2 = nil) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-Crops the <span class='object_link'><a href="Canvas.html" title="Compass::Magick::Functions::Canvas (module)">Canvas</a></span> to the given region.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#magick_mask-instance_method" title="#magick_mask (instance method)">- (Command) <strong>magick_mask</strong>(mask, x = nil, y = nil) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-Applies the mask on the <span class='object_link'><a href="Canvas.html" title="Compass::Magick::Functions::Canvas (module)">Canvas</a></span>.
 </p>
 </div></span>
   
@@ -175,11 +127,7 @@ Applies the mask on the <span class='object_link'><a href="Canvas.html" title="C
       <div class="method_details first">
   <p class="signature first" id="magick_compose-instance_method">
   
-    
-      <span class="overload">- (<tt>Object</tt>) <strong>magick_compose</strong>(another, invert, x = nil, y = nil) </span>
-    
-      <span class="overload">- (<tt>Object</tt>) <strong>magick_compose</strong>(another, x = nil, y = nil) </span>
-    
+    - (<tt><span class='object_link'><a href="../Command.html" title="Compass::Magick::Command (class)">Command</a></span></tt>) <strong>magick_compose</strong>(overlay, x = nil, y = nil) 
   
 
   
@@ -193,20 +141,6 @@ Composes one <span class='object_link'><a href="Canvas.html" title="Compass::Mag
   </div>
 </div>
 <div class="tags">
-  
-  <h3>Overloads:</h3>
-  <ul class="overload">
-    
-      
-      <li class="overload_item">
-        <span class="signature">- (<tt>Object</tt>) <strong>magick_compose</strong>(another, invert, x = nil, y = nil) </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
   <h3>Parameters:</h3>
 <ul class="param">
   
@@ -215,94 +149,7 @@ Composes one <span class='object_link'><a href="Canvas.html" title="Compass::Mag
         <span class='type'>(<tt><span class='object_link'><a href="Canvas.html" title="Compass::Magick::Functions::Canvas (module)">Canvas</a></span></tt>)</span>
       
       
-        <span class='name'>another</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-The Canvas object to compose.
-</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='type'>(<tt>Bool</tt>)</span>
-      
-      
-        <span class='name'>invert</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-<tt>true</tt> to use the target canvas as the source, <tt>false</tt>
-(default) otherwise.
-</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <span class='name'>x</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-The left coordinate of the composition operation.
-</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <span class='name'>y</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-The top coordinate of the composition operation.
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">- (<tt>Object</tt>) <strong>magick_compose</strong>(another, x = nil, y = nil) </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Canvas.html" title="Compass::Magick::Functions::Canvas (module)">Canvas</a></span></tt>)</span>
-      
-      
-        <span class='name'>another</span>
+        <span class='name'>overlay</span>
       
       
       
@@ -322,6 +169,8 @@ The Canvas object to compose.
         <span class='name'>x</span>
       
       
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
       
         &mdash;
         <div class='inline'><p>
@@ -339,6 +188,8 @@ The left coordinate of the composition operation.
         <span class='name'>y</span>
       
       
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
       
         &mdash;
         <div class='inline'><p>
@@ -349,11 +200,6 @@ The top coordinate of the composition operation.
     </li>
   
 </ul>
-
-</div>
-      </li>
-    
-  </ul>
 <h3>Returns:</h3>
 <ul class="return">
   
@@ -380,6 +226,15 @@ A command which composes the two canvas objects together.
       <pre class="lines">
 
 
+13
+14
+15
+16
+17
+18
+19
+20
+21
 22
 23
 24
@@ -397,158 +252,15 @@ A command which composes the two canvas objects together.
 36
 37
 38
-39</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/magick/functions/operations.rb', line 22</span>
-
-<span class='def def kw'>def</span> <span class='magick_compose identifier id'>magick_compose</span><span class='lparen token'>(</span><span class='another identifier id'>another</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
-  <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'another'</span><span class='comma token'>,</span> <span class='another identifier id'>another</span><span class='comma token'>,</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Canvas constant id'>Canvas</span>
-  <span class='invert identifier id'>invert</span> <span class='assign token'>=</span> <span class='args identifier id'>args</span><span class='dot token'>.</span><span class='shift identifier id'>shift</span><span class='dot token'>.</span><span class='value identifier id'>value</span> <span class='if if_mod kw'>if</span> <span class='args identifier id'>args</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span><span class='lparen token'>(</span><span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Bool constant id'>Bool</span><span class='rparen token'>)</span>
-  <span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span>   <span class='assign token'>=</span> <span class='args identifier id'>args</span>
-  <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'x'</span><span class='comma token'>,</span> <span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
-  <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'y'</span><span class='comma token'>,</span> <span class='y identifier id'>y</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
-  <span class='Command constant id'>Command</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='canvas identifier id'>canvas</span><span class='bitor op'>|</span>
-    <span class='if if kw'>if</span> <span class='invert identifier id'>invert</span>
-      <span class='another_x identifier id'>another_x</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='another identifier id'>another</span><span class='dot token'>.</span><span class='width identifier id'>width</span>  <span class='minus op'>-</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='width identifier id'>width</span><span class='comma token'>,</span>  <span class='integer val'>0</span><span class='rparen token'>)</span>
-      <span class='another_y identifier id'>another_y</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='y identifier id'>y</span><span class='comma token'>,</span> <span class='another identifier id'>another</span><span class='dot token'>.</span><span class='height identifier id'>height</span> <span class='minus op'>-</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='height identifier id'>height</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='rparen token'>)</span>
-      <span class='another identifier id'>another</span><span class='dot token'>.</span><span class='compose identifier id'>compose</span><span class='lparen token'>(</span><span class='canvas identifier id'>canvas</span><span class='comma token'>,</span> <span class='another_x identifier id'>another_x</span><span class='comma token'>,</span> <span class='another_y identifier id'>another_y</span><span class='rparen token'>)</span>
-    <span class='else else kw'>else</span>
-      <span class='canvas_x identifier id'>canvas_x</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='width identifier id'>width</span>  <span class='minus op'>-</span> <span class='another identifier id'>another</span><span class='dot token'>.</span><span class='width identifier id'>width</span><span class='comma token'>,</span>  <span class='integer val'>0</span><span class='rparen token'>)</span>
-      <span class='canvas_y identifier id'>canvas_y</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='y identifier id'>y</span><span class='comma token'>,</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='height identifier id'>height</span> <span class='minus op'>-</span> <span class='another identifier id'>another</span><span class='dot token'>.</span><span class='height identifier id'>height</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='rparen token'>)</span>
-      <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='compose identifier id'>compose</span><span class='lparen token'>(</span><span class='another identifier id'>another</span><span class='comma token'>,</span> <span class='canvas_x identifier id'>canvas_x</span><span class='comma token'>,</span> <span class='canvas_y identifier id'>canvas_y</span><span class='rparen token'>)</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="magick_crop-instance_method">
-  
-    - (<tt><span class='object_link'><a href="../Command.html" title="Compass::Magick::Command (class)">Command</a></span></tt>) <strong>magick_crop</strong>(x1 = nil, y1 = nil, x2 = nil, y2 = nil) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-Crops the <span class='object_link'><a href="Canvas.html" title="Compass::Magick::Functions::Canvas (module)">Canvas</a></span> to the given region.
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <span class='name'>x1</span>
-      
-      
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-The left coordinate of the crop operation.
-</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <span class='name'>y1</span>
-      
-      
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-The top coordinate of the crop operation.
-</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <span class='name'>x2</span>
-      
-      
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-The right coordinate of the crop operation.
-</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <span class='name'>y2</span>
-      
-      
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-The bottom coordinate of the crop operation.
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-        <span class='type'>(<tt><span class='object_link'><a href="../Command.html" title="Compass::Magick::Command (class)">Command</a></span></tt>)</span>
-      
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-A command which applies the crop to the canvas.
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
+39
+40
+41
+42
+43
+44
+45
+46
+47
 48
 49
 50
@@ -565,123 +277,17 @@ A command which applies the crop to the canvas.
 61
 62
 63
-64</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/magick/functions/operations.rb', line 48</span>
-
-<span class='def def kw'>def</span> <span class='magick_crop identifier id'>magick_crop</span><span class='lparen token'>(</span><span class='x1 identifier id'>x1</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='y1 identifier id'>y1</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='x2 identifier id'>x2</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='y2 identifier id'>y2</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
-  <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'x1'</span><span class='comma token'>,</span> <span class='x1 identifier id'>x1</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
-  <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'y1'</span><span class='comma token'>,</span> <span class='y1 identifier id'>y1</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
-  <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'x2'</span><span class='comma token'>,</span> <span class='x2 identifier id'>x2</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
-  <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'y2'</span><span class='comma token'>,</span> <span class='y2 identifier id'>y2</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
-  <span class='Command constant id'>Command</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='canvas identifier id'>canvas</span><span class='bitor op'>|</span>
-    <span class='canvas_x1 identifier id'>canvas_x1</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='x1 identifier id'>x1</span><span class='comma token'>,</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='width identifier id'>width</span><span class='comma token'>,</span>  <span class='integer val'>0</span><span class='rparen token'>)</span>
-    <span class='canvas_y1 identifier id'>canvas_y1</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='y1 identifier id'>y1</span><span class='comma token'>,</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='height identifier id'>height</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='rparen token'>)</span>
-    <span class='canvas_x2 identifier id'>canvas_x2</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='x2 identifier id'>x2</span><span class='comma token'>,</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='width identifier id'>width</span><span class='comma token'>,</span>  <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='width identifier id'>width</span><span class='rparen token'>)</span>
-    <span class='canvas_y2 identifier id'>canvas_y2</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='y2 identifier id'>y2</span><span class='comma token'>,</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='height identifier id'>height</span><span class='comma token'>,</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='height identifier id'>height</span><span class='rparen token'>)</span>
-    <span class='canvas_x1 identifier id'>canvas_x1</span><span class='comma token'>,</span> <span class='canvas_x2 identifier id'>canvas_x2</span> <span class='assign token'>=</span> <span class='canvas_x2 identifier id'>canvas_x2</span><span class='comma token'>,</span> <span class='canvas_x1 identifier id'>canvas_x1</span> <span class='if if_mod kw'>if</span> <span class='canvas_x1 identifier id'>canvas_x1</span> <span class='gt op'>&gt;</span> <span class='canvas_x2 identifier id'>canvas_x2</span>
-    <span class='canvas_y1 identifier id'>canvas_y1</span><span class='comma token'>,</span> <span class='canvas_y2 identifier id'>canvas_y2</span> <span class='assign token'>=</span> <span class='canvas_y2 identifier id'>canvas_y2</span><span class='comma token'>,</span> <span class='canvas_y1 identifier id'>canvas_y1</span> <span class='if if_mod kw'>if</span> <span class='canvas_y1 identifier id'>canvas_y1</span> <span class='gt op'>&gt;</span> <span class='canvas_y2 identifier id'>canvas_y2</span>
-    <span class='width identifier id'>width</span>     <span class='assign token'>=</span> <span class='canvas_x2 identifier id'>canvas_x2</span> <span class='minus op'>-</span> <span class='canvas_x1 identifier id'>canvas_x1</span>
-    <span class='height identifier id'>height</span>    <span class='assign token'>=</span> <span class='canvas_y2 identifier id'>canvas_y2</span> <span class='minus op'>-</span> <span class='canvas_y1 identifier id'>canvas_y1</span>
-    <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='crop identifier id'>crop</span><span class='lparen token'>(</span><span class='canvas_x1 identifier id'>canvas_x1</span><span class='comma token'>,</span> <span class='canvas_y1 identifier id'>canvas_y1</span><span class='comma token'>,</span> <span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="magick_mask-instance_method">
-  
-    - (<tt><span class='object_link'><a href="../Command.html" title="Compass::Magick::Command (class)">Command</a></span></tt>) <strong>magick_mask</strong>(mask, x = nil, y = nil) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-Applies the mask on the <span class='object_link'><a href="Canvas.html" title="Compass::Magick::Functions::Canvas (module)">Canvas</a></span>.
-</p>
-<p>
-Composes the alpha channel from the <tt>mask</tt> image with the one from
-the canvas and return the original canvas with the alpha-channel modified.
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <span class='name'>x</span>
-      
-      
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-The left coordinate of the mask operation.
-</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <span class='name'>y</span>
-      
-      
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-The top coordinate of the mask operation.
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-        <span class='type'>(<tt><span class='object_link'><a href="../Command.html" title="Compass::Magick::Command (class)">Command</a></span></tt>)</span>
-      
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-A command which applies the mask on the canvas.
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
 75
 76
 77
@@ -701,33 +307,87 @@ A command which applies the mask on the canvas.
 91
 92
 93
-94
-95
-96
-97
-98</pre>
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/magick/functions/operations.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'lib/magick/functions/operations.rb', line 13</span>
 
-<span class='def def kw'>def</span> <span class='magick_mask identifier id'>magick_mask</span><span class='lparen token'>(</span><span class='mask identifier id'>mask</span><span class='comma token'>,</span> <span class='x identifier id'>x</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='y identifier id'>y</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
-      <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'mask'</span><span class='comma token'>,</span> <span class='mask identifier id'>mask</span><span class='comma token'>,</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Canvas constant id'>Canvas</span>
-      <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'x'</span><span class='comma token'>,</span>    <span class='x identifier id'>x</span><span class='comma token'>,</span>    <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
-      <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'y'</span><span class='comma token'>,</span>    <span class='y identifier id'>y</span><span class='comma token'>,</span>    <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
-      <span class='Command constant id'>Command</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='canvas identifier id'>canvas</span><span class='bitor op'>|</span>
-        <span class='canvas_x identifier id'>canvas_x</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='width identifier id'>width</span>  <span class='minus op'>-</span> <span class='integer val'>1</span><span class='comma token'>,</span>  <span class='integer val'>0</span><span class='rparen token'>)</span>
-        <span class='canvas_y identifier id'>canvas_y</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='y identifier id'>y</span><span class='comma token'>,</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='height identifier id'>height</span> <span class='minus op'>-</span> <span class='integer val'>1</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='rparen token'>)</span>
-        <span class='raise identifier id'>raise</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='OutOfBounds constant id'>OutOfBounds</span><span class='comma token'>,</span> <span class='string val'>'Canvas image width is too small to fit mask'</span>  <span class='if if_mod kw'>if</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='width identifier id'>width</span>  <span class='lt op'>&lt;</span> <span class='mask identifier id'>mask</span><span class='dot token'>.</span><span class='width identifier id'>width</span>  <span class='plus op'>+</span> <span class='canvas_x identifier id'>canvas_x</span>
-        <span class='raise identifier id'>raise</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='OutOfBounds constant id'>OutOfBounds</span><span class='comma token'>,</span> <span class='string val'>'Canvas image height is too small to fit mask'</span> <span class='if if_mod kw'>if</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='height identifier id'>height</span> <span class='lt op'>&lt;</span> <span class='mask identifier id'>mask</span><span class='dot token'>.</span><span class='height identifier id'>height</span> <span class='plus op'>+</span> <span class='canvas_y identifier id'>canvas_y</span>
-        <span class='for for kw'>for</span> <span class='y identifier id'>y</span> <span class='in in kw'>in</span> <span class='integer val'>0</span><span class='dot3 op'>...</span><span class='mask identifier id'>mask</span><span class='dot token'>.</span><span class='width identifier id'>width</span> <span class='do do kw'>do</span>
-          <span class='for for kw'>for</span> <span class='x identifier id'>x</span> <span class='in in kw'>in</span> <span class='integer val'>0</span><span class='dot3 op'>...</span><span class='mask identifier id'>mask</span><span class='dot token'>.</span><span class='height identifier id'>height</span> <span class='do do kw'>do</span>
-            <span class='canvas_pixel identifier id'>canvas_pixel</span> <span class='assign token'>=</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='get_pixel identifier id'>get_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span> <span class='plus op'>+</span> <span class='canvas_x identifier id'>canvas_x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span> <span class='plus op'>+</span> <span class='canvas_y identifier id'>canvas_y</span><span class='rparen token'>)</span>
-            <span class='mask_alpha identifier id'>mask_alpha</span>   <span class='assign token'>=</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='a identifier id'>a</span><span class='lparen token'>(</span><span class='mask identifier id'>mask</span><span class='dot token'>.</span><span class='get_pixel identifier id'>get_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-            <span class='canvas_red identifier id'>canvas_red</span>   <span class='assign token'>=</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='r identifier id'>r</span><span class='lparen token'>(</span><span class='canvas_pixel identifier id'>canvas_pixel</span><span class='rparen token'>)</span>
-            <span class='canvas_green identifier id'>canvas_green</span> <span class='assign token'>=</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='g identifier id'>g</span><span class='lparen token'>(</span><span class='canvas_pixel identifier id'>canvas_pixel</span><span class='rparen token'>)</span>
-            <span class='canvas_blue identifier id'>canvas_blue</span>  <span class='assign token'>=</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='b identifier id'>b</span><span class='lparen token'>(</span><span class='canvas_pixel identifier id'>canvas_pixel</span><span class='rparen token'>)</span>
-            <span class='canvas_alpha identifier id'>canvas_alpha</span> <span class='assign token'>=</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='a identifier id'>a</span><span class='lparen token'>(</span><span class='canvas_pixel identifier id'>canvas_pixel</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='lparen token'>(</span><span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='a identifier id'>a</span><span class='lparen token'>(</span><span class='mask identifier id'>mask</span><span class='dot token'>.</span><span class='get_pixel identifier id'>get_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span><span class='rparen token'>)</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='to_f identifier id'>to_f</span> <span class='div op'>/</span> <span class='integer val'>255</span><span class='rparen token'>)</span>
-            <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='set_pixel identifier id'>set_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span> <span class='plus op'>+</span> <span class='canvas_x identifier id'>canvas_x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span> <span class='plus op'>+</span> <span class='canvas_y identifier id'>canvas_y</span><span class='comma token'>,</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='rgba identifier id'>rgba</span><span class='lparen token'>(</span><span class='canvas_red identifier id'>canvas_red</span><span class='comma token'>,</span> <span class='canvas_green identifier id'>canvas_green</span><span class='comma token'>,</span> <span class='canvas_blue identifier id'>canvas_blue</span><span class='comma token'>,</span> <span class='canvas_alpha identifier id'>canvas_alpha</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+<span class='def def kw'>def</span> <span class='magick_compose identifier id'>magick_compose</span><span class='lparen token'>(</span><span class='overlay identifier id'>overlay</span><span class='comma token'>,</span> <span class='x identifier id'>x</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='y identifier id'>y</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+        <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'overlay'</span><span class='comma token'>,</span> <span class='overlay identifier id'>overlay</span><span class='comma token'>,</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Canvas constant id'>Canvas</span>
+        <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'x'</span><span class='comma token'>,</span> <span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
+        <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'y'</span><span class='comma token'>,</span> <span class='y identifier id'>y</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
+        <span class='Command constant id'>Command</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='canvas identifier id'>canvas</span><span class='bitor op'>|</span>
+          <span class='canvas_x identifier id'>canvas_x</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='width identifier id'>width</span>  <span class='minus op'>-</span> <span class='overlay identifier id'>overlay</span><span class='dot token'>.</span><span class='width identifier id'>width</span><span class='comma token'>,</span>  <span class='integer val'>0</span><span class='rparen token'>)</span>
+          <span class='canvas_y identifier id'>canvas_y</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='y identifier id'>y</span><span class='comma token'>,</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='height identifier id'>height</span> <span class='minus op'>-</span> <span class='overlay identifier id'>overlay</span><span class='dot token'>.</span><span class='height identifier id'>height</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='rparen token'>)</span>
+          <span class='raise identifier id'>raise</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='OutOfBounds constant id'>OutOfBounds</span><span class='comma token'>,</span> <span class='string val'>'Canvas image width is too small to compose overlay'</span>  <span class='if if_mod kw'>if</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='width identifier id'>width</span>  <span class='lt op'>&lt;</span> <span class='overlay identifier id'>overlay</span><span class='dot token'>.</span><span class='width identifier id'>width</span>  <span class='plus op'>+</span> <span class='canvas_x identifier id'>canvas_x</span>
+          <span class='raise identifier id'>raise</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='OutOfBounds constant id'>OutOfBounds</span><span class='comma token'>,</span> <span class='string val'>'Canvas image height is too small to compose overlay'</span> <span class='if if_mod kw'>if</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='height identifier id'>height</span> <span class='lt op'>&lt;</span> <span class='overlay identifier id'>overlay</span><span class='dot token'>.</span><span class='height identifier id'>height</span> <span class='plus op'>+</span> <span class='canvas_y identifier id'>canvas_y</span>
+          <span class='for for kw'>for</span> <span class='y identifier id'>y</span> <span class='in in kw'>in</span> <span class='integer val'>0</span><span class='dot3 op'>...</span><span class='overlay identifier id'>overlay</span><span class='dot token'>.</span><span class='height identifier id'>height</span> <span class='do do kw'>do</span>
+            <span class='for for kw'>for</span> <span class='x identifier id'>x</span> <span class='in in kw'>in</span> <span class='integer val'>0</span><span class='dot3 op'>...</span><span class='overlay identifier id'>overlay</span><span class='dot token'>.</span><span class='width identifier id'>width</span> <span class='do do kw'>do</span>
+              <span class='overlay_pixel identifier id'>overlay_pixel</span> <span class='assign token'>=</span> <span class='overlay identifier id'>overlay</span><span class='dot token'>.</span><span class='get_pixel identifier id'>get_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span><span class='rparen token'>)</span>
+              <span class='canvas_pixel identifier id'>canvas_pixel</span>  <span class='assign token'>=</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='get_pixel identifier id'>get_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span> <span class='plus op'>+</span> <span class='canvas_x identifier id'>canvas_x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span> <span class='plus op'>+</span> <span class='canvas_y identifier id'>canvas_y</span><span class='rparen token'>)</span>
+              <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='set_pixel identifier id'>set_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span> <span class='plus op'>+</span> <span class='canvas_x identifier id'>canvas_x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span> <span class='plus op'>+</span> <span class='canvas_y identifier id'>canvas_y</span><span class='comma token'>,</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='compose_precise identifier id'>compose_precise</span><span class='lparen token'>(</span><span class='overlay_pixel identifier id'>overlay_pixel</span><span class='comma token'>,</span> <span class='canvas_pixel identifier id'>canvas_pixel</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+            <span class='end end kw'>end</span>
+          <span class='end end kw'>end</span>
+        <span class='end end kw'>end</span>
+      <span class='end end kw'>end</span>
+
+      <span class='comment val'># Crops the {Canvas} to the given region.</span>
+      <span class='comment val'>#</span>
+      <span class='comment val'># @param [Integer] x1 The left coordinate of the crop operation.</span>
+      <span class='comment val'># @param [Integer] y1 The top coordinate of the crop operation.</span>
+      <span class='comment val'># @param [Integer] x2 The right coordinate of the crop operation.</span>
+      <span class='comment val'># @param [Integer] y2 The bottom coordinate of the crop operation.</span>
+      <span class='comment val'># @return {Command} A command which applies the crop to the canvas.</span>
+      <span class='def def kw'>def</span> <span class='magick_crop identifier id'>magick_crop</span><span class='lparen token'>(</span><span class='x1 identifier id'>x1</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='y1 identifier id'>y1</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='x2 identifier id'>x2</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='y2 identifier id'>y2</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+        <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'x1'</span><span class='comma token'>,</span> <span class='x1 identifier id'>x1</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
+        <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'y1'</span><span class='comma token'>,</span> <span class='y1 identifier id'>y1</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
+        <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'x2'</span><span class='comma token'>,</span> <span class='x2 identifier id'>x2</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
+        <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'y2'</span><span class='comma token'>,</span> <span class='y2 identifier id'>y2</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
+        <span class='Command constant id'>Command</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='canvas identifier id'>canvas</span><span class='bitor op'>|</span>
+          <span class='canvas_x1 identifier id'>canvas_x1</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='x1 identifier id'>x1</span><span class='comma token'>,</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='width identifier id'>width</span><span class='comma token'>,</span>  <span class='integer val'>0</span><span class='rparen token'>)</span>
+          <span class='canvas_y1 identifier id'>canvas_y1</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='y1 identifier id'>y1</span><span class='comma token'>,</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='height identifier id'>height</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='rparen token'>)</span>
+          <span class='canvas_x2 identifier id'>canvas_x2</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='x2 identifier id'>x2</span><span class='comma token'>,</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='width identifier id'>width</span><span class='comma token'>,</span>  <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='width identifier id'>width</span><span class='rparen token'>)</span>
+          <span class='canvas_y2 identifier id'>canvas_y2</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='y2 identifier id'>y2</span><span class='comma token'>,</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='height identifier id'>height</span><span class='comma token'>,</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='height identifier id'>height</span><span class='rparen token'>)</span>
+          <span class='canvas_x1 identifier id'>canvas_x1</span><span class='comma token'>,</span> <span class='canvas_x2 identifier id'>canvas_x2</span> <span class='assign token'>=</span> <span class='canvas_x2 identifier id'>canvas_x2</span><span class='comma token'>,</span> <span class='canvas_x1 identifier id'>canvas_x1</span> <span class='if if_mod kw'>if</span> <span class='canvas_x1 identifier id'>canvas_x1</span> <span class='gt op'>&gt;</span> <span class='canvas_x2 identifier id'>canvas_x2</span>
+          <span class='canvas_y1 identifier id'>canvas_y1</span><span class='comma token'>,</span> <span class='canvas_y2 identifier id'>canvas_y2</span> <span class='assign token'>=</span> <span class='canvas_y2 identifier id'>canvas_y2</span><span class='comma token'>,</span> <span class='canvas_y1 identifier id'>canvas_y1</span> <span class='if if_mod kw'>if</span> <span class='canvas_y1 identifier id'>canvas_y1</span> <span class='gt op'>&gt;</span> <span class='canvas_y2 identifier id'>canvas_y2</span>
+          <span class='width identifier id'>width</span>     <span class='assign token'>=</span> <span class='canvas_x2 identifier id'>canvas_x2</span> <span class='minus op'>-</span> <span class='canvas_x1 identifier id'>canvas_x1</span>
+          <span class='height identifier id'>height</span>    <span class='assign token'>=</span> <span class='canvas_y2 identifier id'>canvas_y2</span> <span class='minus op'>-</span> <span class='canvas_y1 identifier id'>canvas_y1</span>
+          <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='crop identifier id'>crop</span><span class='lparen token'>(</span><span class='canvas_x1 identifier id'>canvas_x1</span><span class='comma token'>,</span> <span class='canvas_y1 identifier id'>canvas_y1</span><span class='comma token'>,</span> <span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='rparen token'>)</span>
+        <span class='end end kw'>end</span>
+      <span class='end end kw'>end</span>
+
+      <span class='comment val'># Applies the mask on the {Canvas}.</span>
+      <span class='comment val'>#</span>
+      <span class='comment val'># Composes the alpha channel from the &lt;tt&gt;mask&lt;/tt&gt; image with the</span>
+      <span class='comment val'># one from the canvas and return the original canvas with the</span>
+      <span class='comment val'># alpha-channel modified. Any opaque pixels from the &lt;tt&gt;mask&lt;/tt&gt; are</span>
+      <span class='comment val'># converted to grayscale using BT709 luminosity factors, i.e. black is</span>
+      <span class='comment val'># fully transparent and white is fully opaque.</span>
+      <span class='comment val'>#</span>
+      <span class='comment val'># @param [Integer] x The left coordinate of the mask operation.</span>
+      <span class='comment val'># @param [Integer] y The top coordinate of the mask operation.</span>
+      <span class='comment val'># @return {Command} A command which applies the mask on the canvas.</span>
+      <span class='def def kw'>def</span> <span class='magick_mask identifier id'>magick_mask</span><span class='lparen token'>(</span><span class='mask identifier id'>mask</span><span class='comma token'>,</span> <span class='x identifier id'>x</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='y identifier id'>y</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+        <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'mask'</span><span class='comma token'>,</span> <span class='mask identifier id'>mask</span><span class='comma token'>,</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Canvas constant id'>Canvas</span>
+        <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'x'</span><span class='comma token'>,</span>    <span class='x identifier id'>x</span><span class='comma token'>,</span>    <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
+        <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'y'</span><span class='comma token'>,</span>    <span class='y identifier id'>y</span><span class='comma token'>,</span>    <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
+        <span class='Command constant id'>Command</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='canvas identifier id'>canvas</span><span class='bitor op'>|</span>
+          <span class='canvas_x identifier id'>canvas_x</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='width identifier id'>width</span>  <span class='minus op'>-</span> <span class='integer val'>1</span><span class='comma token'>,</span>  <span class='integer val'>0</span><span class='rparen token'>)</span>
+          <span class='canvas_y identifier id'>canvas_y</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='y identifier id'>y</span><span class='comma token'>,</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='height identifier id'>height</span> <span class='minus op'>-</span> <span class='integer val'>1</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='rparen token'>)</span>
+          <span class='raise identifier id'>raise</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='OutOfBounds constant id'>OutOfBounds</span><span class='comma token'>,</span> <span class='string val'>'Canvas image width is too small to fit mask'</span>  <span class='if if_mod kw'>if</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='width identifier id'>width</span>  <span class='lt op'>&lt;</span> <span class='mask identifier id'>mask</span><span class='dot token'>.</span><span class='width identifier id'>width</span>  <span class='plus op'>+</span> <span class='canvas_x identifier id'>canvas_x</span>
+          <span class='raise identifier id'>raise</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='OutOfBounds constant id'>OutOfBounds</span><span class='comma token'>,</span> <span class='string val'>'Canvas image height is too small to fit mask'</span> <span class='if if_mod kw'>if</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='height identifier id'>height</span> <span class='lt op'>&lt;</span> <span class='mask identifier id'>mask</span><span class='dot token'>.</span><span class='height identifier id'>height</span> <span class='plus op'>+</span> <span class='canvas_y identifier id'>canvas_y</span>
+          <span class='for for kw'>for</span> <span class='y identifier id'>y</span> <span class='in in kw'>in</span> <span class='integer val'>0</span><span class='dot3 op'>...</span><span class='mask identifier id'>mask</span><span class='dot token'>.</span><span class='height identifier id'>height</span> <span class='do do kw'>do</span>
+            <span class='for for kw'>for</span> <span class='x identifier id'>x</span> <span class='in in kw'>in</span> <span class='integer val'>0</span><span class='dot3 op'>...</span><span class='mask identifier id'>mask</span><span class='dot token'>.</span><span class='width identifier id'>width</span> <span class='do do kw'>do</span>
+              <span class='canvas_pixel identifier id'>canvas_pixel</span> <span class='assign token'>=</span> <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='get_pixel identifier id'>get_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span> <span class='plus op'>+</span> <span class='canvas_x identifier id'>canvas_x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span> <span class='plus op'>+</span> <span class='canvas_y identifier id'>canvas_y</span><span class='rparen token'>)</span>
+              <span class='mask_pixel identifier id'>mask_pixel</span>   <span class='assign token'>=</span> <span class='mask identifier id'>mask</span><span class='dot token'>.</span><span class='get_pixel identifier id'>get_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span><span class='rparen token'>)</span>
+              <span class='mask_alpha identifier id'>mask_alpha</span>   <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='r identifier id'>r</span><span class='lparen token'>(</span><span class='mask_pixel identifier id'>mask_pixel</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='integer val'>0</span><span class='integer val'>.2125</span> <span class='plus op'>+</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='g identifier id'>g</span><span class='lparen token'>(</span><span class='mask_pixel identifier id'>mask_pixel</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='integer val'>0</span><span class='integer val'>.7154</span> <span class='plus op'>+</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='b identifier id'>b</span><span class='lparen token'>(</span><span class='mask_pixel identifier id'>mask_pixel</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='integer val'>0</span><span class='integer val'>.0721</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='lparen token'>(</span><span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='a identifier id'>a</span><span class='lparen token'>(</span><span class='mask_pixel identifier id'>mask_pixel</span><span class='rparen token'>)</span> <span class='div op'>/</span> <span class='float val'>255.0</span><span class='rparen token'>)</span>
+              <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='set_pixel identifier id'>set_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span> <span class='plus op'>+</span> <span class='canvas_x identifier id'>canvas_x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span> <span class='plus op'>+</span> <span class='canvas_y identifier id'>canvas_y</span><span class='comma token'>,</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='rgba identifier id'>rgba</span><span class='lparen token'>(</span>
+                <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='r identifier id'>r</span><span class='lparen token'>(</span><span class='canvas_pixel identifier id'>canvas_pixel</span><span class='rparen token'>)</span><span class='comma token'>,</span>
+                <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='g identifier id'>g</span><span class='lparen token'>(</span><span class='canvas_pixel identifier id'>canvas_pixel</span><span class='rparen token'>)</span><span class='comma token'>,</span>
+                <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='b identifier id'>b</span><span class='lparen token'>(</span><span class='canvas_pixel identifier id'>canvas_pixel</span><span class='rparen token'>)</span><span class='comma token'>,</span>
+                <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='a identifier id'>a</span><span class='lparen token'>(</span><span class='canvas_pixel identifier id'>canvas_pixel</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='lparen token'>(</span><span class='mask_alpha identifier id'>mask_alpha</span> <span class='div op'>/</span> <span class='float val'>255.0</span><span class='rparen token'>)</span>
+              <span class='rparen token'>)</span><span class='rparen token'>)</span>
+            <span class='end end kw'>end</span>
           <span class='end end kw'>end</span>
         <span class='end end kw'>end</span>
       <span class='end end kw'>end</span>
@@ -745,7 +405,7 @@ A command which applies the mask on the canvas.
 </div>
     
     <div id="footer">
-  Generated on Sat Mar 12 19:33:00 2011 by 
+  Generated on Sun Mar 13 18:33:55 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.8.7).
 </div>
