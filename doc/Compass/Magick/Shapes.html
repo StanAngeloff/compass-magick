@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Compass::Magick::Shapes</title>
+<link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (S)</a> &raquo; 
+    <span class='title'>Compass</span> &raquo; <span class='title'><span class='object_link'><a href="../Magick.html" title="Compass::Magick (module)">Magick</a></span></span>
+     &raquo; 
+    <span class="title">Shapes</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Compass::Magick::Shapes
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+      <dt class="r1">Extended by:</dt>
+      <dd class="r1"><span class='object_link'><a href="" title="Compass::Magick::Shapes (module)">Shapes</a></span></dd>
+      
+    
+  
+    
+  
+  
+    <dt class="r2">Included in:</dt>
+    <dd class="r2"><span class='object_link'><a href="" title="Compass::Magick::Shapes (module)">Shapes</a></span></dd>
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/magick/shapes.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Drawing methods shared by Compass Magick commands.
+</p>
+<p>
+All of the drawing is done using B/W pixels with varying alpha. These
+shapes are used to build masks which are then applied to fill
+{Compass::Magick::Type}s to generate the final canvas.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#circle-instance_method" title="#circle (instance method)">- (Canvas) <strong>circle</strong>(radius, width, feather = 1.0) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Draws a circle mask.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="circle-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span></tt>) <strong>circle</strong>(radius, width, feather = 1.0) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Draws a circle mask.
+</p>
+<p>
+Copyright &#169; 2003 by Nils Haeck M.Sc. (Simdesign)
+http://www.simdesign.nl
+</p>
+<p>
+&gt; The [..] DrawDisk routines is optimized quite well but do not claim
+&gt; to be the fastest solution :) It is a floating point precision &gt;
+implementation. Further optimisation would be possible if an &gt; integer
+approach was chosen (but that would also loose &gt; functionality).
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <span class='name'>radius</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The radius of the circle.
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+        <span class='name'>feather</span>
+      
+      
+        <em class="default">(defaults to: <tt>1.0</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The feater value determines the anti-aliasing the circle will get, defaults
+to <tt>1.0</tt>.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+A Canvas with a circle B/W mask.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/magick/shapes.rb', line 25</span>
+
+<span class='def def kw'>def</span> <span class='circle identifier id'>circle</span><span class='lparen token'>(</span><span class='radius identifier id'>radius</span><span class='comma token'>,</span> <span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='feather identifier id'>feather</span> <span class='assign token'>=</span> <span class='float val'>1.0</span><span class='rparen token'>)</span>
+  <span class='mask identifier id'>mask</span> <span class='assign token'>=</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Canvas constant id'>Canvas</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='radius identifier id'>radius</span><span class='comma token'>,</span> <span class='radius identifier id'>radius</span><span class='comma token'>,</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='rgba identifier id'>rgba</span><span class='lparen token'>(</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='radius identifier id'>radius</span> <span class='leq op'>&lt;=</span> <span class='width identifier id'>width</span>
+    <span class='center identifier id'>center</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='radius identifier id'>radius</span> <span class='minus op'>-</span> <span class='integer val'>1</span><span class='rparen token'>)</span> <span class='div op'>/</span> <span class='float val'>2.0</span>
+    <span class='rpf2 identifier id'>rpf2</span>   <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='center identifier id'>center</span> <span class='plus op'>+</span> <span class='feather identifier id'>feather</span> <span class='div op'>/</span> <span class='float val'>2.0</span><span class='rparen token'>)</span> <span class='pow op'>**</span> <span class='integer val'>2</span>
+    <span class='rmf2 identifier id'>rmf2</span>   <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='center identifier id'>center</span> <span class='minus op'>-</span> <span class='feather identifier id'>feather</span> <span class='div op'>/</span> <span class='float val'>2.0</span><span class='rparen token'>)</span> <span class='pow op'>**</span> <span class='integer val'>2</span>
+    <span class='lx identifier id'>lx</span>     <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='lparen token'>(</span><span class='center identifier id'>center</span> <span class='minus op'>-</span> <span class='rpf2 identifier id'>rpf2</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='floor identifier id'>floor</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='max identifier id'>max</span>
+    <span class='ly identifier id'>ly</span>     <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='lparen token'>(</span><span class='center identifier id'>center</span> <span class='minus op'>-</span> <span class='rpf2 identifier id'>rpf2</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='floor identifier id'>floor</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='max identifier id'>max</span>
+    <span class='rx identifier id'>rx</span>     <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='lparen token'>(</span><span class='center identifier id'>center</span> <span class='plus op'>+</span> <span class='rpf2 identifier id'>rpf2</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='ceil identifier id'>ceil</span><span class='comma token'>,</span> <span class='radius identifier id'>radius</span> <span class='minus op'>-</span> <span class='integer val'>1</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='min identifier id'>min</span>
+    <span class='ry identifier id'>ry</span>     <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='lparen token'>(</span><span class='center identifier id'>center</span> <span class='plus op'>+</span> <span class='rpf2 identifier id'>rpf2</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='ceil identifier id'>ceil</span><span class='comma token'>,</span> <span class='radius identifier id'>radius</span> <span class='minus op'>-</span> <span class='integer val'>1</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='min identifier id'>min</span>
+    <span class='sqx identifier id'>sqx</span>    <span class='assign token'>=</span> <span class='Array constant id'>Array</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='rx identifier id'>rx</span> <span class='minus op'>-</span> <span class='lx identifier id'>lx</span> <span class='plus op'>+</span> <span class='integer val'>1</span><span class='rparen token'>)</span>
+    <span class='for for kw'>for</span> <span class='x identifier id'>x</span> <span class='in in kw'>in</span> <span class='lx identifier id'>lx</span><span class='dot2 op'>..</span><span class='rx identifier id'>rx</span>
+      <span class='sqx identifier id'>sqx</span><span class='lbrack token'>[</span><span class='x identifier id'>x</span> <span class='minus op'>-</span> <span class='lx identifier id'>lx</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='x identifier id'>x</span> <span class='minus op'>-</span> <span class='center identifier id'>center</span><span class='rparen token'>)</span> <span class='pow op'>**</span> <span class='integer val'>2</span>
+    <span class='end end kw'>end</span>
+    <span class='for for kw'>for</span> <span class='y identifier id'>y</span> <span class='in in kw'>in</span> <span class='ly identifier id'>ly</span><span class='dot2 op'>..</span><span class='ry identifier id'>ry</span>
+      <span class='sqy identifier id'>sqy</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='y identifier id'>y</span> <span class='minus op'>-</span> <span class='center identifier id'>center</span><span class='rparen token'>)</span> <span class='pow op'>**</span> <span class='integer val'>2</span>
+      <span class='for for kw'>for</span> <span class='x identifier id'>x</span> <span class='in in kw'>in</span> <span class='lx identifier id'>lx</span><span class='dot2 op'>..</span><span class='rx identifier id'>rx</span>
+        <span class='sqdist identifier id'>sqdist</span> <span class='assign token'>=</span> <span class='sqy identifier id'>sqy</span> <span class='plus op'>+</span> <span class='sqx identifier id'>sqx</span><span class='lbrack token'>[</span><span class='x identifier id'>x</span> <span class='minus op'>-</span> <span class='lx identifier id'>lx</span><span class='rbrack token'>]</span>
+        <span class='if if kw'>if</span> <span class='sqdist identifier id'>sqdist</span> <span class='lt op'>&lt;</span> <span class='rmf2 identifier id'>rmf2</span>
+          <span class='mask identifier id'>mask</span><span class='dot token'>.</span><span class='set_pixel identifier id'>set_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span><span class='comma token'>,</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='colon2 op'>::</span><span class='WHITE constant id'>WHITE</span><span class='rparen token'>)</span>
+        <span class='else else kw'>else</span>
+          <span class='if if kw'>if</span> <span class='sqdist identifier id'>sqdist</span> <span class='lt op'>&lt;</span> <span class='rpf2 identifier id'>rpf2</span>
+            <span class='fact identifier id'>fact</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='lparen token'>(</span><span class='lparen token'>(</span><span class='center identifier id'>center</span> <span class='minus op'>-</span> <span class='Math constant id'>Math</span><span class='dot token'>.</span><span class='sqrt identifier id'>sqrt</span><span class='lparen token'>(</span><span class='sqdist identifier id'>sqdist</span><span class='rparen token'>)</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='float val'>2.0</span> <span class='div op'>/</span> <span class='feather identifier id'>feather</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='integer val'>0</span><span class='integer val'>.5</span> <span class='plus op'>+</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span>
+            <span class='mask identifier id'>mask</span><span class='dot token'>.</span><span class='set_pixel identifier id'>set_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span><span class='comma token'>,</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='rgba identifier id'>rgba</span><span class='lparen token'>(</span><span class='integer val'>255</span><span class='comma token'>,</span> <span class='integer val'>255</span><span class='comma token'>,</span> <span class='integer val'>255</span><span class='comma token'>,</span> <span class='integer val'>255</span> <span class='mult op'>*</span> <span class='lbrack token'>[</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='fact identifier id'>fact</span><span class='comma token'>,</span> <span class='integer val'>1</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='min identifier id'>min</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='max identifier id'>max</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+          <span class='end end kw'>end</span>
+        <span class='end end kw'>end</span>
+      <span class='end end kw'>end</span>
+    <span class='end end kw'>end</span>
+  <span class='else else kw'>else</span>
+    <span class='center identifier id'>center</span>  <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='radius identifier id'>radius</span> <span class='minus op'>-</span> <span class='integer val'>1</span><span class='rparen token'>)</span> <span class='div op'>/</span> <span class='float val'>2.0</span>
+    <span class='inrad identifier id'>inrad</span>   <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='center identifier id'>center</span> <span class='plus op'>+</span> <span class='feather identifier id'>feather</span> <span class='div op'>/</span> <span class='float val'>2.0</span><span class='rparen token'>)</span> <span class='minus op'>-</span> <span class='width identifier id'>width</span>
+    <span class='ropf2 identifier id'>ropf2</span>   <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='center identifier id'>center</span> <span class='plus op'>+</span> <span class='feather identifier id'>feather</span> <span class='div op'>/</span> <span class='float val'>2.0</span><span class='rparen token'>)</span> <span class='pow op'>**</span> <span class='integer val'>2</span>
+    <span class='romf2 identifier id'>romf2</span>   <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='center identifier id'>center</span> <span class='minus op'>-</span> <span class='feather identifier id'>feather</span> <span class='div op'>/</span> <span class='float val'>2.0</span><span class='rparen token'>)</span> <span class='pow op'>**</span> <span class='integer val'>2</span>
+    <span class='ripf2 identifier id'>ripf2</span>   <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='inrad identifier id'>inrad</span>  <span class='plus op'>+</span> <span class='feather identifier id'>feather</span> <span class='div op'>/</span> <span class='float val'>2.0</span><span class='rparen token'>)</span> <span class='pow op'>**</span> <span class='integer val'>2</span>
+    <span class='rimf2 identifier id'>rimf2</span>   <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='inrad identifier id'>inrad</span>  <span class='minus op'>-</span> <span class='feather identifier id'>feather</span> <span class='div op'>/</span> <span class='float val'>2.0</span><span class='rparen token'>)</span> <span class='pow op'>**</span> <span class='integer val'>2</span>
+    <span class='lx identifier id'>lx</span>      <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='lparen token'>(</span><span class='center identifier id'>center</span> <span class='minus op'>-</span> <span class='ropf2 identifier id'>ropf2</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='floor identifier id'>floor</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='max identifier id'>max</span>
+    <span class='ly identifier id'>ly</span>      <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='lparen token'>(</span><span class='center identifier id'>center</span> <span class='minus op'>-</span> <span class='ropf2 identifier id'>ropf2</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='floor identifier id'>floor</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='max identifier id'>max</span>
+    <span class='rx identifier id'>rx</span>      <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='lparen token'>(</span><span class='center identifier id'>center</span> <span class='plus op'>+</span> <span class='ropf2 identifier id'>ropf2</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='ceil identifier id'>ceil</span><span class='comma token'>,</span> <span class='radius identifier id'>radius</span> <span class='minus op'>-</span> <span class='integer val'>1</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='min identifier id'>min</span>
+    <span class='ry identifier id'>ry</span>      <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='lparen token'>(</span><span class='center identifier id'>center</span> <span class='plus op'>+</span> <span class='ropf2 identifier id'>ropf2</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='ceil identifier id'>ceil</span><span class='comma token'>,</span> <span class='radius identifier id'>radius</span> <span class='minus op'>-</span> <span class='integer val'>1</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='min identifier id'>min</span>
+    <span class='feather identifier id'>feather</span> <span class='assign token'>=</span> <span class='width identifier id'>width</span> <span class='if if_mod kw'>if</span> <span class='feather identifier id'>feather</span> <span class='gt op'>&gt;</span> <span class='width identifier id'>width</span>
+    <span class='sqx identifier id'>sqx</span>     <span class='assign token'>=</span> <span class='Array constant id'>Array</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='rx identifier id'>rx</span> <span class='minus op'>-</span> <span class='lx identifier id'>lx</span> <span class='plus op'>+</span> <span class='integer val'>1</span><span class='rparen token'>)</span>
+    <span class='for for kw'>for</span> <span class='x identifier id'>x</span> <span class='in in kw'>in</span> <span class='lx identifier id'>lx</span><span class='dot2 op'>..</span><span class='rx identifier id'>rx</span>
+      <span class='sqx identifier id'>sqx</span><span class='lbrack token'>[</span><span class='x identifier id'>x</span> <span class='minus op'>-</span> <span class='lx identifier id'>lx</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='x identifier id'>x</span> <span class='minus op'>-</span> <span class='center identifier id'>center</span><span class='rparen token'>)</span> <span class='pow op'>**</span> <span class='integer val'>2</span>
+    <span class='end end kw'>end</span>
+    <span class='for for kw'>for</span> <span class='y identifier id'>y</span> <span class='in in kw'>in</span> <span class='ly identifier id'>ly</span><span class='dot2 op'>..</span><span class='ry identifier id'>ry</span>
+      <span class='sqy identifier id'>sqy</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='y identifier id'>y</span> <span class='minus op'>-</span> <span class='center identifier id'>center</span><span class='rparen token'>)</span> <span class='pow op'>**</span> <span class='integer val'>2</span>
+      <span class='for for kw'>for</span> <span class='x identifier id'>x</span> <span class='in in kw'>in</span> <span class='lx identifier id'>lx</span><span class='dot2 op'>..</span><span class='rx identifier id'>rx</span>
+        <span class='sqdist identifier id'>sqdist</span> <span class='assign token'>=</span> <span class='sqy identifier id'>sqy</span> <span class='plus op'>+</span> <span class='sqx identifier id'>sqx</span><span class='lbrack token'>[</span><span class='x identifier id'>x</span> <span class='minus op'>-</span> <span class='lx identifier id'>lx</span><span class='rbrack token'>]</span>
+        <span class='if if kw'>if</span> <span class='sqdist identifier id'>sqdist</span> <span class='geq op'>&gt;=</span> <span class='rimf2 identifier id'>rimf2</span>
+          <span class='if if kw'>if</span> <span class='sqdist identifier id'>sqdist</span> <span class='lt op'>&lt;</span> <span class='ropf2 identifier id'>ropf2</span>
+            <span class='if if kw'>if</span> <span class='sqdist identifier id'>sqdist</span> <span class='lt op'>&lt;</span> <span class='romf2 identifier id'>romf2</span>
+              <span class='if if kw'>if</span> <span class='sqdist identifier id'>sqdist</span> <span class='lt op'>&lt;</span> <span class='ripf2 identifier id'>ripf2</span>
+                <span class='fact identifier id'>fact</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='lparen token'>(</span><span class='lparen token'>(</span><span class='Math constant id'>Math</span><span class='dot token'>.</span><span class='sqrt identifier id'>sqrt</span><span class='lparen token'>(</span><span class='sqdist identifier id'>sqdist</span><span class='rparen token'>)</span> <span class='minus op'>-</span> <span class='inrad identifier id'>inrad</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='integer val'>2</span> <span class='div op'>/</span> <span class='feather identifier id'>feather</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='integer val'>0</span><span class='integer val'>.5</span> <span class='plus op'>+</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span>
+                <span class='mask identifier id'>mask</span><span class='dot token'>.</span><span class='set_pixel identifier id'>set_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span><span class='comma token'>,</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='rgba identifier id'>rgba</span><span class='lparen token'>(</span><span class='integer val'>255</span><span class='comma token'>,</span> <span class='integer val'>255</span><span class='comma token'>,</span> <span class='integer val'>255</span><span class='comma token'>,</span> <span class='integer val'>255</span> <span class='mult op'>*</span> <span class='lbrack token'>[</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='fact identifier id'>fact</span><span class='comma token'>,</span> <span class='integer val'>1</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='min identifier id'>min</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='max identifier id'>max</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+              <span class='else else kw'>else</span>
+                <span class='mask identifier id'>mask</span><span class='dot token'>.</span><span class='set_pixel identifier id'>set_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span><span class='comma token'>,</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='colon2 op'>::</span><span class='WHITE constant id'>WHITE</span><span class='rparen token'>)</span>
+              <span class='end end kw'>end</span>
+            <span class='else else kw'>else</span>
+              <span class='fact identifier id'>fact</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='lparen token'>(</span><span class='lparen token'>(</span><span class='center identifier id'>center</span> <span class='minus op'>-</span> <span class='Math constant id'>Math</span><span class='dot token'>.</span><span class='sqrt identifier id'>sqrt</span><span class='lparen token'>(</span><span class='sqdist identifier id'>sqdist</span><span class='rparen token'>)</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='integer val'>2</span> <span class='div op'>/</span> <span class='feather identifier id'>feather</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='integer val'>0</span><span class='integer val'>.5</span> <span class='plus op'>+</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span>
+              <span class='mask identifier id'>mask</span><span class='dot token'>.</span><span class='set_pixel identifier id'>set_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span><span class='comma token'>,</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='rgba identifier id'>rgba</span><span class='lparen token'>(</span><span class='integer val'>255</span><span class='comma token'>,</span> <span class='integer val'>255</span><span class='comma token'>,</span> <span class='integer val'>255</span><span class='comma token'>,</span> <span class='integer val'>255</span> <span class='mult op'>*</span> <span class='lbrack token'>[</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='fact identifier id'>fact</span><span class='comma token'>,</span> <span class='integer val'>1</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='min identifier id'>min</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='max identifier id'>max</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+            <span class='end end kw'>end</span>
+          <span class='end end kw'>end</span>
+        <span class='end end kw'>end</span>
+      <span class='end end kw'>end</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='mask identifier id'>mask</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Sun Mar 13 18:33:57 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>
