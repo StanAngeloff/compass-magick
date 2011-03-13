@@ -25,7 +25,12 @@ a {
       ),
       50%, 1px
     ),
-    magick-compose(magick-canvas(image-url('icon-blank_page.png')), 24px, ($height - 32px) / 2),
+    magick-compose(
+      magick-canvas('icon-blank_page.png',
+        magick-effect('fade', 50%)
+      ),
+      24px, ($height - 32px) / 2
+    ),
     magick-corners(10px),
     magick-border(darken($background, 10%), 10px, 1px)
   );
@@ -54,7 +59,7 @@ a {
         ),
         50%, 1px
       ),
-      magick-compose(magick-canvas(image-url('icon-blank_page.png')), 24px, ($height - 32px) / 2),
+      magick-compose(magick-canvas('icon-blank_page.png'), 24px, ($height - 32px) / 2),
       magick-corners(10px),
       magick-border(darken($background, 10% + $highlight), 10px, 1px)
     );
@@ -81,7 +86,7 @@ a {
         ),
         50%, $height - 11px
       ),
-      magick-compose(magick-canvas(image-url('icon-blank_page.png')), 24px, ($height - 32px) / 2 + 1px),
+      magick-compose(magick-canvas('icon-blank_page.png'), 24px, ($height - 32px) / 2 + 1px),
       magick-corners(10px),
       magick-border(darken($background, 10%), 10px, 1px)
     );
