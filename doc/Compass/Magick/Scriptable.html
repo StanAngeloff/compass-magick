@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Compass::Magick::Scriptable</title>
+<link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (S)</a> &raquo; 
+    <span class='title'>Compass</span> &raquo; <span class='title'><span class='object_link'><a href="../Magick.html" title="Compass::Magick (module)">Magick</a></span></span>
+     &raquo; 
+    <span class="title">Scriptable</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Compass::Magick::Scriptable
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span>, <span class='object_link'><a href="Command.html" title="Compass::Magick::Command (class)">Command</a></span>, <span class='object_link'><a href="Type.html" title="Compass::Magick::Type (class)">Type</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/magick/scriptable.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Common Sass node methods module.
+</p>
+<p>
+In order to export certain classes for Sass, they must implement a set of
+methods. This module provides a no-op implementation.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#context-instance_method" title="#context (instance method)">- (Symbol) <strong>context</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+The context in which this node was parsed, which determines how some
+operations are performed.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#options-instance_method" title="#options (instance method)">- ({Symbol =&gt; Object}) <strong>options</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+The options hash.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="context=-instance_method"></span>
+      <span id="context-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="context-instance_method">
+  
+    - (<tt>Symbol</tt>) <strong>context</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The context in which this node was parsed, which determines how some
+operations are performed.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/magick/scriptable.rb', line 29</span>
+
+<span class='def def kw'>def</span> <span class='context identifier id'>context</span>
+  <span class='@context ivar id'>@context</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="options=-instance_method"></span>
+      <span id="options-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="options-instance_method">
+  
+    - (<tt>{Symbol =&gt; Object}</tt>) <strong>options</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The options hash.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The options hash.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/magick/scriptable.rb', line 15</span>
+
+<span class='def def kw'>def</span> <span class='options identifier id'>options</span>
+  <span class='@options ivar id'>@options</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+</div>
+    
+    <div id="footer">
+  Generated on Sun Mar 13 18:33:55 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

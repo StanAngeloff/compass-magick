@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Compass::Magick::Plugins</title>
+<link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (P)</a> &raquo; 
+    <span class='title'>Compass</span> &raquo; <span class='title'><span class='object_link'><a href="../Magick.html" title="Compass::Magick (module)">Magick</a></span></span>
+     &raquo; 
+    <span class="title">Plugins</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Compass::Magick::Plugins
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="Functions.html" title="Compass::Magick::Functions (module)">Functions</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/magick/plugins.rb<span class="defines">,<br />
+  lib/plugins/corners.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+The Plugins module includes all external Compass Magick functions.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="../Magick.html#PLUGINS_PATH-constant" title="Compass::Magick::PLUGINS_PATH (constant)">PLUGINS_PATH</a></span></li>
+    
+  </ul>
+
+</div>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#magick_corners-instance_method" title="#magick_corners (instance method)">- (Command) <strong>magick_corners</strong>(radius, top_left = nil, top_right = nil, bottom_right = nil, bottom_left = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Applies rounded corners around the <span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span>.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="magick_corners-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Command.html" title="Compass::Magick::Command (class)">Command</a></span></tt>) <strong>magick_corners</strong>(radius, top_left = nil, top_right = nil, bottom_right = nil, bottom_left = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Applies rounded corners around the <span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span>.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Sass::Script::Number</tt>)</span>
+      
+      
+        <span class='name'>radius</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The corner radius.
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Sass::Script::Bool</tt>)</span>
+      
+      
+        <span class='name'>top_left</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+Controls the top-left corner radius effect (default <tt>true</tt>)
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Sass::Script::Bool</tt>)</span>
+      
+      
+        <span class='name'>top_right</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+Controls the top-right corner radius effect (default <tt>true</tt>)
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Sass::Script::Bool</tt>)</span>
+      
+      
+        <span class='name'>bottom_right</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+Controls the bottom-right corner radius effect (default <tt>true</tt>)
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Sass::Script::Bool</tt>)</span>
+      
+      
+        <span class='name'>bottom_left</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+Controls the bottom-left corner radius effect (default <tt>true</tt>)
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Command.html" title="Compass::Magick::Command (class)">Command</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+A command(-set) which applies the corners on the canvas.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/plugins/corners.rb', line 16</span>
+
+<span class='def def kw'>def</span> <span class='magick_corners identifier id'>magick_corners</span><span class='lparen token'>(</span><span class='radius identifier id'>radius</span><span class='comma token'>,</span> <span class='top_left identifier id'>top_left</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='top_right identifier id'>top_right</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='bottom_right identifier id'>bottom_right</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='bottom_left identifier id'>bottom_left</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='Command constant id'>Command</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='canvas identifier id'>canvas</span><span class='bitor op'>|</span>
+    <span class='Canvas constant id'>Canvas</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='canvas identifier id'>canvas</span><span class='comma token'>,</span> <span class='magick_mask identifier id'>magick_mask</span><span class='lparen token'>(</span>
+      <span class='magick_canvas identifier id'>magick_canvas</span><span class='lparen token'>(</span>
+        <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='width identifier id'>width</span><span class='rparen token'>)</span><span class='comma token'>,</span>
+        <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='height identifier id'>height</span><span class='rparen token'>)</span><span class='comma token'>,</span>
+          <span class='magick_fill identifier id'>magick_fill</span><span class='lparen token'>(</span><span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='rparen token'>)</span><span class='comma token'>,</span>
+          <span class='magick_border identifier id'>magick_border</span><span class='lparen token'>(</span><span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='lbrack token'>[</span><span class='integer val'>255</span><span class='comma token'>,</span> <span class='integer val'>255</span><span class='comma token'>,</span> <span class='integer val'>255</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='radius identifier id'>radius</span><span class='comma token'>,</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='top_left identifier id'>top_left</span><span class='comma token'>,</span> <span class='top_right identifier id'>top_right</span><span class='comma token'>,</span> <span class='bottom_right identifier id'>bottom_right</span><span class='comma token'>,</span> <span class='bottom_left identifier id'>bottom_left</span><span class='rparen token'>)</span>
+      <span class='rparen token'>)</span>
+    <span class='rparen token'>)</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Sun Mar 13 18:33:54 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>
