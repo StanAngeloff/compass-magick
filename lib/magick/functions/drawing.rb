@@ -46,16 +46,16 @@ module Compass::Magick
       #   * Sass::Script::String
       #   * {Compass::Magick::Types::Solid}
       #   * {Compass::Magick::Types::Gradients::Linear}
+      # @param [Sass::Script::Number] radius The radius of the circle.
       # @param [Sass::Script::Number] x The composite X coordinate of the
       #   circle.
       # @param [Sass::Script::Number] y The composite Y coordinate of the
       #   circle.
-      # @param [Sass::Script::Number] radius The radius of the circle.
       # @param [Sass::Script::Number] feather The feater value determines the
       #   anti-aliasing the circle will get, defaults to <tt>1</tt>.
       # @return {Command} A command(-set) which composes a circle on the
       #   canvas.
-      def magick_circle(type, compose_x, compose_y, radius, feather = nil)
+      def magick_circle(type, radius, compose_x, compose_y, feather = nil)
         Compass::Magick::Utils.assert_type 'radius',   radius,   Sass::Script::Number
         Compass::Magick::Utils.assert_type 'feather',  feather,  Sass::Script::Number
         Command.new do |canvas|
