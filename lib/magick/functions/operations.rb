@@ -107,6 +107,9 @@ module Compass::Magick
       # The alpha channel is used to construct a mask of the original image
       # which is then used as a base for the horizontal/vertical shadow pass.
       #
+      # Copyright (c) 2005 by Romain Guy
+      # http://www.curious-creature.org/2005/07/06/non-rectangular-shadow/
+      #
       # @param [Sass::Script::Number] angle The angle of the shadow.
       # @param [Sass::Script::Number] distance The distance of the shadow from
       #   the original canvas.
