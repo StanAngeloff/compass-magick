@@ -2,6 +2,7 @@ require 'magick/functions/canvas'
 require 'magick/functions/types'
 require 'magick/functions/drawing'
 require 'magick/functions/operations'
+require 'magick/functions/sprites'
 
 require 'magick/plugins'
 
@@ -16,6 +17,7 @@ module Compass::Magick
     include Functions::Types
     include Functions::Drawing
     include Functions::Operations
+    include Functions::Sprites
     include Compass::Magick::Plugins
   end
 end
