@@ -14,8 +14,10 @@ Installation
 
 There are no official releases or Gems available yet. You can grab the source code from Github and copy it to your local Compass project:
 
-    mkdir -p $COMPASS_PROJECT/extensions
-    git clone git://github.com/StanAngeloff/compass-magick.git $COMPASS_PROJECT/compass-magick
+    cd $COMPASS_PROJECT
+    mkdir -p extensions/magick
+    git clone git://github.com/StanAngeloff/compass-magick.git extensions/magick
+    compass frameworks | grep magick
 
 Learn more about [installing ad-hoc extensions in Compass](http://beta.compass-style.org/help/tutorials/extensions/).
 
