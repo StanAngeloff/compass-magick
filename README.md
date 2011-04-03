@@ -37,12 +37,16 @@ APIs
 
   Creates a new canvas and execute all commands on the instance. The resulting image is returned as a Base64 encoded Data URL.
 
-  **Compass Magick** does not support saving files on disk at this time as the main focus is adding functionality before refining the APIs.
-
   **Example:**
 
       # Create a transparent canvas
       magick-canvas(320px, 200px)
+
+- `magick_sprite(basename, canvas)`
+
+  Writes the canvas to a file, encoded as a PNG image. The output is optimized for best compression.  
+  The generated file is saved in the configured images directory with a `.png` extension. Directory names are allowed and can be used to group a set of objects together.
+  (Depending on your configuration) The returned path is relative and has the cache buster appended after the file extension.
 
 - `magick_fill(type, x1 = nil, y1 = nil, x2 = nil, y2 = nil)`
 
