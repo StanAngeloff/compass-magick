@@ -1,0 +1,38 @@
+PATH
+  remote: .
+  specs:
+    compass-magick (0.1.1.git)
+      chunky_png (~> 1.1.0)
+      compass (~> 0.11.beta.5)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    chunky_png (1.1.0)
+    compass (0.11.beta.5)
+      chunky_png (~> 1.1.0)
+      sass (>= 3.1.0.alpha.249)
+    diff-lcs (1.1.2)
+    oily_png (1.0.0)
+      chunky_png (~> 1.0)
+    rspec (2.0.1)
+      rspec-core (~> 2.0.1)
+      rspec-expectations (~> 2.0.1)
+      rspec-mocks (~> 2.0.1)
+    rspec-core (2.0.1)
+    rspec-expectations (2.0.1)
+      diff-lcs (>= 1.1.2)
+    rspec-mocks (2.0.1)
+      rspec-core (~> 2.0.1)
+      rspec-expectations (~> 2.0.1)
+    sass (3.1.0.alpha.252)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  chunky_png (~> 1.1.0)
+  compass (~> 0.11.beta.5)
+  compass-magick!
+  oily_png (~> 1.0.0)
+  rspec (~> 2.0.0)
