@@ -125,16 +125,16 @@ module Compass::Magick
           if border_radius > 0
             radius_mask = Compass::Magick::Shapes.circle(border_radius * 2, border_width)
             if border_top_left
-              mask.compose(radius_mask.crop(0, 0, border_radius, border_radius), 0, 0)
+              mask.compose!(radius_mask.crop(0, 0, border_radius, border_radius), 0, 0)
             end
             if border_top_right
-              mask.compose(radius_mask.crop(border_radius, 0, border_radius, border_radius), mask.width - border_radius, 0)
+              mask.compose!(radius_mask.crop(border_radius, 0, border_radius, border_radius), mask.width - border_radius, 0)
             end
             if border_bottom_right
-              mask.compose(radius_mask.crop(border_radius, border_radius, border_radius, border_radius), mask.width - border_radius, mask.height - border_radius)
+              mask.compose!(radius_mask.crop(border_radius, border_radius, border_radius, border_radius), mask.width - border_radius, mask.height - border_radius)
             end
             if border_bottom_left
-              mask.compose(radius_mask.crop(0, border_radius, border_radius, border_radius), 0, mask.height - border_radius)
+              mask.compose!(radius_mask.crop(0, border_radius, border_radius, border_radius), 0, mask.height - border_radius)
             end
           end
           overlay = Compass::Magick::Utils.to_canvas(type, Sass::Script::Number.new(canvas.width), Sass::Script::Number.new(canvas.height))
