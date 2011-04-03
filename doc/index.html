@@ -54,8 +54,10 @@
 
 <p>There are no official releases or Gems available yet. You can grab the source code from Github and copy it to your local Compass project:</p>
 
-<pre class="code"><span class='mkdir identifier id'>mkdir</span> <span class='minus op'>-</span><span class='p identifier id'>p</span> <span class='$COMPASS_PROJECT gvar id'>$COMPASS_PROJECT</span><span class='div op'>/</span><span class='extensions identifier id'>extensions</span>
-<span class='git identifier id'>git</span> <span class='clone identifier id'>clone</span> <span class='git identifier id'>git</span><span class='symbol val'>:/</span><span class='regexp val'>/github.com/</span><span class='StanAngeloff constant id'>StanAngeloff</span><span class='div op'>/</span><span class='compass identifier id'>compass</span><span class='minus op'>-</span><span class='magick identifier id'>magick</span><span class='dot token'>.</span><span class='git identifier id'>git</span> <span class='$COMPASS_PROJECT gvar id'>$COMPASS_PROJECT</span><span class='div op'>/</span><span class='compass identifier id'>compass</span><span class='minus op'>-</span><span class='magick identifier id'>magick</span>
+<pre class="code"><span class='cd identifier id'>cd</span> <span class='$COMPASS_PROJECT gvar id'>$COMPASS_PROJECT</span>
+<span class='mkdir identifier id'>mkdir</span> <span class='minus op'>-</span><span class='p identifier id'>p</span> <span class='extensions identifier id'>extensions</span><span class='div op'>/</span><span class='magick identifier id'>magick</span>
+<span class='git identifier id'>git</span> <span class='clone identifier id'>clone</span> <span class='git identifier id'>git</span><span class='symbol val'>:/</span><span class='regexp val'>/github.com/</span><span class='StanAngeloff constant id'>StanAngeloff</span><span class='div op'>/</span><span class='compass identifier id'>compass</span><span class='minus op'>-</span><span class='magick identifier id'>magick</span><span class='dot token'>.</span><span class='git identifier id'>git</span> <span class='extensions identifier id'>extensions</span><span class='div op'>/</span><span class='magick identifier id'>magick</span>
+<span class='compass identifier id'>compass</span> <span class='frameworks identifier id'>frameworks</span> <span class='bitor op'>|</span> <span class='grep identifier id'>grep</span> <span class='magick identifier id'>magick</span>
 </pre>
 
 <p>Learn more about <a href="http://beta.compass-style.org/help/tutorials/extensions/">installing ad-hoc extensions in Compass</a>.</p>
@@ -255,7 +257,7 @@ Documentation is sparse, speed is a major issue and there are probably a lot of 
 The Ruby community for being awesome and welcoming a PHP stranger.</p></div></div>
     
     <div id="footer">
-  Generated on Mon Mar 14 00:35:42 2011 by 
+  Generated on Sun Apr  3 15:40:20 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.8.7).
 </div>
