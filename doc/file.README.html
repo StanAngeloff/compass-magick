@@ -77,13 +77,16 @@
 
 <p>Creates a new canvas and execute all commands on the instance. The resulting image is returned as a Base64 encoded Data URL.</p>
 
-<p><strong>Compass Magick</strong> does not support saving files on disk at this time as the main focus is adding functionality before refining the APIs.</p>
-
 <p><strong>Example:</strong></p>
 
 <pre class="code"><span class='comment val'># Create a transparent canvas</span>
 <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>320</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>200</span><span class='px identifier id'>px</span><span class='rparen token'>)</span>
 </pre></li>
+<li><p><code>magick_sprite(basename, canvas)</code></p>
+
+<p>Writes the canvas to a file, encoded as a PNG image. The output is optimized for best compression.<br/>
+The generated file is saved in the configured images directory with a <code>.png</code> extension. Directory names are allowed and can be used to group a set of objects together.
+(Depending on your configuration) The returned path is relative and has the cache buster appended after the file extension.</p></li>
 <li><p><code>magick_fill(type, x1 = nil, y1 = nil, x2 = nil, y2 = nil)</code></p>
 
 <p>Fills the canvas region with the given <code>type</code>. Supported types as:</p>
@@ -257,7 +260,7 @@ Documentation is sparse, speed is a major issue and there are probably a lot of 
 The Ruby community for being awesome and welcoming a PHP stranger.</p></div></div>
     
     <div id="footer">
-  Generated on Sun Apr  3 15:40:20 2011 by 
+  Generated on Sun Apr  3 16:00:25 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.8.7).
 </div>
