@@ -2,15 +2,23 @@
 $: << File.dirname(__FILE__)
 
 begin
-  require 'chunky_png'
+  require 'oily_png'
 rescue LoadError
   require 'rubygems'
   begin
-    require 'chunky_png'
+    require 'oily_png'
   rescue LoadError
-    puts 'Unable to load ChunkyPNG. Please install it with one of the following commands:'
-    puts '  gem install chunky_png'
-    raise
+    puts '(Compass:Magick) Unable to load OilyPNG, reverting to ChunkyPNG.'
+    puts 'OilyPNG is a C extension to speed up the pure Ruby library.'
+    puts "Please install it with the following command:\n\n"
+    puts "  gem install oily_png\n\n"
+    begin
+      require 'chunky_png'
+    rescue LoadError
+      puts "(Compass:Magick) Unable to load ChunkyPNG. Please install it with the following command:\n\n"
+      puts "  gem install chunky_png\n\n"
+      raise
+    end
   end
 end
 
