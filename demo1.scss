@@ -8,37 +8,31 @@ body {
 }
 
 a {
-  $background: #c31;
+  $background: #369;
   $width: 320px;
   $height: 80px;
   $shadow_size: 5px;
 
+  $button_face: magick-canvas($width - 4px, $height - $shadow_size,
+    magick-fill(magick-linear-gradient(
+      magick-color-stop(0%,  lighten($background, 25%)),
+      magick-color-stop(3%,  lighten($background, 10%)),
+      magick-color-stop(70%, $background)
+    )),
+    magick-compose(
+      magick-canvas($width - 6px, 10px,
+        magick-border(magick-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)), 10px, 1px)
+      ),
+      50%, 1px
+    ),
+    magick-corners(10px),
+    magick-border(darken($background, 10%), 10px, 1px)
+  );
+
   display: inline-block;
   background: transparent magick-canvas($width, $height,
-    magick-compose(
-      magick-canvas($width - 4px, $height - $shadow_size,
-        magick-fill(magick-linear-gradient(
-          magick-color-stop(0%,  lighten($background, 25%)),
-          magick-color-stop(3%,  lighten($background, 10%)),
-          magick-color-stop(70%, $background)
-        )),
-        magick-compose(
-          magick-canvas($width - 6px, 10px,
-            magick-border(magick-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)), 10px, 1px)
-          ),
-          50%, 1px
-        ),
-        magick-corners(10px),
-        magick-border(darken($background, 10%), 10px, 1px)
-      ),
-      50%, 0
-    ),
-    magick-compose(
-      magick-canvas('icon-blank_page.png',
-        magick-effect('fade', 50%)
-      ),
-      26px, ($height - $shadow_size - 32px) / 2
-    ),
+    magick-compose($button_face, 50%, 0),
+    magick-compose(magick-canvas('icon-blank_page.png', magick-effect('fade', 50%)), 26px, ($height - $shadow_size - 32px) / 2),
     magick-drop-shadow(-90deg, $shadow_size / 2, $shadow_size, rgba(0, 0, 0, 0.9))
   );
   color: #fff;
@@ -55,24 +49,7 @@ a {
     $highlight: 10%;
 
     background: transparent magick-canvas($width, $height,
-      magick-compose(
-        magick-canvas($width - 4px, $height - $shadow_size,
-          magick-fill(magick-linear-gradient(
-            magick-color-stop(0%,  lighten($background, 25% + $highlight)),
-            magick-color-stop(3%,  lighten($background, 10% + $highlight)),
-            magick-color-stop(70%, lighten($background, $highlight))
-          )),
-          magick-compose(
-            magick-canvas($width - 6px, 10px,
-              magick-border(magick-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)), 10px, 1px)
-            ),
-            50%, 1px
-          ),
-          magick-corners(10px),
-          magick-border(darken($background, 10% + $highlight), 10px, 1px)
-        ),
-        50%, 0
-      ),
+      magick-compose(magick-canvas($button_face, magick-effect(brightness, 5%)), 50%, 0),
       magick-compose(magick-canvas('icon-blank_page.png'), 26px, ($height - $shadow_size - 32px) / 2),
       magick-drop-shadow(-90deg, $shadow_size / 2, $shadow_size, rgba(0, 0, 0, 0.9))
     );
