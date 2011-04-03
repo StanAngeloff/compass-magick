@@ -29,34 +29,24 @@ a {
     magick-border(darken($background, 10%), 10px, 1px)
   );
 
-  display: inline-block;
-  background: transparent magick-canvas($width, $height,
-    magick-compose($button_face, 50%, 0),
-    magick-compose(magick-canvas('icon-blank_page.png', magick-effect('fade', 50%)), 26px, ($height - $shadow_size - 32px) / 2),
-    magick-drop-shadow(-90deg, $shadow_size / 2, $shadow_size, rgba(0, 0, 0, 0.9))
+  $button_normal: magick-sprite('button/normal',
+    magick-canvas($width, $height,
+      magick-compose($button_face, 50%, 0),
+      magick-compose(magick-canvas('icon-blank_page.png', magick-effect('fade', 50%)), 26px, ($height - $shadow_size - 32px) / 2),
+      magick-drop-shadow(-90deg, $shadow_size / 2, $shadow_size, rgba(0, 0, 0, 0.9))
+    )
   );
-  color: #fff;
-  @include text-shadow(0 1px 1px darken($background, 25%));
-  font: normal round($height / 2.5) verdana, tahoma, helvetica, arial, sans-serif;
-  width: $width - 24px * 2;
-  line-height: $height - $shadow_size - 2px;
-  padding: 1px 24px (1px + $shadow_size) 24px;
-  text-align: center;
-  text-decoration: none;
-  -webkit-user-drag: none;
 
-  &:hover {
-    $highlight: 10%;
-
-    background: transparent magick-canvas($width, $height,
+  $button_hover: magick-sprite('button/hover',
+    magick-canvas($width, $height,
       magick-compose(magick-canvas($button_face, magick-effect(brightness, 5%)), 50%, 0),
       magick-compose(magick-canvas('icon-blank_page.png'), 26px, ($height - $shadow_size - 32px) / 2),
       magick-drop-shadow(-90deg, $shadow_size / 2, $shadow_size, rgba(0, 0, 0, 0.9))
-    );
-  }
+    )
+  );
 
-  &:active {
-    background: transparent magick-canvas($width, $height,
+  $button_active: magick-sprite('button/active',
+    magick-canvas($width, $height,
       magick-compose(
         magick-canvas($width - 4px, $height - $shadow_size,
           magick-fill(magick-linear-gradient(
@@ -85,7 +75,29 @@ a {
       ),
       magick-compose(magick-canvas('icon-blank_page.png'), 26px, ($height - $shadow_size - 32px) / 2 + 1px),
       magick-drop-shadow(-90deg, $shadow_size / 2 - 1, $shadow_size - 1, rgba(0, 0, 0, 0.9))
-    );
+    )
+  );
+
+  display: inline-block;
+  background: transparent $button_normal;
+  color: #fff;
+  @include text-shadow(0 1px 1px darken($background, 25%));
+  font: normal round($height / 2.5) verdana, tahoma, helvetica, arial, sans-serif;
+  width: $width - 24px * 2;
+  line-height: $height - $shadow_size - 2px;
+  padding: 1px 24px (1px + $shadow_size) 24px;
+  text-align: center;
+  text-decoration: none;
+  -webkit-user-drag: none;
+
+  &:hover {
+    $highlight: 10%;
+
+    background: transparent $button_hover;
+  }
+
+  &:active {
+    background: transparent $button_active;
     @include text-shadow(0 -1px 1px darken($background, 10%));
     padding: 2px 24px $shadow_size 24px;
   }
