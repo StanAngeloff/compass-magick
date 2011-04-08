@@ -62,6 +62,9 @@ module Compass::Magick
             end
             stops.push(Compass::Magick::Types::Gradients::ColorStop.new(Sass::Script::Number.new(offset), stop))
             last_offset = offset
+          elsif stop.kind_of?(Sass::Script::List)
+            stops.push(Compass::Magick::Types::Gradients::ColorStop.new(stop.value[1], stop.value[0]))
+            last_offset = stop.value[1].value
           else
             stops.push(stop)
             last_offset = stop.offset.value if stop.respond_to?(:offset)

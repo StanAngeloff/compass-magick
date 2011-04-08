@@ -128,6 +128,13 @@ APIs
         magick-color-stop(75%, blue)
       )
 
+  A shorter (implicit) version of the above is also available:
+
+      magick-linear-gradient(
+        red 25%,
+        blue 75%
+      )
+
   Gradients cannot be used directly on the canvas. You can only apply them using another function:
 
       magick-fill(magick-linear-gradient(red, green, blue))
