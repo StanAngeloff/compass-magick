@@ -73,7 +73,7 @@ module Compass::Magick
       # @return {Effect} A command which applies the saturation to the canvas.
       def saturation(adjust = nil)
         Compass::Magick::Utils.assert_type 'adjust', adjust, Sass::Script::Number
-        saturation_adjust = Compass::Magick::Utils.value_of(adjust, 1.0, 0.5) * -1;
+        saturation_adjust = Compass::Magick::Utils.value_of(adjust, 1.0, 0.5) * -1
         Effect.new do |pixel|
           r   = ChunkyPNG::Color.r(pixel)
           g   = ChunkyPNG::Color.g(pixel)
@@ -97,7 +97,7 @@ module Compass::Magick
       # @return {Effect} A command which applies the vibrance to the canvas.
       def vibrance(adjust = nil)
         Compass::Magick::Utils.assert_type 'adjust', adjust, Sass::Script::Number
-        vibrance_adjust = Compass::Magick::Utils.value_of(adjust, 1.0, 0.5) * -1;
+        vibrance_adjust = Compass::Magick::Utils.value_of(adjust, 1.0, 0.5) * -1
         Effect.new do |pixel|
           r       = ChunkyPNG::Color.r(pixel)
           g       = ChunkyPNG::Color.g(pixel)
@@ -111,6 +111,33 @@ module Compass::Magick
           ChunkyPNG::Color.rgba(Effect.clamp(r), Effect.clamp(g), Effect.clamp(b), ChunkyPNG::Color.a(pixel))
         end
       end
+
+      # Adjusts the intensity of a color by changing its [R, G, B] components
+      # according to BT709 luminosity factors.
+      #
+      # Copyright (c) 2010, Ryan LeFevre
+      # http://www.camanjs.com
+      #
+      # @param [Sass::Script::Number] adjust Grayscale factor as a float,
+      #   above 0.0 and below 1.0.
+      # @return {Effect} A command which applies the intensity to the canvas.
+      def grayscale(adjust = nil)
+        Compass::Magick::Utils.assert_type 'adjust', adjust, Sass::Script::Number
+        grayscale_adjust = [0, [Compass::Magick::Utils.value_of(adjust, 1.0, 0.5), 1.0].min].max
+        Effect.new do |pixel|
+          r    = ChunkyPNG::Color.r(pixel)
+          g    = ChunkyPNG::Color.g(pixel)
+          b    = ChunkyPNG::Color.b(pixel)
+          gray = r * 0.2125 + g * 0.7154 + b * 0.0721
+          r    = r + (gray - r) * grayscale_adjust unless r == gray
+          g    = g + (gray - g) * grayscale_adjust unless g == gray
+          b    = b + (gray - b) * grayscale_adjust unless b == gray
+          ChunkyPNG::Color.rgba(Effect.clamp(r), Effect.clamp(g), Effect.clamp(b), ChunkyPNG::Color.a(pixel))
+        end
+      end
+
+      alias :greyscale :grayscale
+
     end
   end
 end
