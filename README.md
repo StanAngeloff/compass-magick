@@ -168,8 +168,11 @@ APIs
   Apply the selected effect on canvas.
 
     * `fade` lowers the alpha channel by `adjust` (0%—100% or 0—1.0)
-    * `brightness` changes brightness by adjusting the [R, G, B] channels by `adjust` (-100%—100% or -255—255)
-    * `contrast` changes contrast by adjusting the [R, G, B] channels by `adjust` (at least 0%, can be above 100% to achieve over-exposure)
+    * `brightness` adjusts the [R, G, B] channels by `adjust` (-100%—100% or -255—255)
+    * `contrast` adjusts the [R, G, B] channels by `adjust` (at least 0%, can be above 100% to achieve over-exposure)
+    * `saturation` adjusts the [R, G, B] channels by `adjust` matching the highest intensity (-100%—100% or -1.0—1.0, values outside this range achieve over-exposure)
+    * `vibrance` adjusts the [R, G, B] channels by `adjust` matching the average intensity (-100%—100% or -1.0—1.0, values outside this range achieve over-exposure)
+    * `grayscale` adjusts the [R, G, B] channels' intensity by `adjust` according to BT709 luminosity factors (0%—100% or 0—1.0)
 
   **Example:**
 
