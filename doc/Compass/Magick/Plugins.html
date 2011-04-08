@@ -64,7 +64,7 @@
   
     <dt class="r2 last">Defined in:</dt>
     <dd class="r2 last">lib/magick/plugins.rb<span class="defines">,<br />
-  lib/plugins/corners.rb</span>
+  lib/plugins/pattern.rb,<br /> lib/plugins/corners.rb</span>
 </dd>
   
 </dl>
@@ -117,6 +117,30 @@ The Plugins module includes all external Compass Magick functions.
   
     <span class="summary_desc"><div class='inline'><p>
 Applies rounded corners around the <span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span>.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#magick_pattern-instance_method" title="#magick_pattern (instance method)">- (Canvas) <strong>magick_pattern</strong>(width, height, values) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Draws a pattern and returns a B/W <span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span> ready for masking.
 </p>
 </div></span>
   
@@ -306,12 +330,199 @@ A command(-set) which applies the corners on the canvas.
 </table>
 </div>
     
+      <div class="method_details ">
+  <p class="signature " id="magick_pattern-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span></tt>) <strong>magick_pattern</strong>(width, height, values) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Draws a pattern and returns a B/W <span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span> ready for masking.
+</p>
+<p>
+Chris Eppstein&#8217;s original tweet:
+<a href="http://twitter.com/chriseppstein/status/56095925843668992" target="_parent" title="http://twitter.com/chriseppstein/status/56095925843668992">http://twitter.com/chriseppstein/status/56095925843668992</a>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'><p>
+Diagonal stripes:
+</p>
+</div></h4>
+      <pre class="example code"><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='pattern identifier id'>pattern</span><span class='lparen token'>(</span><span class='integer val'>3</span><span class='comma token'>,</span> <span class='integer val'>3</span><span class='comma token'>,</span>
+  <span class='x identifier id'>x</span> <span class='_ identifier id'>_</span> <span class='_ identifier id'>_</span>
+  <span class='_ identifier id'>_</span> <span class='x identifier id'>x</span> <span class='_ identifier id'>_</span>
+  <span class='_ identifier id'>_</span> <span class='_ identifier id'>_</span> <span class='x identifier id'>x</span>
+<span class='rparen token'>)</span><span class='semicolon token'>;</span>
+</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Sass::Script::Number</tt>)</span>
+      
+      
+        <span class='name'>width</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The width of the pattern.
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Sass::Script::Number</tt>)</span>
+      
+      
+        <span class='name'>height</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The height of the pattern.
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Sass::Script::List</tt>)</span>
+      
+      
+        <span class='name'>values</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The pattern itself. This is a list of values (or a multi-line string) where
+`1`, `true`, `yes`, `X`, `*` and `+` mark where an opaque white pixel will
+be placed. Any other value is ignored and is transparent in the output. The
+size of the list must match the width/height.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+A B/W Canvas with the pattern applied. The resulting image can be applied
+as a mask.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="PatternException.html" title="Compass::Magick::PatternException (class)">PatternException</a></span></tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/plugins/pattern.rb', line 27</span>
+
+<span class='def def kw'>def</span> <span class='magick_pattern identifier id'>magick_pattern</span><span class='lparen token'>(</span><span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='comma token'>,</span> <span class='values identifier id'>values</span><span class='rparen token'>)</span>
+  <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span>   <span class='string val'>'width'</span><span class='comma token'>,</span>              <span class='width identifier id'>width</span><span class='comma token'>,</span>  <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
+  <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span>   <span class='string val'>'height'</span><span class='comma token'>,</span>             <span class='height identifier id'>height</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
+  <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_one_of identifier id'>assert_one_of</span> <span class='string val'>'magick-pattern(..)'</span><span class='comma token'>,</span> <span class='values identifier id'>values</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='List constant id'>List</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='String constant id'>String</span>
+  <span class='if if kw'>if</span> <span class='values identifier id'>values</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span><span class='lparen token'>(</span><span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='String constant id'>String</span><span class='rparen token'>)</span>
+    <span class='list identifier id'>list</span> <span class='assign token'>=</span> <span class='values identifier id'>values</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='dot token'>.</span><span class='strip identifier id'>strip</span><span class='lparen token'>(</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='regexp val'>/[\r\n]+/</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='line identifier id'>line</span><span class='bitor op'>|</span> <span class='line identifier id'>line</span><span class='dot token'>.</span><span class='strip identifier id'>strip</span><span class='lparen token'>(</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='regexp val'>/\s/</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='flatten identifier id'>flatten</span>
+  <span class='else else kw'>else</span>
+    <span class='list identifier id'>list</span> <span class='assign token'>=</span> <span class='values identifier id'>values</span><span class='dot token'>.</span><span class='value identifier id'>value</span>
+  <span class='end end kw'>end</span>
+  <span class='size identifier id'>size</span> <span class='assign token'>=</span> <span class='width identifier id'>width</span><span class='dot token'>.</span><span class='value identifier id'>value</span> <span class='mult op'>*</span> <span class='height identifier id'>height</span><span class='dot token'>.</span><span class='value identifier id'>value</span>
+  <span class='raise identifier id'>raise</span> <span class='PatternException constant id'>PatternException</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='dstring node'>&quot;magick-pattern(..) expects #{size} values, got #{list.size} instead: #{list.inspect}&quot;</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='size identifier id'>size</span> <span class='eq op'>==</span> <span class='list identifier id'>list</span><span class='dot token'>.</span><span class='size identifier id'>size</span>
+  <span class='canvas identifier id'>canvas</span> <span class='assign token'>=</span> <span class='Canvas constant id'>Canvas</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='rparen token'>)</span>
+  <span class='opaque identifier id'>opaque</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='string val'>'1'</span><span class='comma token'>,</span> <span class='string val'>'true'</span><span class='comma token'>,</span> <span class='string val'>'yes'</span><span class='comma token'>,</span> <span class='string val'>'X'</span><span class='comma token'>,</span> <span class='string val'>'*'</span><span class='comma token'>,</span> <span class='string val'>'+'</span><span class='rbrack token'>]</span>
+  <span class='for for kw'>for</span> <span class='y identifier id'>y</span> <span class='in in kw'>in</span> <span class='lparen token'>(</span><span class='integer val'>0</span><span class='dot3 op'>...</span><span class='height identifier id'>height</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
+    <span class='for for kw'>for</span> <span class='x identifier id'>x</span> <span class='in in kw'>in</span> <span class='lparen token'>(</span><span class='integer val'>0</span><span class='dot3 op'>...</span><span class='width identifier id'>width</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
+      <span class='pixel identifier id'>pixel</span> <span class='assign token'>=</span> <span class='list identifier id'>list</span><span class='lbrack token'>[</span><span class='x identifier id'>x</span> <span class='plus op'>+</span> <span class='y identifier id'>y</span> <span class='mult op'>*</span> <span class='height identifier id'>height</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='upcase identifier id'>upcase</span>
+      <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='set_pixel identifier id'>set_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span><span class='comma token'>,</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='colon2 op'>::</span><span class='WHITE constant id'>WHITE</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='opaque identifier id'>opaque</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='canvas identifier id'>canvas</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
     
     <div id="footer">
-  Generated on Sun Apr  3 16:00:28 2011 by 
+  Generated on Fri Apr  8 20:20:56 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.8.7).
 </div>

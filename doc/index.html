@@ -229,6 +229,33 @@ The generated file is saved in the configured images directory with a <code>.png
 
 <pre class="code"><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='string val'>'sample.png'</span><span class='comma token'>,</span> <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='mask identifier id'>mask</span><span class='lparen token'>(</span><span class='string val'>'mask.png'</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
 </pre></li>
+<li><p><code>magick_pattern(width, height, values)</code></p>
+
+<p>Draws a pattern and returns a B/W Canvas ready for masking.</p>
+
+<p>This pattern is defined as a list of values (or a multi-line string) where <code>1</code>, <code>true</code>, <code>yes</code>, <code>X</code>, <code>*</code> and <code>+</code> mark where an opaque white pixel will be placed. Any other value is ignored and is transparent in the output. The size of the list must match the <code>width</code>/<code>height</code>.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre class="code"><span class='comment val'># Diagonal stripes</span>
+<span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='pattern identifier id'>pattern</span><span class='lparen token'>(</span><span class='integer val'>3</span><span class='comma token'>,</span> <span class='integer val'>3</span><span class='comma token'>,</span>
+  <span class='x identifier id'>x</span> <span class='_ identifier id'>_</span> <span class='_ identifier id'>_</span>
+  <span class='_ identifier id'>_</span> <span class='x identifier id'>x</span> <span class='_ identifier id'>_</span>
+  <span class='_ identifier id'>_</span> <span class='_ identifier id'>_</span> <span class='x identifier id'>x</span>
+<span class='rparen token'>)</span><span class='semicolon token'>;</span>
+
+<span class='comment val'># Red diagonal stripes</span>
+<span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>3</span><span class='comma token'>,</span> <span class='integer val'>3</span><span class='comma token'>,</span>
+  <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='fill identifier id'>fill</span><span class='lparen token'>(</span><span class='red identifier id'>red</span><span class='rparen token'>)</span><span class='comma token'>,</span>
+  <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='mask identifier id'>mask</span><span class='lparen token'>(</span>
+    <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='pattern identifier id'>pattern</span><span class='lparen token'>(</span><span class='integer val'>3</span><span class='comma token'>,</span> <span class='integer val'>3</span><span class='comma token'>,</span>
+      <span class='_ identifier id'>_</span> <span class='_ identifier id'>_</span> <span class='x identifier id'>x</span>
+      <span class='_ identifier id'>_</span> <span class='x identifier id'>x</span> <span class='_ identifier id'>_</span>
+      <span class='x identifier id'>x</span> <span class='_ identifier id'>_</span> <span class='_ identifier id'>_</span>
+    <span class='rparen token'>)</span>
+  <span class='rparen token'>)</span>
+<span class='rparen token'>)</span><span class='semicolon token'>;</span>
+</pre></li>
 </ul>
 
 
@@ -260,7 +287,7 @@ Documentation is sparse, speed is a major issue and there are probably a lot of 
 The Ruby community for being awesome and welcoming a PHP stranger.</p></div></div>
     
     <div id="footer">
-  Generated on Sun Apr  3 16:00:25 2011 by 
+  Generated on Fri Apr  8 20:20:55 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.8.7).
 </div>
