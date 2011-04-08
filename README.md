@@ -178,6 +178,33 @@ APIs
 
       magick-canvas('sample.png', magick-mask('mask.png'))
 
+- `magick_pattern(width, height, values)`
+
+  Draws a pattern and returns a B/W Canvas ready for masking.
+
+  This pattern is defined as a list of values (or a multi-line string) where `1`, `true`, `yes`, `X`, `*` and `+` mark where an opaque white pixel will be placed. Any other value is ignored and is transparent in the output. The size of the list must match the `width`/`height`.
+
+  **Example:**
+
+      # Diagonal stripes
+      magick-pattern(3, 3,
+        x _ _
+        _ x _
+        _ _ x
+      );
+
+      # Red diagonal stripes
+      magick-canvas(3, 3,
+        magick-fill(red),
+        magick-mask(
+          magick-pattern(3, 3,
+            _ _ x
+            _ x _
+            x _ _
+          )
+        )
+      );
+
 RDoc is [available for the entire project](http://stanangeloff.github.com/compass-magick/doc/frames.html).
 
 Contribute
