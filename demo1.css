@@ -6,10 +6,10 @@ body {
   text-align: center;
 }
 
-/* line 102, demo1.scss */
+/* line 127, demo1.scss */
 a {
   display: inline-block;
-  background: url('images/button-284dfc4394.png') 0 -160px no-repeat;
+  background: url('images/button-66f95039f3.png') 0 -160px no-repeat;
   color: white;
   text-shadow: 0 1px 1px #132639;
   font: normal 32px verdana, tahoma, helvetica, arial, sans-serif;
@@ -20,13 +20,13 @@ a {
   text-decoration: none;
   -webkit-user-drag: none;
 }
-/* line 91, demo1.scss */
+/* line 116, demo1.scss */
 a:hover {
-  background: url('images/button-284dfc4394.png') 0 -80px no-repeat;
+  background: url('images/button-66f95039f3.png') 0 -80px no-repeat;
 }
-/* line 95, demo1.scss */
+/* line 120, demo1.scss */
 a:active {
-  background: url('images/button-284dfc4394.png') 0 0 no-repeat;
+  background: url('images/button-66f95039f3.png') 0 0 no-repeat;
   text-shadow: 0 -1px 1px #264c73;
   padding: 2px 24px 5px 24px;
 }

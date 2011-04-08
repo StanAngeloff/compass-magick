@@ -9,12 +9,27 @@ body {
 
 @mixin create_button($basename, $foreground, $background, $width, $height, $icon, $shadow_size: 5px) {
 
+  $pattern: magick-pattern(3, 3,
+    _ _ x
+    _ x _
+    x _ _
+  );
+
   $face: magick-canvas($width - 4px, $height - $shadow_size,
     magick-fill(magick-linear-gradient(
       magick-color-stop(0%,  lighten($background, 25%)),
       magick-color-stop(3%,  lighten($background, 10%)),
       magick-color-stop(70%, $background)
     )),
+    magick-fill(
+      rgba(0, 0, 0, 0.1)
+      $pattern
+      magick-linear-gradient(
+        270,
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0) 65%
+      )
+    ),
     magick-compose(
       magick-canvas($width - 6px, 10px,
         magick-border(magick-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)), 10px, 1px)
@@ -64,6 +79,16 @@ body {
             ),
             50%, $height - $shadow_size - 11px
           ),
+          magick-fill(
+            rgba(0, 0, 0, 0.1)
+            $pattern
+            magick-linear-gradient(
+              270,
+              rgba(255, 255, 255, 1),
+              rgba(255, 255, 255, 0) 65%
+            ),
+            0, 0, 100%, -2px
+          ),
           magick-corners(10px),
           magick-border(darken($background, 10%), 10px, 1px)
         ),
@@ -102,3 +127,4 @@ body {
 a {
   @include create_button('button', #fff, #369, 320px, 80px, 'icon-blank_page.png');
 }
+
