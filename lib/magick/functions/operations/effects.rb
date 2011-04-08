@@ -85,6 +85,32 @@ module Compass::Magick
           ChunkyPNG::Color.rgba(Effect.clamp(r), Effect.clamp(g), Effect.clamp(b), ChunkyPNG::Color.a(pixel))
         end
       end
+
+      # Adjusts the vibrance of a color by changing its [R, G, B] components
+      # matching the average intensity.
+      #
+      # Copyright (c) 2010, Ryan LeFevre
+      # http://www.camanjs.com
+      #
+      # @param [Sass::Script::Number] adjust Vibrance value as a float,
+      #   above 0.0.
+      # @return {Effect} A command which applies the vibrance to the canvas.
+      def vibrance(adjust = nil)
+        Compass::Magick::Utils.assert_type 'adjust', adjust, Sass::Script::Number
+        vibrance_adjust = Compass::Magick::Utils.value_of(adjust, 1.0, 0.5) * -1;
+        Effect.new do |pixel|
+          r       = ChunkyPNG::Color.r(pixel)
+          g       = ChunkyPNG::Color.g(pixel)
+          b       = ChunkyPNG::Color.b(pixel)
+          max     = [r, g, b].max
+          average = (r + g + b) / 3.0
+          amount  = (((max - average).abs * 2.0) * vibrance_adjust) / 100.0
+          r       = r + (max - r) * amount unless r == max
+          g       = g + (max - g) * amount unless g == max
+          b       = b + (max - b) * amount unless b == max
+          ChunkyPNG::Color.rgba(Effect.clamp(r), Effect.clamp(g), Effect.clamp(b), ChunkyPNG::Color.a(pixel))
+        end
+      end
     end
   end
 end
