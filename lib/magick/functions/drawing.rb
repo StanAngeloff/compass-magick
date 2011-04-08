@@ -28,7 +28,17 @@ module Compass::Magick
           canvas_y1, canvas_y2 = canvas_y2, canvas_y1 if canvas_y1 > canvas_y2
           width     = Sass::Script::Number.new(canvas_x2 - canvas_x1)
           height    = Sass::Script::Number.new(canvas_y2 - canvas_y1)
-          overlay   = Compass::Magick::Utils.to_canvas(type, width, height)
+          top       = type
+          tail      = []
+          if top.kind_of?(Sass::Script::List)
+            tail = top.value
+            top  = tail.shift
+          end
+          overlay = Compass::Magick::Utils.to_canvas(top, width, height)
+          tail.each do |mask_type|
+            mask_canvas = Compass::Magick::Utils.to_canvas(mask_type, width, height)
+            overlay     = Compass::Magick::Canvas.new(overlay, magick_mask(mask_canvas))
+          end
           canvas.compose(overlay, canvas_x1, canvas_y1)
         end
       end

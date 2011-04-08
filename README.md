@@ -72,6 +72,8 @@ APIs
         magick-canvas(10px, 10px, magick-fill(red))
       ))
 
+  If `type` is a list, the top item is used to generate the fill and every other item is applied as a mask. See examples for `magick_pattern`.
+
 - `magick_border(type, radius = nil, width = nil, top_left = nil, top_right = nil, bottom_right = nil, bottom_left = nil)`
 
   Draws a (rounded) border around the canvas with the given width and fill `type`. Supported types as:
@@ -210,6 +212,17 @@ APIs
           )
         )
       );
+
+  An easier and quicker way to apply colored patterns is to pass a Sass list to `magick_fill`:
+
+      magick-fill(
+        red  // NOTE: no trailing comma
+        magick-pattern(3, 3,
+          _ _ x
+          _ x _
+          x _ _
+        )
+      )
 
 RDoc is [available for the entire project](http://stanangeloff.github.com/compass-magick/doc/frames.html).
 
