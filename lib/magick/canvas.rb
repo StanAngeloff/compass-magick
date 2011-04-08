@@ -46,8 +46,17 @@ module Compass::Magick
     #     Canvas instance.
     def initialize(*commands)
       from_any(commands)
-      commands.each_with_index { |command, index| assert_type "command[#{index}]", command, Command }
+      list = []
       commands.each do |command|
+        if command.kind_of?(Sass::Script::List)
+          list.push(command.value)
+        else
+          list.push(command)
+        end
+      end
+      list.flatten!
+      list.each_with_index { |command, index| assert_type "command[#{index}]", command, Command }
+      list.each do |command|
         result = command.block.call(self)
         inherit result, false if result.kind_of?(ChunkyPNG::Canvas) unless result == self
       end
