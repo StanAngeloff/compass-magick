@@ -366,16 +366,6 @@ A command(-set) which composes the border on the canvas.
       <pre class="lines">
 
 
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
 103
 104
 105
@@ -416,10 +406,20 @@ A command(-set) which composes the border on the canvas.
 140
 141
 142
-143</pre>
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/magick/functions/drawing.rb', line 93</span>
+      <pre class="code"><span class="info file"># File 'lib/magick/functions/drawing.rb', line 103</span>
 
 <span class='def def kw'>def</span> <span class='magick_border identifier id'>magick_border</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='comma token'>,</span> <span class='radius identifier id'>radius</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='width identifier id'>width</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='top_left identifier id'>top_left</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='top_right identifier id'>top_right</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='bottom_right identifier id'>bottom_right</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='bottom_left identifier id'>bottom_left</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
   <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'radius'</span><span class='comma token'>,</span>       <span class='radius identifier id'>radius</span><span class='comma token'>,</span>       <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
@@ -633,20 +633,20 @@ A command(-set) which composes a circle on the canvas.
       <pre class="lines">
 
 
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68</pre>
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/magick/functions/drawing.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/magick/functions/drawing.rb', line 68</span>
 
 <span class='def def kw'>def</span> <span class='magick_circle identifier id'>magick_circle</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='comma token'>,</span> <span class='radius identifier id'>radius</span><span class='comma token'>,</span> <span class='compose_x identifier id'>compose_x</span><span class='comma token'>,</span> <span class='compose_y identifier id'>compose_y</span><span class='comma token'>,</span> <span class='feather identifier id'>feather</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
   <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'radius'</span><span class='comma token'>,</span>   <span class='radius identifier id'>radius</span><span class='comma token'>,</span>   <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
@@ -836,7 +836,17 @@ A command which applies the fill on the canvas.
 31
 32
 33
-34</pre>
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/magick/functions/drawing.rb', line 17</span>
@@ -855,7 +865,17 @@ A command which applies the fill on the canvas.
     <span class='canvas_y1 identifier id'>canvas_y1</span><span class='comma token'>,</span> <span class='canvas_y2 identifier id'>canvas_y2</span> <span class='assign token'>=</span> <span class='canvas_y2 identifier id'>canvas_y2</span><span class='comma token'>,</span> <span class='canvas_y1 identifier id'>canvas_y1</span> <span class='if if_mod kw'>if</span> <span class='canvas_y1 identifier id'>canvas_y1</span> <span class='gt op'>&gt;</span> <span class='canvas_y2 identifier id'>canvas_y2</span>
     <span class='width identifier id'>width</span>     <span class='assign token'>=</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='canvas_x2 identifier id'>canvas_x2</span> <span class='minus op'>-</span> <span class='canvas_x1 identifier id'>canvas_x1</span><span class='rparen token'>)</span>
     <span class='height identifier id'>height</span>    <span class='assign token'>=</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='canvas_y2 identifier id'>canvas_y2</span> <span class='minus op'>-</span> <span class='canvas_y1 identifier id'>canvas_y1</span><span class='rparen token'>)</span>
-    <span class='overlay identifier id'>overlay</span>   <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='to_canvas identifier id'>to_canvas</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='comma token'>,</span> <span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='rparen token'>)</span>
+    <span class='top identifier id'>top</span>       <span class='assign token'>=</span> <span class='type identifier id'>type</span>
+    <span class='tail identifier id'>tail</span>      <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+    <span class='if if kw'>if</span> <span class='top identifier id'>top</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span><span class='lparen token'>(</span><span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='List constant id'>List</span><span class='rparen token'>)</span>
+      <span class='tail identifier id'>tail</span> <span class='assign token'>=</span> <span class='top identifier id'>top</span><span class='dot token'>.</span><span class='value identifier id'>value</span>
+      <span class='top identifier id'>top</span>  <span class='assign token'>=</span> <span class='tail identifier id'>tail</span><span class='dot token'>.</span><span class='shift identifier id'>shift</span>
+    <span class='end end kw'>end</span>
+    <span class='overlay identifier id'>overlay</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='to_canvas identifier id'>to_canvas</span><span class='lparen token'>(</span><span class='top identifier id'>top</span><span class='comma token'>,</span> <span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='rparen token'>)</span>
+    <span class='tail identifier id'>tail</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='mask_type identifier id'>mask_type</span><span class='bitor op'>|</span>
+      <span class='mask_canvas identifier id'>mask_canvas</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='to_canvas identifier id'>to_canvas</span><span class='lparen token'>(</span><span class='mask_type identifier id'>mask_type</span><span class='comma token'>,</span> <span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='rparen token'>)</span>
+      <span class='overlay identifier id'>overlay</span>     <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Canvas constant id'>Canvas</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='overlay identifier id'>overlay</span><span class='comma token'>,</span> <span class='magick_mask identifier id'>magick_mask</span><span class='lparen token'>(</span><span class='mask_canvas identifier id'>mask_canvas</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
     <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='compose identifier id'>compose</span><span class='lparen token'>(</span><span class='overlay identifier id'>overlay</span><span class='comma token'>,</span> <span class='canvas_x1 identifier id'>canvas_x1</span><span class='comma token'>,</span> <span class='canvas_y1 identifier id'>canvas_y1</span><span class='rparen token'>)</span>
   <span class='end end kw'>end</span>
 <span class='end end kw'>end</span>
@@ -870,7 +890,7 @@ A command which applies the fill on the canvas.
 </div>
     
     <div id="footer">
-  Generated on Fri Apr  8 20:21:00 2011 by 
+  Generated on Fri Apr  8 21:19:23 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.8.7).
 </div>

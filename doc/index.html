@@ -94,6 +94,7 @@ The generated file is saved in the configured images directory with a <code>.png
 <ul>
 <li>Solid color</li>
 <li>Linear gradient</li>
+<li>Canvas / pattern (see below)</li>
 </ul>
 
 
@@ -107,7 +108,14 @@ The generated file is saved in the configured images directory with a <code>.png
 
 <span class='comment val'># Fill canvas leaving a 10px edge</span>
 <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>320</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>200</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='fill identifier id'>fill</span><span class='lparen token'>(</span><span class='blue identifier id'>blue</span><span class='comma token'>,</span> <span class='integer val'>10</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>10</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>-10</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>-10</span><span class='px identifier id'>px</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-</pre></li>
+
+<span class='comment val'># Fill using another canvas</span>
+<span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>320</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>200</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='fill identifier id'>fill</span><span class='lparen token'>(</span>
+  <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>10</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>10</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='fill identifier id'>fill</span><span class='lparen token'>(</span><span class='red identifier id'>red</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+<span class='rparen token'>)</span><span class='rparen token'>)</span>
+</pre>
+
+<p>If <code>type</code> is a list, the top item is used to generate the fill and every other item is applied as a mask. See examples for <code>magick_pattern</code>.</p></li>
 <li><p><code>magick_border(type, radius = nil, width = nil, top_left = nil, top_right = nil, bottom_right = nil, bottom_left = nil)</code></p>
 
 <p>Draws a (rounded) border around the canvas with the given width and fill <code>type</code>. Supported types as:</p>
@@ -164,6 +172,14 @@ The generated file is saved in the configured images directory with a <code>.png
 <pre class="code"><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='linear identifier id'>linear</span><span class='minus op'>-</span><span class='gradient identifier id'>gradient</span><span class='lparen token'>(</span>
   <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='color identifier id'>color</span><span class='minus op'>-</span><span class='stop identifier id'>stop</span><span class='lparen token'>(</span><span class='integer val'>25</span><span class='mod op'>%</span><span class='comma token'>,</span> <span class='red identifier id'>red</span><span class='rparen token'>)</span><span class='comma token'>,</span>
   <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='color identifier id'>color</span><span class='minus op'>-</span><span class='stop identifier id'>stop</span><span class='lparen token'>(</span><span class='integer val'>75</span><span class='mod op'>%</span><span class='comma token'>,</span> <span class='blue identifier id'>blue</span><span class='rparen token'>)</span>
+<span class='rparen token'>)</span>
+</pre>
+
+<p>A shorter (implicit) version of the above is also available:</p>
+
+<pre class="code"><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='linear identifier id'>linear</span><span class='minus op'>-</span><span class='gradient identifier id'>gradient</span><span class='lparen token'>(</span>
+  <span class='red identifier id'>red</span> <span class='integer val'>25</span><span class='mod op'>%</span><span class='comma token'>,</span>
+  <span class='blue identifier id'>blue</span> <span class='integer val'>75</span><span class='mod op'>%</span>
 <span class='rparen token'>)</span>
 </pre>
 
@@ -255,6 +271,18 @@ The generated file is saved in the configured images directory with a <code>.png
     <span class='rparen token'>)</span>
   <span class='rparen token'>)</span>
 <span class='rparen token'>)</span><span class='semicolon token'>;</span>
+</pre>
+
+<p>An easier and quicker way to apply colored patterns is to pass a Sass list to <code>magick_fill</code>:</p>
+
+<pre class="code"><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='fill identifier id'>fill</span><span class='lparen token'>(</span>
+  <span class='red identifier id'>red</span>  <span class='regexp val'>//</span> <span class='NOTE constant id'>NOTE</span><span class='colon op'>:</span> <span class='no identifier id'>no</span> <span class='trailing identifier id'>trailing</span> <span class='comma identifier id'>comma</span>
+  <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='pattern identifier id'>pattern</span><span class='lparen token'>(</span><span class='integer val'>3</span><span class='comma token'>,</span> <span class='integer val'>3</span><span class='comma token'>,</span>
+    <span class='_ identifier id'>_</span> <span class='_ identifier id'>_</span> <span class='x identifier id'>x</span>
+    <span class='_ identifier id'>_</span> <span class='x identifier id'>x</span> <span class='_ identifier id'>_</span>
+    <span class='x identifier id'>x</span> <span class='_ identifier id'>_</span> <span class='_ identifier id'>_</span>
+  <span class='rparen token'>)</span>
+<span class='rparen token'>)</span>
 </pre></li>
 </ul>
 
@@ -287,7 +315,7 @@ Documentation is sparse, speed is a major issue and there are probably a lot of 
 The Ruby community for being awesome and welcoming a PHP stranger.</p></div></div>
     
     <div id="footer">
-  Generated on Fri Apr  8 20:20:55 2011 by 
+  Generated on Fri Apr  8 21:19:18 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.8.7).
 </div>

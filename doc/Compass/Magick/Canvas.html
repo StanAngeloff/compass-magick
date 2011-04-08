@@ -168,6 +168,30 @@ Initializes a new Canvas instance.
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#tile-instance_method" title="#tile (instance method)">- (Canvas) <strong>tile</strong>(width, height) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Tile the Canvas to fill the region defined by `width` and `height`.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#to_data_uri-instance_method" title="#to_data_uri (instance method)">- (String) <strong>to_data_uri</strong>(options = {}) </a>
     
 
@@ -581,7 +605,78 @@ The list of commands to execute on the Canvas instance.
     
     
       <div class="method_details first">
-  <p class="signature first" id="to_data_uri-instance_method">
+  <p class="signature first" id="tile-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Compass::Magick::Canvas (class)">Canvas</a></span></tt>) <strong>tile</strong>(width, height) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Tile the Canvas to fill the region defined by `width` and `height`.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Compass::Magick::Canvas (class)">Canvas</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+A new Canvas instance that fills the given region.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+79
+80
+81
+82
+83
+84
+85
+86
+87</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/magick/canvas.rb', line 79</span>
+
+<span class='def def kw'>def</span> <span class='tile identifier id'>tile</span><span class='lparen token'>(</span><span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='rparen token'>)</span>
+  <span class='canvas identifier id'>canvas</span> <span class='assign token'>=</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Canvas constant id'>Canvas</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='height identifier id'>height</span><span class='rparen token'>)</span>
+  <span class='for for kw'>for</span> <span class='y identifier id'>y</span> <span class='in in kw'>in</span> <span class='lparen token'>(</span><span class='integer val'>0</span><span class='dot3 op'>...</span><span class='height identifier id'>height</span><span class='rparen token'>)</span>
+    <span class='for for kw'>for</span> <span class='x identifier id'>x</span> <span class='in in kw'>in</span> <span class='lparen token'>(</span><span class='integer val'>0</span><span class='dot3 op'>...</span><span class='width identifier id'>width</span><span class='rparen token'>)</span>
+      <span class='canvas identifier id'>canvas</span><span class='dot token'>.</span><span class='set_pixel identifier id'>set_pixel</span><span class='lparen token'>(</span><span class='x identifier id'>x</span><span class='comma token'>,</span> <span class='y identifier id'>y</span><span class='comma token'>,</span> <span class='@pixels ivar id'>@pixels</span><span class='lbrack token'>[</span><span class='lparen token'>(</span><span class='x identifier id'>x</span> <span class='mod op'>%</span> <span class='@width ivar id'>@width</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='y identifier id'>y</span> <span class='mod op'>%</span> <span class='@height ivar id'>@height</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='@height ivar id'>@height</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='canvas identifier id'>canvas</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_data_uri-instance_method">
   
     - (<tt>String</tt>) <strong>to_data_uri</strong>(options = {}) 
   
@@ -650,7 +745,7 @@ A Base64 encoded PNG-24 Data URI for the generated image.
 </div>
     
     <div id="footer">
-  Generated on Fri Apr  8 20:21:01 2011 by 
+  Generated on Fri Apr  8 21:19:25 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.8.7).
 </div>
