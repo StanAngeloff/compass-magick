@@ -54,6 +54,7 @@ APIs
 
     * Solid color
     * Linear gradient
+    * Canvas / pattern (see below)
 
   **Example:**
 
@@ -65,6 +66,11 @@ APIs
 
       # Fill canvas leaving a 10px edge
       magick-canvas(320px, 200px, magick-fill(blue, 10px, 10px, -10px, -10px))
+
+      # Fill using another canvas
+      magick-canvas(320px, 200px, magick-fill(
+        magick-canvas(10px, 10px, magick-fill(red))
+      ))
 
 - `magick_border(type, radius = nil, width = nil, top_left = nil, top_right = nil, bottom_right = nil, bottom_left = nil)`
 

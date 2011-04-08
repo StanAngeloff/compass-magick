@@ -73,6 +73,19 @@ module Compass::Magick
 
     alias :to_s :to_data_uri
 
+    # Tile the Canvas to fill the region defined by `width` and `height`.
+    #
+    # @return {Canvas} A new Canvas instance that fills the given region.
+    def tile(width, height)
+      canvas = ChunkyPNG::Canvas.new(width, height)
+      for y in (0...height)
+        for x in (0...width)
+          canvas.set_pixel(x, y, @pixels[(x % @width) + (y % @height) * @height])
+        end
+      end
+      canvas
+    end
+
     private
 
     def inherit(canvas, copy = true)
