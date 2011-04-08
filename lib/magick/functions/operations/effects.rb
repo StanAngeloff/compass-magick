@@ -61,8 +61,28 @@ module Compass::Magick
           )
         end
       end
-            ChunkyPNG::Color.a(pixel)
-          )
+
+      # Adjusts the saturation of a color by changing its [R, G, B]
+      # components matching the highest intensity.
+      #
+      # Copyright (c) 2010, Ryan LeFevre
+      # http://www.camanjs.com
+      #
+      # @param [Sass::Script::Number] adjust Saturation value as a float,
+      #   above 0.0.
+      # @return {Effect} A command which applies the saturation to the canvas.
+      def saturation(adjust = nil)
+        Compass::Magick::Utils.assert_type 'adjust', adjust, Sass::Script::Number
+        saturation_adjust = Compass::Magick::Utils.value_of(adjust, 1.0, 0.5) * -1;
+        Effect.new do |pixel|
+          r   = ChunkyPNG::Color.r(pixel)
+          g   = ChunkyPNG::Color.g(pixel)
+          b   = ChunkyPNG::Color.b(pixel)
+          max = [r, g, b].max
+          r   = r + (max - r) * saturation_adjust unless r == max
+          g   = g + (max - g) * saturation_adjust unless g == max
+          b   = b + (max - b) * saturation_adjust unless b == max
+          ChunkyPNG::Color.rgba(Effect.clamp(r), Effect.clamp(g), Effect.clamp(b), ChunkyPNG::Color.a(pixel))
         end
       end
     end
