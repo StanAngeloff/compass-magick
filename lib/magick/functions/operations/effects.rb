@@ -29,12 +29,12 @@ module Compass::Magick
       #   canvas.
       def brightness(adjust = nil)
         Compass::Magick::Utils.assert_type 'adjust', adjust, Sass::Script::Number
-        brightness_adjust = (255 * Compass::Magick::Utils.value_of(adjust, 1.0, 0.5)).to_i
+        brightness_adjust = 255 * Compass::Magick::Utils.value_of(adjust, 1.0, 0.5)
         Effect.new do |pixel|
           ChunkyPNG::Color.rgba(
-            [0, [ChunkyPNG::Color.r(pixel) + brightness_adjust, 255].min].max,
-            [0, [ChunkyPNG::Color.g(pixel) + brightness_adjust, 255].min].max,
-            [0, [ChunkyPNG::Color.b(pixel) + brightness_adjust, 255].min].max,
+            Effect.clamp(ChunkyPNG::Color.r(pixel) + brightness_adjust),
+            Effect.clamp(ChunkyPNG::Color.g(pixel) + brightness_adjust),
+            Effect.clamp(ChunkyPNG::Color.b(pixel) + brightness_adjust),
             ChunkyPNG::Color.a(pixel)
           )
         end
@@ -54,9 +54,13 @@ module Compass::Magick
         contrast_adjust = (1.0 + Compass::Magick::Utils.value_of(adjust, 1.0, 0.5))
         Effect.new do |pixel|
           ChunkyPNG::Color.rgba(
-            [0, [(((ChunkyPNG::Color.r(pixel) / 255.0 - 0.5) * contrast_adjust + 0.5) * 255).to_i, 255].min].max,
-            [0, [(((ChunkyPNG::Color.g(pixel) / 255.0 - 0.5) * contrast_adjust + 0.5) * 255).to_i, 255].min].max,
-            [0, [(((ChunkyPNG::Color.b(pixel) / 255.0 - 0.5) * contrast_adjust + 0.5) * 255).to_i, 255].min].max,
+            Effect.clamp(((ChunkyPNG::Color.r(pixel) / 255.0 - 0.5) * contrast_adjust + 0.5) * 255),
+            Effect.clamp(((ChunkyPNG::Color.g(pixel) / 255.0 - 0.5) * contrast_adjust + 0.5) * 255),
+            Effect.clamp(((ChunkyPNG::Color.b(pixel) / 255.0 - 0.5) * contrast_adjust + 0.5) * 255),
+            ChunkyPNG::Color.a(pixel)
+          )
+        end
+      end
             ChunkyPNG::Color.a(pixel)
           )
         end

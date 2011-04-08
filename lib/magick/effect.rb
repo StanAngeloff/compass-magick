@@ -22,6 +22,13 @@ module Compass::Magick
         end
       end
     end
+
+    # Clamp value between 0..255 so it doesn't overflow the 8-bit colorspace.
+    #
+    # @param [Float] value The value to clamp.
+    # @return [Integer] The value as an integer between 0..255.
+    def self.clamp(value)
+      [0, [value.to_i, 255].min].max
+    end
   end
 end
-
