@@ -33,6 +33,8 @@ To use Compass Magick within your existing projects, require the plugin from you
 
     require 'magick'
 
+There is a [short tutorial](http://blog.angeloff.name/post/4659977659/compass-magick-tutorial-part-1) available which should guide you through creating a simple themeable button.
+
 APIs
 ----
 
