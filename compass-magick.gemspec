@@ -2,8 +2,8 @@ Gem::Specification.new do |s|
   s.name     = 'compass-magick'
   s.summary  = 'Dynamic image generation for Compass using ChunkyPNG.'
 
-  s.version  = IO.read(File.join(File.dirname(__FILE__), 'lib/magick.rb')).scan(/VERSION\s*=\s*'([^']+)/)
-  s.date     = "#{Time.now.year}-#{Time.now.month}-#{Time.now.day}"
+  s.version  = IO.read(File.join(File.dirname(__FILE__), 'lib/magick.rb')).scan(/VERSION\s*=\s*'([^']+)/).shift.shift.gsub('.git', '')
+  s.date     = Time.now
 
   s.authors  = ['Stan Angeloff']
   s.email    = ['stanimir@angeloff.name']
