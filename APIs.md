@@ -1,11 +1,11 @@
 Compass Magick APIs
 ===================
 
-- `magick-canvas(       canvas, [command[, command[, …]]])`  
-  `magick-canvas(         data, [command[, command[, …]]])`  
-  `magick-canvas(          url, [command[, command[, …]]])`  
-  `magick-canvas(         path, [command[, command[, …]]])`  
-  `magick-canvas(width, height, [command[, command[, …]]])`
+    magick-canvas(       canvas, [command[, command[, …]]])
+    magick-canvas(         data, [command[, command[, …]]])
+    magick-canvas(          url, [command[, command[, …]]])
+    magick-canvas(         path, [command[, command[, …]]])
+    magick-canvas(width, height, [command[, command[, …]]])
 
   This is probably the most important function. It creates a new canvas and execute commands on it. The resulting image is returned as a Base64 encoded Data URL.
 
@@ -19,7 +19,9 @@ Compass Magick APIs
 
   You can use the output of the function to embed your images directly in the stylesheet, however not all browsers and versions support Data URLs.
 
-- `magick-sprite(basename, canvas)`
+------------------------------------------------------------------------------
+
+    magick-sprite(basename, canvas)
 
   Writes the generated canvas to a file encoded as a PNG image. The output is optimized for best compression.  
   The generated file is saved in the configured images directory with a `.png` extension. Directory names are allowed and can be used to group a set of objects together.
@@ -36,7 +38,9 @@ Compass Magick APIs
     // This canvas is part of a group of images, save it in its own directory
     magick-sprite('buttons/glossy/pressed', magick-canvas(/* … */))
 
-- `magick-fill(type, [x1[, y1[, x2[, y2]]]])`
+------------------------------------------------------------------------------
+
+    magick-fill(type, [x1[, y1[, x2[, y2]]]])
 
   Fills the canvas region. Supported types are:
 
@@ -72,7 +76,9 @@ Compass Magick APIs
       magick-linear-gradient(white, black)
     )
 
-- `magick-border(type[, radius[, width[, top_left[, top_right[, bottom_right[, bottom_left]]]]]])`
+------------------------------------------------------------------------------
+
+    magick-border(type[, radius[, width[, top_left[, top_right[, bottom_right[, bottom_left]]]]]])
 
   Draws a border around the canvas with the given width and fill. See `magick-fill` for supported types.  
   When `width` is not given, the border fills the entire image.
@@ -93,7 +99,9 @@ Compass Magick APIs
     // Draws a 1px rainbow border with 10px rounded top corners
     magick-border(magick-linear-gradient(red, green, blue), 10px, 1px, true, true, false, false)
 
-- `magick-corners(radius[, top_left[, top_right[, bottom_right[, bottom_left]]]])`
+------------------------------------------------------------------------------
+
+    magick-corners(radius[, top_left[, top_right[, bottom_right[, bottom_left]]]])
 
   Applies rounded corners around the canvas. This is a essentially `magick-border(white, radius)` applied as a mask (see below for `magick-mask`).
 
@@ -102,7 +110,9 @@ Compass Magick APIs
     // Applies 10px rounding around the corners
     magick-corners(10px)
 
-- `magick-compose(overlay[, x[, y]])`
+------------------------------------------------------------------------------
+
+    magick-compose(overlay[, x[, y]])
 
   Composes one canvas on top of another.
 
@@ -114,8 +124,10 @@ Compass Magick APIs
     // Draws arrow.png at 10px horizontally and vertically centered
     magick-compose(magick-canvas('arrow.png'), 10px, 50%)
 
-- `magick-linear-gradient(       stops)`  
-  `magick-linear-gradient(angle, stops)`
+------------------------------------------------------------------------------
+
+    magick-linear-gradient(       stops)
+    magick-linear-gradient(angle, stops)
 
   Creates a new linear gradient. Compass Magick supports gradients everywhere colors are accepted (e.g., borders). By default the angle of the gradient is 90deg. You can override this by specifying a number as the first argument to the function:
 
@@ -150,7 +162,9 @@ Compass Magick APIs
       )
     )
 
-- `magick-drop-shadow([angle[, distance[, size[, color]]]])`
+------------------------------------------------------------------------------
+
+    magick-drop-shadow([angle[, distance[, size[, color]]]])
 
   Apply a drop shadow effect on the canvas.
 
@@ -181,7 +195,9 @@ Compass Magick APIs
       magick-drop-shadow(270deg)  // Drop shadow is applied on the larger canvas
     )
 
-- `magick-effect(name[, adjust])`
+------------------------------------------------------------------------------
+
+    magick-effect(name[, adjust])
 
   Apply a per-pixel effect on canvas.
 
@@ -200,7 +216,9 @@ Compass Magick APIs
     // Makes the canvas semi-transparent
     magick-effect(fade, 50%)
 
-- `magick-crop([x1[, y1[, x2[, y2]]]])`
+------------------------------------------------------------------------------
+
+    magick-crop([x1[, y1[, x2[, y2]]]])
 
   Crops the canvas to the given region.
 
@@ -209,7 +227,9 @@ Compass Magick APIs
     // Crops 10px on each side
     magick-crop(10px, 10px, -10px, -10px)
 
-- `magick-mask(mask[, x[, y]])`
+------------------------------------------------------------------------------
+
+    magick-mask(mask[, x[, y]])
 
   Applies a mask on the canvas.
 
@@ -221,7 +241,9 @@ Compass Magick APIs
 
   Masks are extremely useful when you have custom shapes, e.g., an iPhone-styled back button. You can use Photoshop (or your software of choice) to produce the mask and let Compass Magick generate the gradient for your theme.
 
-- `magick-pattern(width, height, values)`
+------------------------------------------------------------------------------
+
+    magick-pattern(width, height, values)
 
   Generates a pattern and returns a B/W Canvas ready for masking.
 
