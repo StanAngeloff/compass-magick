@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Compass Magick – Dynamic image generation for Compass</title>
 <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -43,265 +43,57 @@
     
     <div id="content"><div id='filecontents'><h1>Compass Magick</h1>
 
-<p>Dynamic image generation for Compass using ChunkyPNG (no dependency on RMagick, hooray!)</p>
+<p>Dynamic image generation for Compass using ChunkyPNG (no dependency on RMagick).</p>
 
 <h2>Example</h2>
 
-<p>A <a href="http://jaredhardy.com/sassy-buttons/">Sassy Button</a> recreated in Compass Magick:<br/>
-<a href="http://stanangeloff.github.com/compass-magick/">StanAngeloff.github.com/compass-magick/</a></p>
+<pre class="code"><span class='body identifier id'>body</span> <span class='lbrace token'>{</span>
+  <span class='background identifier id'>background</span><span class='colon op'>:</span> <span class='transparent identifier id'>transparent</span> <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>100</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>100</span><span class='px identifier id'>px</span><span class='comma token'>,</span>
+    <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='fill identifier id'>fill</span><span class='lparen token'>(</span><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='linear identifier id'>linear</span><span class='minus op'>-</span><span class='gradient identifier id'>gradient</span><span class='lparen token'>(</span><span class='red identifier id'>red</span><span class='comma token'>,</span> <span class='green identifier id'>green</span><span class='comma token'>,</span> <span class='blue identifier id'>blue</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+  <span class='rparen token'>)</span> <span class='repeat identifier id'>repeat</span><span class='minus op'>-</span><span class='x identifier id'>x</span><span class='semicolon token'>;</span>
+<span class='rbrace token'>}</span>
+</pre>
+
+<p>A CSS3 <a href="http://jaredhardy.com/sassy-buttons/">Sassy Button</a> recreated in Compass Magick:<br/>
+<a href="http://stanangeloff.github.com/compass-magick/">StanAngeloff.github.com/compass-magick/</a> (showcases all features)</p>
 
 <h2>Installation</h2>
 
-<p>There are no official releases or Gems available yet. You can grab the source code from Github and copy it to your local Compass project:</p>
+<p>Installation is simple via RubyGems. <a href="http://beta.compass-style.org">Compass</a> and <a href="https://github.com/wvanbergen/chunky_png">ChunkyPNG</a> are required.</p>
 
-<pre class="code"><span class='cd identifier id'>cd</span> <span class='$COMPASS_PROJECT gvar id'>$COMPASS_PROJECT</span>
-<span class='mkdir identifier id'>mkdir</span> <span class='minus op'>-</span><span class='p identifier id'>p</span> <span class='extensions identifier id'>extensions</span><span class='div op'>/</span><span class='magick identifier id'>magick</span>
-<span class='git identifier id'>git</span> <span class='clone identifier id'>clone</span> <span class='git identifier id'>git</span><span class='symbol val'>:/</span><span class='regexp val'>/github.com/</span><span class='StanAngeloff constant id'>StanAngeloff</span><span class='div op'>/</span><span class='compass identifier id'>compass</span><span class='minus op'>-</span><span class='magick identifier id'>magick</span><span class='dot token'>.</span><span class='git identifier id'>git</span> <span class='extensions identifier id'>extensions</span><span class='div op'>/</span><span class='magick identifier id'>magick</span>
-<span class='compass identifier id'>compass</span> <span class='frameworks identifier id'>frameworks</span> <span class='bitor op'>|</span> <span class='grep identifier id'>grep</span> <span class='magick identifier id'>magick</span>
+<pre class="code"><span class='gem identifier id'>gem</span> <span class='install identifier id'>install</span> <span class='compass identifier id'>compass</span><span class='minus op'>-</span><span class='magick identifier id'>magick</span>
 </pre>
-
-<p>Learn more about <a href="http://beta.compass-style.org/help/tutorials/extensions/">installing ad-hoc extensions in Compass</a>.</p>
 
 <h2>Usage</h2>
 
-<p>Once you have installed Compass Magick locally, you can start using it without including or importing any additional files. The framework is registered and available in all of your documents.</p>
+<p>To start a new Compass project with Magick included:</p>
+
+<pre class="code"><span class='compass identifier id'>compass</span> <span class='create identifier id'>create</span> <span class='minus op'>-</span><span class='r identifier id'>r</span> <span class='magick identifier id'>magick</span> <span class='my_project identifier id'>my_project</span>
+</pre>
+
+<p>To use Compass Magick within your existing projects, require the plugin from your Compass configuration:</p>
+
+<pre class="code"><span class='require identifier id'>require</span> <span class='string val'>'magick'</span>
+</pre>
 
 <h2>APIs</h2>
 
-<ul>
-<li><p><code>magick_canvas(canvas, *commands)</code><br/>
-<code>magick_canvas(data, *commands)</code><br/>
-<code>magick_canvas(url, *commands)</code><br/>
-<code>magick_canvas(path, *commands)</code><br/>
-<code>magick_canvas(width, height, *commands)</code></p>
+<p><a href="https://github.com/StanAngeloff/compass-magick/blob/master/APIs.md">List of all available commands</a>.</p>
 
-<p>Creates a new canvas and execute all commands on the instance. The resulting image is returned as a Base64 encoded Data URL.</p>
-
-<p><strong>Example:</strong></p>
-
-<pre class="code"><span class='comment val'># Create a transparent canvas</span>
-<span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>320</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>200</span><span class='px identifier id'>px</span><span class='rparen token'>)</span>
-</pre></li>
-<li><p><code>magick_sprite(basename, canvas)</code></p>
-
-<p>Writes the canvas to a file, encoded as a PNG image. The output is optimized for best compression.<br/>
-The generated file is saved in the configured images directory with a <code>.png</code> extension. Directory names are allowed and can be used to group a set of objects together.
-(Depending on your configuration) The returned path is relative and has the cache buster appended after the file extension.</p></li>
-<li><p><code>magick_fill(type, x1 = nil, y1 = nil, x2 = nil, y2 = nil)</code></p>
-
-<p>Fills the canvas region with the given <code>type</code>. Supported types as:</p>
-
-<ul>
-<li>Solid color</li>
-<li>Linear gradient</li>
-<li>Canvas / pattern (see below)</li>
-</ul>
-
-
-<p><strong>Example:</strong></p>
-
-<pre class="code"><span class='comment val'># Fill using a solid type</span>
-<span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>320</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>200</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='fill identifier id'>fill</span><span class='lparen token'>(</span><span class='red identifier id'>red</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-
-<span class='comment val'># Fill using a linear-gradient type</span>
-<span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>320</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>200</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='fill identifier id'>fill</span><span class='lparen token'>(</span><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='linear identifier id'>linear</span><span class='minus op'>-</span><span class='gradient identifier id'>gradient</span><span class='lparen token'>(</span><span class='red identifier id'>red</span><span class='comma token'>,</span> <span class='green identifier id'>green</span><span class='comma token'>,</span> <span class='blue identifier id'>blue</span><span class='rparen token'>)</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-
-<span class='comment val'># Fill canvas leaving a 10px edge</span>
-<span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>320</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>200</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='fill identifier id'>fill</span><span class='lparen token'>(</span><span class='blue identifier id'>blue</span><span class='comma token'>,</span> <span class='integer val'>10</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>10</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>-10</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>-10</span><span class='px identifier id'>px</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-
-<span class='comment val'># Fill using another canvas</span>
-<span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>320</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>200</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='fill identifier id'>fill</span><span class='lparen token'>(</span>
-  <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>10</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>10</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='fill identifier id'>fill</span><span class='lparen token'>(</span><span class='red identifier id'>red</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-<span class='rparen token'>)</span><span class='rparen token'>)</span>
-</pre>
-
-<p>If <code>type</code> is a list, the top item is used to generate the fill and every other item is applied as a mask. See examples for <code>magick_pattern</code>.</p></li>
-<li><p><code>magick_border(type, radius = nil, width = nil, top_left = nil, top_right = nil, bottom_right = nil, bottom_left = nil)</code></p>
-
-<p>Draws a (rounded) border around the canvas with the given width and fill <code>type</code>. Supported types as:</p>
-
-<ul>
-<li>Solid color</li>
-<li>Linear gradient.</li>
-</ul>
-
-
-<p>When <code>width</code> is not given, the border fills the entire image.</p>
-
-<p><strong>Example:</strong></p>
-
-<pre class="code"><span class='comment val'># Draw a 1px border</span>
-<span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>320</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>200</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='border identifier id'>border</span><span class='lparen token'>(</span><span class='black identifier id'>black</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='comma token'>,</span> <span class='integer val'>1</span><span class='px identifier id'>px</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-
-<span class='comment val'># Draw a 10px rounded border filling the entire canvas</span>
-<span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>320</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>200</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='border identifier id'>border</span><span class='lparen token'>(</span><span class='black identifier id'>black</span><span class='comma token'>,</span> <span class='integer val'>10</span><span class='px identifier id'>px</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-</pre></li>
-<li><p><code>magick_corners(radius, top_left = nil, top_right = nil, bottom_right = nil, bottom_left = nil)</code></p>
-
-<p>Applies rounded corners around the canvas. Can be used in combination with <code>magick-border</code> to create buttons.</p>
-
-<p><strong>Example:</strong></p>
-
-<pre class="code"><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>320</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>200</span><span class='px identifier id'>px</span><span class='comma token'>,</span>
-  <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='fill identifier id'>fill</span><span class='lparen token'>(</span><span class='black identifier id'>black</span><span class='rparen token'>)</span><span class='comma token'>,</span>
-  <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='border identifier id'>border</span><span class='lparen token'>(</span><span class='white identifier id'>white</span><span class='comma token'>,</span> <span class='integer val'>10</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>1</span><span class='px identifier id'>px</span><span class='rparen token'>)</span><span class='comma token'>,</span>
-  <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='corners identifier id'>corners</span><span class='lparen token'>(</span><span class='integer val'>10</span><span class='px identifier id'>px</span><span class='rparen token'>)</span>
-<span class='rparen token'>)</span>
-</pre></li>
-<li><p><code>magick_compose(overlay, x = nil, y = nil)</code></p>
-
-<p>Composes one canvas on top of another.</p>
-
-<p><strong>Example:</strong></p>
-
-<pre class="code"><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>320</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>200</span><span class='px identifier id'>px</span><span class='comma token'>,</span>
-  <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='fill identifier id'>fill</span><span class='lparen token'>(</span><span class='yellow identifier id'>yellow</span><span class='rparen token'>)</span><span class='comma token'>,</span>
-  <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='compose identifier id'>compose</span><span class='lparen token'>(</span><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='string val'>'icon.png'</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-<span class='rparen token'>)</span>
-</pre></li>
-<li><p><code>magick_linear_gradient(angle, stops)</code><br/>
-<code>magick_linear_gradient(stops)</code></p>
-
-<p>Creates a new linear gradient. Compass Magick supports gradients everywhere colors are accepted (e.g., borders). By default the angle of the gradient is 90deg. You can override this by specifying a number as the first argument to the function:</p>
-
-<pre class="code"><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='linear identifier id'>linear</span><span class='minus op'>-</span><span class='gradient identifier id'>gradient</span><span class='lparen token'>(</span><span class='integer val'>45</span><span class='deg identifier id'>deg</span><span class='comma token'>,</span> <span class='red identifier id'>red</span><span class='comma token'>,</span> <span class='green identifier id'>green</span><span class='comma token'>,</span> <span class='blue identifier id'>blue</span><span class='rparen token'>)</span>
-</pre>
-
-<p>If you specify only color names, they will be positioned such as they are equally apart. You can override this behaviour by using color stops:</p>
-
-<pre class="code"><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='linear identifier id'>linear</span><span class='minus op'>-</span><span class='gradient identifier id'>gradient</span><span class='lparen token'>(</span>
-  <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='color identifier id'>color</span><span class='minus op'>-</span><span class='stop identifier id'>stop</span><span class='lparen token'>(</span><span class='integer val'>25</span><span class='mod op'>%</span><span class='comma token'>,</span> <span class='red identifier id'>red</span><span class='rparen token'>)</span><span class='comma token'>,</span>
-  <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='color identifier id'>color</span><span class='minus op'>-</span><span class='stop identifier id'>stop</span><span class='lparen token'>(</span><span class='integer val'>75</span><span class='mod op'>%</span><span class='comma token'>,</span> <span class='blue identifier id'>blue</span><span class='rparen token'>)</span>
-<span class='rparen token'>)</span>
-</pre>
-
-<p>A shorter (implicit) version of the above is also available:</p>
-
-<pre class="code"><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='linear identifier id'>linear</span><span class='minus op'>-</span><span class='gradient identifier id'>gradient</span><span class='lparen token'>(</span>
-  <span class='red identifier id'>red</span> <span class='integer val'>25</span><span class='mod op'>%</span><span class='comma token'>,</span>
-  <span class='blue identifier id'>blue</span> <span class='integer val'>75</span><span class='mod op'>%</span>
-<span class='rparen token'>)</span>
-</pre>
-
-<p>Gradients cannot be used directly on the canvas. You can only apply them using another function:</p>
-
-<pre class="code"><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='fill identifier id'>fill</span><span class='lparen token'>(</span><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='linear identifier id'>linear</span><span class='minus op'>-</span><span class='gradient identifier id'>gradient</span><span class='lparen token'>(</span><span class='red identifier id'>red</span><span class='comma token'>,</span> <span class='green identifier id'>green</span><span class='comma token'>,</span> <span class='blue identifier id'>blue</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-</pre>
-
-<p><strong>Example:</strong></p>
-
-<pre class="code"><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>320</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>200</span><span class='px identifier id'>px</span><span class='comma token'>,</span>
-  <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='fill identifier id'>fill</span><span class='lparen token'>(</span><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='linear identifier id'>linear</span><span class='minus op'>-</span><span class='gradient identifier id'>gradient</span><span class='lparen token'>(</span>
-    <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='color identifier id'>color</span><span class='minus op'>-</span><span class='stop identifier id'>stop</span><span class='lparen token'>(</span><span class='integer val'>25</span><span class='mod op'>%</span><span class='comma token'>,</span> <span class='yellow identifier id'>yellow</span><span class='rparen token'>)</span><span class='comma token'>,</span>
-    <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='color identifier id'>color</span><span class='minus op'>-</span><span class='stop identifier id'>stop</span><span class='lparen token'>(</span><span class='integer val'>50</span><span class='mod op'>%</span><span class='comma token'>,</span> <span class='red identifier id'>red</span><span class='rparen token'>)</span>
-  <span class='rparen token'>)</span><span class='rparen token'>)</span>
-<span class='rparen token'>)</span>
-</pre></li>
-<li><p><code>magick_drop_shadow(angle = nil, distance = nil, size = nil, color = nil)</code></p>
-
-<p>Apply a drop shadow effect on the canvas.</p>
-
-<p>The alpha channel is used to construct a mask of the original image which is then used as a base for the horizontal/vertical shadow pass.</p>
-
-<p><strong>Example:</strong></p>
-
-<pre class="code"><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>300</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>300</span><span class='px identifier id'>px</span><span class='comma token'>,</span>
-  <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='compose identifier id'>compose</span><span class='lparen token'>(</span><span class='string val'>'sample.png'</span><span class='comma token'>,</span> <span class='integer val'>50</span><span class='mod op'>%</span><span class='comma token'>,</span> <span class='integer val'>50</span><span class='mod op'>%</span><span class='rparen token'>)</span><span class='comma token'>,</span>
-  <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='drop identifier id'>drop</span><span class='minus op'>-</span><span class='shadow identifier id'>shadow</span><span class='lparen token'>(</span><span class='integer val'>90</span><span class='deg identifier id'>deg</span><span class='comma token'>,</span> <span class='integer val'>5</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>5</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='black identifier id'>black</span><span class='rparen token'>)</span>
-<span class='rparen token'>)</span>
-</pre></li>
-<li><p><code>magick_effect(fade, adjust)</code><br/>
-<code>magick_effect(brightness, adjust)</code><br/>
-<code>magick_effect(contrast, adjust)</code></p>
-
-<p>Apply the selected effect on canvas.</p>
-
-<ul>
-<li><code>fade</code> lowers the alpha channel by <code>adjust</code> (0%—100% or 0—1.0)</li>
-<li><code>brightness</code> changes brightness by adjusting the [R, G, B] channels by <code>adjust</code> (-100%—100% or -255—255)</li>
-<li><code>contrast</code> changes contrast by adjusting the [R, G, B] channels by <code>adjust</code> (at least 0%, can be above 100% to achieve over-exposure)</li>
-</ul>
-
-
-<p><strong>Example:</strong></p>
-
-<pre class="code"><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='string val'>'sample.png'</span><span class='comma token'>,</span> <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='effect identifier id'>effect</span><span class='lparen token'>(</span><span class='contrast identifier id'>contrast</span><span class='comma token'>,</span> <span class='integer val'>50</span><span class='mod op'>%</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-</pre></li>
-<li><p><code>magick_crop(x1 = nil, y1 = nil, x2 = nil, y2 = nil)</code></p>
-
-<p>Crops the canvas to the given region.</p>
-
-<p><strong>Example:</strong></p>
-
-<pre class="code"><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='string val'>'sample.png'</span><span class='comma token'>,</span> <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='crop identifier id'>crop</span><span class='lparen token'>(</span><span class='integer val'>10</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>10</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>-10</span><span class='px identifier id'>px</span><span class='comma token'>,</span> <span class='integer val'>-10</span><span class='px identifier id'>px</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-</pre></li>
-<li><p><code>magick_mask(mask, x = nil, y = nil)</code></p>
-
-<p>Applies the mask on the canvas.</p>
-
-<p>Composes the alpha channel from the <code>mask</code> image with the one from the canvas and return the original canvas with the alpha-channel modified. Any opaque pixels from the <code>mask</code> are converted to grayscale using BT709 luminosity factors, i.e. black is fully transparent and white is fully opaque.</p>
-
-<p><strong>Example:</strong></p>
-
-<pre class="code"><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='string val'>'sample.png'</span><span class='comma token'>,</span> <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='mask identifier id'>mask</span><span class='lparen token'>(</span><span class='string val'>'mask.png'</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-</pre></li>
-<li><p><code>magick_pattern(width, height, values)</code></p>
-
-<p>Draws a pattern and returns a B/W Canvas ready for masking.</p>
-
-<p>This pattern is defined as a list of values (or a multi-line string) where <code>1</code>, <code>true</code>, <code>yes</code>, <code>X</code>, <code>*</code> and <code>+</code> mark where an opaque white pixel will be placed. Any other value is ignored and is transparent in the output. The size of the list must match the <code>width</code>/<code>height</code>.</p>
-
-<p><strong>Example:</strong></p>
-
-<pre class="code"><span class='comment val'># Diagonal stripes</span>
-<span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='pattern identifier id'>pattern</span><span class='lparen token'>(</span><span class='integer val'>3</span><span class='comma token'>,</span> <span class='integer val'>3</span><span class='comma token'>,</span>
-  <span class='x identifier id'>x</span> <span class='_ identifier id'>_</span> <span class='_ identifier id'>_</span>
-  <span class='_ identifier id'>_</span> <span class='x identifier id'>x</span> <span class='_ identifier id'>_</span>
-  <span class='_ identifier id'>_</span> <span class='_ identifier id'>_</span> <span class='x identifier id'>x</span>
-<span class='rparen token'>)</span><span class='semicolon token'>;</span>
-
-<span class='comment val'># Red diagonal stripes</span>
-<span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='canvas identifier id'>canvas</span><span class='lparen token'>(</span><span class='integer val'>3</span><span class='comma token'>,</span> <span class='integer val'>3</span><span class='comma token'>,</span>
-  <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='fill identifier id'>fill</span><span class='lparen token'>(</span><span class='red identifier id'>red</span><span class='rparen token'>)</span><span class='comma token'>,</span>
-  <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='mask identifier id'>mask</span><span class='lparen token'>(</span>
-    <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='pattern identifier id'>pattern</span><span class='lparen token'>(</span><span class='integer val'>3</span><span class='comma token'>,</span> <span class='integer val'>3</span><span class='comma token'>,</span>
-      <span class='_ identifier id'>_</span> <span class='_ identifier id'>_</span> <span class='x identifier id'>x</span>
-      <span class='_ identifier id'>_</span> <span class='x identifier id'>x</span> <span class='_ identifier id'>_</span>
-      <span class='x identifier id'>x</span> <span class='_ identifier id'>_</span> <span class='_ identifier id'>_</span>
-    <span class='rparen token'>)</span>
-  <span class='rparen token'>)</span>
-<span class='rparen token'>)</span><span class='semicolon token'>;</span>
-</pre>
-
-<p>An easier and quicker way to apply colored patterns is to pass a Sass list to <code>magick_fill</code>:</p>
-
-<pre class="code"><span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='fill identifier id'>fill</span><span class='lparen token'>(</span>
-  <span class='red identifier id'>red</span>  <span class='regexp val'>//</span> <span class='NOTE constant id'>NOTE</span><span class='colon op'>:</span> <span class='no identifier id'>no</span> <span class='trailing identifier id'>trailing</span> <span class='comma identifier id'>comma</span>
-  <span class='magick identifier id'>magick</span><span class='minus op'>-</span><span class='pattern identifier id'>pattern</span><span class='lparen token'>(</span><span class='integer val'>3</span><span class='comma token'>,</span> <span class='integer val'>3</span><span class='comma token'>,</span>
-    <span class='_ identifier id'>_</span> <span class='_ identifier id'>_</span> <span class='x identifier id'>x</span>
-    <span class='_ identifier id'>_</span> <span class='x identifier id'>x</span> <span class='_ identifier id'>_</span>
-    <span class='x identifier id'>x</span> <span class='_ identifier id'>_</span> <span class='_ identifier id'>_</span>
-  <span class='rparen token'>)</span>
-<span class='rparen token'>)</span>
-</pre></li>
-</ul>
-
-
-<p>RDoc is <a href="http://stanangeloff.github.com/compass-magick/doc/frames.html">available for the entire project</a>.</p>
+<p>RDoc is also <a href="http://stanangeloff.github.com/compass-magick/doc/frames.html">available for the entire project</a>.</p>
 
 <h2>Contribute</h2>
 
-<p>Compass Magick is very much a work in progress (hence no official release yet).<br/>
-Documentation is sparse, speed is a major issue and there are probably a lot of bugs.</p>
+<p>Compass Magick is very much a work in progress. Documentation is sparse, speed is a major issue and there are probably a lot of bugs.</p>
 
 <p>You can help by looking at any of the following areas (ordered by priority):</p>
 
 <ul>
-<li><a href="https://github.com/StanAngeloff/compass-magick/blob/master/lib/magick/canvas.rb#L76">Optimizing the code</a> as floating point math may not always be needed and too many object copies sucks</li>
+<li><a href="https://github.com/StanAngeloff/compass-magick/blob/master/lib/magick/canvas.rb#L98">Optimizing the code</a> as floating point math may not always be needed and too many object copies sucks</li>
 <li><a href="https://github.com/StanAngeloff/compass-magick/tree/master/spec">Writing tests</a> to make sure nothing breaks in new versions</li>
-<li><a href="https://github.com/StanAngeloff/compass-magick/tree/master/lib">Performing code reviews</a> since this is my very first Ruby project and I don't have any experience with the language so there are probably many st<em>oo</em>pid things in code</li>
+<li><a href="https://github.com/StanAngeloff/compass-magick/tree/master/lib">Performing code reviews</a> since this is my very first Ruby project and I don't have any experience with the language so there are probably many st<strong>OO</strong>pid things in code</li>
 <li><a href="http://stanangeloff.github.com/compass-magick/doc/frames.html">Improving RDoc</a> because you can never have too much documentation</li>
-<li><a href="http://stanangeloff.github.com/compass-magick/doc/Compass/Magick/Plugins.html">Adding new plugins</a>. Compass Magick <a href="https://github.com/StanAngeloff/compass-magick/blob/master/lib/magick.rb#L31">looks</a> for Ruby files and imports those on startup</li>
+<li><a href="http://stanangeloff.github.com/compass-magick/doc/Compass/Magick/Plugins.html">Adding new plugins</a>. Compass Magick <a href="https://github.com/StanAngeloff/compass-magick/blob/master/lib/magick.rb#L39">looks</a> for Ruby files and imports those on startup</li>
 <li><a href="https://github.com/StanAngeloff/compass-magick/tree/gh-pages">Submitting more examples</a> to show off what Compass Magick can do</li>
 <li><a href="https://github.com/StanAngeloff/compass-magick/issues">Opening issues</a> for features you find missing or broken</li>
 <li>Porting over some of <a href="http://camanjs.com/">CamanJS</a>' goodness, we all love visual effects</li>
@@ -310,14 +102,21 @@ Documentation is sparse, speed is a major issue and there are probably a lot of 
 
 <h3>Credits</h3>
 
-<p>I would like to thank <a href="http://twitter.com/#!/wvanbergen">Willem van Bergen</a> for his great work on <a href="https://github.com/wvanbergen/chunky_png">ChunkyPNG</a> which has been a major source of knowledge while working on the project.<br/>
-<a href="http://twitter.com/#!/chriseppstein">Chris Eppstein</a> for <a href="https://github.com/chriseppstein/compass">Compass</a> itself.<br/>
-The Ruby community for being awesome and welcoming a PHP stranger.</p></div></div>
+<ul>
+<li><a href="http://twitter.com/#!/wvanbergen">Willem van Bergen</a> for his great work on ChunkyPNG which has been a major source of knowledge while working on the project</li>
+<li><a href="http://twitter.com/#!/chriseppstein">Chris Eppstein</a> for <a href="https://github.com/chriseppstein/compass">Compass</a> itself</li>
+<li>The Ruby community for being awesome and welcoming a stranger</li>
+</ul>
+
+
+<h3>Copyright</h3>
+
+<p>Copyright (c) 2011 Stan Angeloff. See <a href="https://github.com/StanAngeloff/compass-magick/blob/master/LICENSE.md">LICENSE.md</a> for details.</p></div></div>
     
     <div id="footer">
-  Generated on Fri Apr  8 21:19:18 2011 by 
+  Generated on Sat Apr 16 16:34:06 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.4 (ruby-1.8.7).
+  0.6.7 (ruby-1.8.7).
 </div>
 
   </body>

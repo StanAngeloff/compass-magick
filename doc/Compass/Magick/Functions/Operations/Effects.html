@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Module: Compass::Magick::Functions::Operations::Effects</title>
 <link rel="stylesheet" href="../../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -74,10 +74,9 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>
-Methods for performing various visual effects on a
-<span class='object_link'><a href="../../Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span>, e.g., fade, desaturate, etc.
-</p>
+    
+<p>Methods for performing various visual effects on a
+<span class='object_link'><a href="../../Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span>, e.g., fade, desaturate, etc.</p>
 
 
   </div>
@@ -111,10 +110,9 @@ Methods for performing various visual effects on a
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Adjusts the brightness of a color by changing its [R, G, B] components by a
-given value.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Adjusts the brightness of a color by changing its [R, G, B] components by a
+given value.</p>
 </div></span>
   
 </li>
@@ -136,10 +134,9 @@ given value.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Adjusts the contrast of a color by changing its [R, G, B] components by a
-given value.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Adjusts the contrast of a color by changing its [R, G, B] components by a
+given value.</p>
 </div></span>
   
 </li>
@@ -161,9 +158,82 @@ given value.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Adjusts the intensity of a color by changing its alpha by a given value.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Adjusts the intensity of a color by changing its alpha by a given value.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#grayscale-instance_method" title="#grayscale (instance method)">- (Effect) <strong>grayscale</strong>(adjust = nil) </a>
+    
+
+    
+      (also: #greyscale)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Adjusts the intensity of a color by changing its [R, G, B] components
+according to BT709 luminosity factors.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#saturation-instance_method" title="#saturation (instance method)">- (Effect) <strong>saturation</strong>(adjust = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Adjusts the saturation of a color by changing its [R, G, B] components
+matching the highest intensity.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#vibrance-instance_method" title="#vibrance (instance method)">- (Effect) <strong>vibrance</strong>(adjust = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Adjusts the vibrance of a color by changing its [R, G, B] components
+matching the average intensity.</p>
 </div></span>
   
 </li>
@@ -187,13 +257,12 @@ Adjusts the intensity of a color by changing its alpha by a given value.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Adjusts the brightness of a color by changing its [R, G, B] components by a
-given value.
-</p>
-<p>
-Copyright &#169; 2010, Ryan LeFevre http://www.camanjs.com
-</p>
+    
+<p>Adjusts the brightness of a color by changing its [R, G, B] components by a
+given value.</p>
+
+<p>Copyright © 2010, Ryan LeFevre <a
+href="http://www.camanjs.com">www.camanjs.com</a></p>
 
 
   </div>
@@ -214,9 +283,8 @@ Copyright &#169; 2010, Ryan LeFevre http://www.camanjs.com
       
       
         &mdash;
-        <div class='inline'><p>
-Brightness value as a float between -1.0 and 1.0.
-</p>
+        <div class='inline'>
+<p>Brightness value as a float between -1.0 and 1.0.</p>
 </div>
       
     </li>
@@ -233,9 +301,8 @@ Brightness value as a float between -1.0 and 1.0.
       
       
         &mdash;
-        <div class='inline'><p>
-A command which applies the Brightness to the canvas.
-</p>
+        <div class='inline'>
+<p>A command which applies the Brightness to the canvas.</p>
 </div>
       
     </li>
@@ -266,12 +333,12 @@ A command which applies the Brightness to the canvas.
 
 <span class='def def kw'>def</span> <span class='brightness identifier id'>brightness</span><span class='lparen token'>(</span><span class='adjust identifier id'>adjust</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
   <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'adjust'</span><span class='comma token'>,</span> <span class='adjust identifier id'>adjust</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
-  <span class='brightness_adjust identifier id'>brightness_adjust</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='integer val'>255</span> <span class='mult op'>*</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='adjust identifier id'>adjust</span><span class='comma token'>,</span> <span class='float val'>1.0</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span>
+  <span class='brightness_adjust identifier id'>brightness_adjust</span> <span class='assign token'>=</span> <span class='integer val'>255</span> <span class='mult op'>*</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='adjust identifier id'>adjust</span><span class='comma token'>,</span> <span class='float val'>1.0</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span>
   <span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='pixel identifier id'>pixel</span><span class='bitor op'>|</span>
     <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='rgba identifier id'>rgba</span><span class='lparen token'>(</span>
-      <span class='lbrack token'>[</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='r identifier id'>r</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='brightness_adjust identifier id'>brightness_adjust</span><span class='comma token'>,</span> <span class='integer val'>255</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='min identifier id'>min</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='max identifier id'>max</span><span class='comma token'>,</span>
-      <span class='lbrack token'>[</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='g identifier id'>g</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='brightness_adjust identifier id'>brightness_adjust</span><span class='comma token'>,</span> <span class='integer val'>255</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='min identifier id'>min</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='max identifier id'>max</span><span class='comma token'>,</span>
-      <span class='lbrack token'>[</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='b identifier id'>b</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='brightness_adjust identifier id'>brightness_adjust</span><span class='comma token'>,</span> <span class='integer val'>255</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='min identifier id'>min</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='max identifier id'>max</span><span class='comma token'>,</span>
+      <span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='clamp identifier id'>clamp</span><span class='lparen token'>(</span><span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='r identifier id'>r</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='brightness_adjust identifier id'>brightness_adjust</span><span class='rparen token'>)</span><span class='comma token'>,</span>
+      <span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='clamp identifier id'>clamp</span><span class='lparen token'>(</span><span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='g identifier id'>g</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='brightness_adjust identifier id'>brightness_adjust</span><span class='rparen token'>)</span><span class='comma token'>,</span>
+      <span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='clamp identifier id'>clamp</span><span class='lparen token'>(</span><span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='b identifier id'>b</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='brightness_adjust identifier id'>brightness_adjust</span><span class='rparen token'>)</span><span class='comma token'>,</span>
       <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='a identifier id'>a</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span>
     <span class='rparen token'>)</span>
   <span class='end end kw'>end</span>
@@ -291,13 +358,12 @@ A command which applies the Brightness to the canvas.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Adjusts the contrast of a color by changing its [R, G, B] components by a
-given value.
-</p>
-<p>
-Copyright &#169; 2010, Ryan LeFevre http://www.camanjs.com
-</p>
+    
+<p>Adjusts the contrast of a color by changing its [R, G, B] components by a
+given value.</p>
+
+<p>Copyright © 2010, Ryan LeFevre <a
+href="http://www.camanjs.com">www.camanjs.com</a></p>
 
 
   </div>
@@ -318,9 +384,8 @@ Copyright &#169; 2010, Ryan LeFevre http://www.camanjs.com
       
       
         &mdash;
-        <div class='inline'><p>
-Contrast value as a float, above 0.0.
-</p>
+        <div class='inline'>
+<p>Contrast value as a float, above 0.0.</p>
 </div>
       
     </li>
@@ -337,9 +402,8 @@ Contrast value as a float, above 0.0.
       
       
         &mdash;
-        <div class='inline'><p>
-A command which applies the contrast to the canvas.
-</p>
+        <div class='inline'>
+<p>A command which applies the contrast to the canvas.</p>
 </div>
       
     </li>
@@ -373,9 +437,9 @@ A command which applies the contrast to the canvas.
   <span class='contrast_adjust identifier id'>contrast_adjust</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='float val'>1.0</span> <span class='plus op'>+</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='adjust identifier id'>adjust</span><span class='comma token'>,</span> <span class='float val'>1.0</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
   <span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='pixel identifier id'>pixel</span><span class='bitor op'>|</span>
     <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='rgba identifier id'>rgba</span><span class='lparen token'>(</span>
-      <span class='lbrack token'>[</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='lparen token'>(</span><span class='lparen token'>(</span><span class='lparen token'>(</span><span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='r identifier id'>r</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span> <span class='div op'>/</span> <span class='float val'>255.0</span> <span class='minus op'>-</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='contrast_adjust identifier id'>contrast_adjust</span> <span class='plus op'>+</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='integer val'>255</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span><span class='comma token'>,</span> <span class='integer val'>255</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='min identifier id'>min</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='max identifier id'>max</span><span class='comma token'>,</span>
-      <span class='lbrack token'>[</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='lparen token'>(</span><span class='lparen token'>(</span><span class='lparen token'>(</span><span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='g identifier id'>g</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span> <span class='div op'>/</span> <span class='float val'>255.0</span> <span class='minus op'>-</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='contrast_adjust identifier id'>contrast_adjust</span> <span class='plus op'>+</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='integer val'>255</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span><span class='comma token'>,</span> <span class='integer val'>255</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='min identifier id'>min</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='max identifier id'>max</span><span class='comma token'>,</span>
-      <span class='lbrack token'>[</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='lparen token'>(</span><span class='lparen token'>(</span><span class='lparen token'>(</span><span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='b identifier id'>b</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span> <span class='div op'>/</span> <span class='float val'>255.0</span> <span class='minus op'>-</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='contrast_adjust identifier id'>contrast_adjust</span> <span class='plus op'>+</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='integer val'>255</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span><span class='comma token'>,</span> <span class='integer val'>255</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='min identifier id'>min</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='max identifier id'>max</span><span class='comma token'>,</span>
+      <span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='clamp identifier id'>clamp</span><span class='lparen token'>(</span><span class='lparen token'>(</span><span class='lparen token'>(</span><span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='r identifier id'>r</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span> <span class='div op'>/</span> <span class='float val'>255.0</span> <span class='minus op'>-</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='contrast_adjust identifier id'>contrast_adjust</span> <span class='plus op'>+</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='integer val'>255</span><span class='rparen token'>)</span><span class='comma token'>,</span>
+      <span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='clamp identifier id'>clamp</span><span class='lparen token'>(</span><span class='lparen token'>(</span><span class='lparen token'>(</span><span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='g identifier id'>g</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span> <span class='div op'>/</span> <span class='float val'>255.0</span> <span class='minus op'>-</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='contrast_adjust identifier id'>contrast_adjust</span> <span class='plus op'>+</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='integer val'>255</span><span class='rparen token'>)</span><span class='comma token'>,</span>
+      <span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='clamp identifier id'>clamp</span><span class='lparen token'>(</span><span class='lparen token'>(</span><span class='lparen token'>(</span><span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='b identifier id'>b</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span> <span class='div op'>/</span> <span class='float val'>255.0</span> <span class='minus op'>-</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='contrast_adjust identifier id'>contrast_adjust</span> <span class='plus op'>+</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='integer val'>255</span><span class='rparen token'>)</span><span class='comma token'>,</span>
       <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='a identifier id'>a</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span>
     <span class='rparen token'>)</span>
   <span class='end end kw'>end</span>
@@ -395,9 +459,8 @@ A command which applies the contrast to the canvas.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Adjusts the intensity of a color by changing its alpha by a given value.
-</p>
+    
+<p>Adjusts the intensity of a color by changing its alpha by a given value.</p>
 
 
   </div>
@@ -418,9 +481,8 @@ Adjusts the intensity of a color by changing its alpha by a given value.
       
       
         &mdash;
-        <div class='inline'><p>
-Fade value as a float between 0.0 and 1.0.
-</p>
+        <div class='inline'>
+<p>Fade value as a float between 0.0 and 1.0.</p>
 </div>
       
     </li>
@@ -437,9 +499,8 @@ Fade value as a float between 0.0 and 1.0.
       
       
         &mdash;
-        <div class='inline'><p>
-A command which applies the fade to the canvas.
-</p>
+        <div class='inline'>
+<p>A command which applies the fade to the canvas.</p>
 </div>
       
     </li>
@@ -472,14 +533,337 @@ A command which applies the fade to the canvas.
 </table>
 </div>
     
+      <div class="method_details ">
+  <p class="signature " id="grayscale-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Effect.html" title="Compass::Magick::Effect (class)">Effect</a></span></tt>) <strong>grayscale</strong>(adjust = nil) 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='greyscale-instance_method'>greyscale</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Adjusts the intensity of a color by changing its [R, G, B] components
+according to BT709 luminosity factors.</p>
+
+<p>Copyright © 2010, Ryan LeFevre <a
+href="http://www.camanjs.com">www.camanjs.com</a></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Sass::Script::Number</tt>)</span>
+      
+      
+        <span class='name'>adjust</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Grayscale factor as a float, above 0.0 and below 1.0.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Effect.html" title="Compass::Magick::Effect (class)">Effect</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A command which applies the intensity to the canvas.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/magick/functions/operations/effects.rb', line 124</span>
+
+<span class='def def kw'>def</span> <span class='grayscale identifier id'>grayscale</span><span class='lparen token'>(</span><span class='adjust identifier id'>adjust</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'adjust'</span><span class='comma token'>,</span> <span class='adjust identifier id'>adjust</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
+  <span class='grayscale_adjust identifier id'>grayscale_adjust</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='adjust identifier id'>adjust</span><span class='comma token'>,</span> <span class='float val'>1.0</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='float val'>1.0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='min identifier id'>min</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='max identifier id'>max</span>
+  <span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='pixel identifier id'>pixel</span><span class='bitor op'>|</span>
+    <span class='r identifier id'>r</span>    <span class='assign token'>=</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='r identifier id'>r</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span>
+    <span class='g identifier id'>g</span>    <span class='assign token'>=</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='g identifier id'>g</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span>
+    <span class='b identifier id'>b</span>    <span class='assign token'>=</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='b identifier id'>b</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span>
+    <span class='gray identifier id'>gray</span> <span class='assign token'>=</span> <span class='r identifier id'>r</span> <span class='mult op'>*</span> <span class='integer val'>0</span><span class='integer val'>.2125</span> <span class='plus op'>+</span> <span class='g identifier id'>g</span> <span class='mult op'>*</span> <span class='integer val'>0</span><span class='integer val'>.7154</span> <span class='plus op'>+</span> <span class='b identifier id'>b</span> <span class='mult op'>*</span> <span class='integer val'>0</span><span class='integer val'>.0721</span>
+    <span class='r identifier id'>r</span>    <span class='assign token'>=</span> <span class='r identifier id'>r</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='gray identifier id'>gray</span> <span class='minus op'>-</span> <span class='r identifier id'>r</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='grayscale_adjust identifier id'>grayscale_adjust</span> <span class='unless unless_mod kw'>unless</span> <span class='r identifier id'>r</span> <span class='eq op'>==</span> <span class='gray identifier id'>gray</span>
+    <span class='g identifier id'>g</span>    <span class='assign token'>=</span> <span class='g identifier id'>g</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='gray identifier id'>gray</span> <span class='minus op'>-</span> <span class='g identifier id'>g</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='grayscale_adjust identifier id'>grayscale_adjust</span> <span class='unless unless_mod kw'>unless</span> <span class='g identifier id'>g</span> <span class='eq op'>==</span> <span class='gray identifier id'>gray</span>
+    <span class='b identifier id'>b</span>    <span class='assign token'>=</span> <span class='b identifier id'>b</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='gray identifier id'>gray</span> <span class='minus op'>-</span> <span class='b identifier id'>b</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='grayscale_adjust identifier id'>grayscale_adjust</span> <span class='unless unless_mod kw'>unless</span> <span class='b identifier id'>b</span> <span class='eq op'>==</span> <span class='gray identifier id'>gray</span>
+    <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='rgba identifier id'>rgba</span><span class='lparen token'>(</span><span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='clamp identifier id'>clamp</span><span class='lparen token'>(</span><span class='r identifier id'>r</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='clamp identifier id'>clamp</span><span class='lparen token'>(</span><span class='g identifier id'>g</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='clamp identifier id'>clamp</span><span class='lparen token'>(</span><span class='b identifier id'>b</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='a identifier id'>a</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="saturation-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Effect.html" title="Compass::Magick::Effect (class)">Effect</a></span></tt>) <strong>saturation</strong>(adjust = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Adjusts the saturation of a color by changing its [R, G, B] components
+matching the highest intensity.</p>
+
+<p>Copyright © 2010, Ryan LeFevre <a
+href="http://www.camanjs.com">www.camanjs.com</a></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Sass::Script::Number</tt>)</span>
+      
+      
+        <span class='name'>adjust</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Saturation value as a float, above 0.0.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Effect.html" title="Compass::Magick::Effect (class)">Effect</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A command which applies the saturation to the canvas.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/magick/functions/operations/effects.rb', line 74</span>
+
+<span class='def def kw'>def</span> <span class='saturation identifier id'>saturation</span><span class='lparen token'>(</span><span class='adjust identifier id'>adjust</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'adjust'</span><span class='comma token'>,</span> <span class='adjust identifier id'>adjust</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
+  <span class='saturation_adjust identifier id'>saturation_adjust</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='adjust identifier id'>adjust</span><span class='comma token'>,</span> <span class='float val'>1.0</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='integer val'>-1</span>
+  <span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='pixel identifier id'>pixel</span><span class='bitor op'>|</span>
+    <span class='r identifier id'>r</span>   <span class='assign token'>=</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='r identifier id'>r</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span>
+    <span class='g identifier id'>g</span>   <span class='assign token'>=</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='g identifier id'>g</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span>
+    <span class='b identifier id'>b</span>   <span class='assign token'>=</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='b identifier id'>b</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span>
+    <span class='max identifier id'>max</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='r identifier id'>r</span><span class='comma token'>,</span> <span class='g identifier id'>g</span><span class='comma token'>,</span> <span class='b identifier id'>b</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='max identifier id'>max</span>
+    <span class='r identifier id'>r</span>   <span class='assign token'>=</span> <span class='r identifier id'>r</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='max identifier id'>max</span> <span class='minus op'>-</span> <span class='r identifier id'>r</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='saturation_adjust identifier id'>saturation_adjust</span> <span class='unless unless_mod kw'>unless</span> <span class='r identifier id'>r</span> <span class='eq op'>==</span> <span class='max identifier id'>max</span>
+    <span class='g identifier id'>g</span>   <span class='assign token'>=</span> <span class='g identifier id'>g</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='max identifier id'>max</span> <span class='minus op'>-</span> <span class='g identifier id'>g</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='saturation_adjust identifier id'>saturation_adjust</span> <span class='unless unless_mod kw'>unless</span> <span class='g identifier id'>g</span> <span class='eq op'>==</span> <span class='max identifier id'>max</span>
+    <span class='b identifier id'>b</span>   <span class='assign token'>=</span> <span class='b identifier id'>b</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='max identifier id'>max</span> <span class='minus op'>-</span> <span class='b identifier id'>b</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='saturation_adjust identifier id'>saturation_adjust</span> <span class='unless unless_mod kw'>unless</span> <span class='b identifier id'>b</span> <span class='eq op'>==</span> <span class='max identifier id'>max</span>
+    <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='rgba identifier id'>rgba</span><span class='lparen token'>(</span><span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='clamp identifier id'>clamp</span><span class='lparen token'>(</span><span class='r identifier id'>r</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='clamp identifier id'>clamp</span><span class='lparen token'>(</span><span class='g identifier id'>g</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='clamp identifier id'>clamp</span><span class='lparen token'>(</span><span class='b identifier id'>b</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='a identifier id'>a</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="vibrance-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Effect.html" title="Compass::Magick::Effect (class)">Effect</a></span></tt>) <strong>vibrance</strong>(adjust = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Adjusts the vibrance of a color by changing its [R, G, B] components
+matching the average intensity.</p>
+
+<p>Copyright © 2010, Ryan LeFevre <a
+href="http://www.camanjs.com">www.camanjs.com</a></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Sass::Script::Number</tt>)</span>
+      
+      
+        <span class='name'>adjust</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Vibrance value as a float, above 0.0.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Effect.html" title="Compass::Magick::Effect (class)">Effect</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A command which applies the vibrance to the canvas.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/magick/functions/operations/effects.rb', line 98</span>
+
+<span class='def def kw'>def</span> <span class='vibrance identifier id'>vibrance</span><span class='lparen token'>(</span><span class='adjust identifier id'>adjust</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='assert_type identifier id'>assert_type</span> <span class='string val'>'adjust'</span><span class='comma token'>,</span> <span class='adjust identifier id'>adjust</span><span class='comma token'>,</span> <span class='Sass constant id'>Sass</span><span class='colon2 op'>::</span><span class='Script constant id'>Script</span><span class='colon2 op'>::</span><span class='Number constant id'>Number</span>
+  <span class='vibrance_adjust identifier id'>vibrance_adjust</span> <span class='assign token'>=</span> <span class='Compass constant id'>Compass</span><span class='colon2 op'>::</span><span class='Magick constant id'>Magick</span><span class='colon2 op'>::</span><span class='Utils constant id'>Utils</span><span class='dot token'>.</span><span class='value_of identifier id'>value_of</span><span class='lparen token'>(</span><span class='adjust identifier id'>adjust</span><span class='comma token'>,</span> <span class='float val'>1.0</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='integer val'>.5</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='integer val'>-1</span>
+  <span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='pixel identifier id'>pixel</span><span class='bitor op'>|</span>
+    <span class='r identifier id'>r</span>       <span class='assign token'>=</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='r identifier id'>r</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span>
+    <span class='g identifier id'>g</span>       <span class='assign token'>=</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='g identifier id'>g</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span>
+    <span class='b identifier id'>b</span>       <span class='assign token'>=</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='b identifier id'>b</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span>
+    <span class='max identifier id'>max</span>     <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='r identifier id'>r</span><span class='comma token'>,</span> <span class='g identifier id'>g</span><span class='comma token'>,</span> <span class='b identifier id'>b</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='max identifier id'>max</span>
+    <span class='average identifier id'>average</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='r identifier id'>r</span> <span class='plus op'>+</span> <span class='g identifier id'>g</span> <span class='plus op'>+</span> <span class='b identifier id'>b</span><span class='rparen token'>)</span> <span class='div op'>/</span> <span class='float val'>3.0</span>
+    <span class='amount identifier id'>amount</span>  <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='lparen token'>(</span><span class='lparen token'>(</span><span class='max identifier id'>max</span> <span class='minus op'>-</span> <span class='average identifier id'>average</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='abs identifier id'>abs</span> <span class='mult op'>*</span> <span class='float val'>2.0</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='vibrance_adjust identifier id'>vibrance_adjust</span><span class='rparen token'>)</span> <span class='div op'>/</span> <span class='float val'>100.0</span>
+    <span class='r identifier id'>r</span>       <span class='assign token'>=</span> <span class='r identifier id'>r</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='max identifier id'>max</span> <span class='minus op'>-</span> <span class='r identifier id'>r</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='amount identifier id'>amount</span> <span class='unless unless_mod kw'>unless</span> <span class='r identifier id'>r</span> <span class='eq op'>==</span> <span class='max identifier id'>max</span>
+    <span class='g identifier id'>g</span>       <span class='assign token'>=</span> <span class='g identifier id'>g</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='max identifier id'>max</span> <span class='minus op'>-</span> <span class='g identifier id'>g</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='amount identifier id'>amount</span> <span class='unless unless_mod kw'>unless</span> <span class='g identifier id'>g</span> <span class='eq op'>==</span> <span class='max identifier id'>max</span>
+    <span class='b identifier id'>b</span>       <span class='assign token'>=</span> <span class='b identifier id'>b</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='max identifier id'>max</span> <span class='minus op'>-</span> <span class='b identifier id'>b</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='amount identifier id'>amount</span> <span class='unless unless_mod kw'>unless</span> <span class='b identifier id'>b</span> <span class='eq op'>==</span> <span class='max identifier id'>max</span>
+    <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='rgba identifier id'>rgba</span><span class='lparen token'>(</span><span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='clamp identifier id'>clamp</span><span class='lparen token'>(</span><span class='r identifier id'>r</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='clamp identifier id'>clamp</span><span class='lparen token'>(</span><span class='g identifier id'>g</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='Effect constant id'>Effect</span><span class='dot token'>.</span><span class='clamp identifier id'>clamp</span><span class='lparen token'>(</span><span class='b identifier id'>b</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='ChunkyPNG constant id'>ChunkyPNG</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span><span class='dot token'>.</span><span class='a identifier id'>a</span><span class='lparen token'>(</span><span class='pixel identifier id'>pixel</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
     
     <div id="footer">
-  Generated on Fri Apr  8 21:19:19 2011 by 
+  Generated on Sat Apr 16 16:34:11 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.4 (ruby-1.8.7).
+  0.6.7 (ruby-1.8.7).
 </div>
 
   </body>

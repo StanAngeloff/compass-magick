@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Class: Compass::Magick::Effect</title>
 <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -83,9 +83,8 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>
-A class that executes a processing block on each <span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span> pixel.
-</p>
+    
+<p>A class that executes a processing block on each <span class='object_link'><a href="Canvas.html" title="Compass::Magick::Canvas (class)">Canvas</a></span> pixel.</p>
 
 
   </div>
@@ -146,9 +145,8 @@ A class that executes a processing block on each <span class='object_link'><a hr
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Initializes a new Effect instance.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Initializes a new Effect instance.</p>
 </div></span>
   
 </li>
@@ -194,9 +192,8 @@ Initializes a new Effect instance.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Initializes a new Effect instance.
-</p>
+    
+<p>Initializes a new Effect instance.</p>
 
 
   </div>
@@ -215,9 +212,8 @@ Initializes a new Effect instance.
       
       
         &mdash;
-        <div class='inline'><p>
-The processing block to execute.
-</p>
+        <div class='inline'>
+<p>The processing block to execute.</p>
 </div>
       
     </li>
@@ -241,7 +237,15 @@ The processing block to execute.
 23
 24
 25
-26</pre>
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/magick/effect.rb', line 15</span>
@@ -255,6 +259,14 @@ The processing block to execute.
           <span class='end end kw'>end</span>
         <span class='end end kw'>end</span>
       <span class='end end kw'>end</span>
+    <span class='end end kw'>end</span>
+
+    <span class='comment val'># Clamp value between 0..255 so it doesn't overflow the 8-bit colorspace.</span>
+    <span class='comment val'>#</span>
+    <span class='comment val'># @param [Float] value The value to clamp.</span>
+    <span class='comment val'># @return [Integer] The value as an integer between 0..255.</span>
+    <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='clamp identifier id'>clamp</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
+      <span class='lbrack token'>[</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='value identifier id'>value</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span><span class='comma token'>,</span> <span class='integer val'>255</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='min identifier id'>min</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='max identifier id'>max</span>
     <span class='end end kw'>end</span>
   <span class='end end kw'>end</span>
 <span class='end end kw'>end</span>
@@ -270,9 +282,9 @@ The processing block to execute.
 </div>
     
     <div id="footer">
-  Generated on Fri Apr  8 21:19:22 2011 by 
+  Generated on Sat Apr 16 16:34:06 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.4 (ruby-1.8.7).
+  0.6.7 (ruby-1.8.7).
 </div>
 
   </body>
