@@ -62,6 +62,7 @@ module Compass::Magick
 end
 
 require 'magick/utils'
+require 'magick/configuration'
 require 'magick/scriptable'
 require 'magick/command'
 require 'magick/effect'
@@ -77,3 +78,7 @@ Compass::Frameworks.register('magick',
   :stylesheets_directory => File.join(File.dirname(__FILE__), 'stylesheets'),
   :templates_directory   => File.join(File.dirname(__FILE__), 'templates')
 )
+
+# Extend Compass configuration with new properties (defined by Compass Magick
+# and plugins).
+Compass::Configuration::Data.send(:include, Compass::Magick::Configuration)
