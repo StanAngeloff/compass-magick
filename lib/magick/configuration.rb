@@ -1,8 +1,11 @@
+require 'shellwords'
+
 module Compass::Magick
   # Configuration methods to allow plugins to register new configurable
   # properties.
   module Configuration
     extend Compass::Configuration::Inheritance::ClassMethods
+    extend self
 
     # Registers a new property in `config.rb`.
     #
@@ -14,9 +17,25 @@ module Compass::Magick
     #   isn't specified in the configuration file
     #
     # @param [Symbol] name The name of the property.
-    def self.add_property(name)
+    def add_property(name)
       Compass::Configuration::ATTRIBUTES.push(name)
       inherited_accessor(name)
+    end
+
+    # Converts a Cygwin Unix path to a Windows path, e.g.:
+    #
+    #     /cygdrive/d/path/to/file
+    #       ==>
+    #     D:/path/to/file
+    #
+    # @param [String] path The Unix path to convert.
+    # @return [String] The Windows path.
+    def cygwin_path(path)
+      if RUBY_PLATFORM.include?('cygwin') && path.index('/') == 0
+        IO.popen("cygpath -m #{path.include?(':') ? '-p' : ''} #{path.shellescape}").readline.chomp.gsub(/;/, '\\;')
+      else
+        path
+      end
     end
   end
 end
