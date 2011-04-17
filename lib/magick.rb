@@ -42,6 +42,7 @@ module Compass::Magick
     File.join(Dir.getwd,              'plugins')
   ]
 
+  # The location of the `extras/` directory.
   EXTRAS_PATH = File.expand_path(File.join(File.dirname(__FILE__), '..', 'extras'))
 
   # Default exception class for Compass Magick
