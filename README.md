@@ -40,7 +40,7 @@ APIs
 
 [List of all available commands](https://github.com/StanAngeloff/compass-magick/blob/master/APIs.md).
 
-RDoc is also [available for the entire project](http://stanangeloff.github.com/compass-magick/doc/frames.html).
+RDoc is also [available for the entire project](http://rubydoc.info/gems/compass-magick/frames).
 
 Contribute
 ----------
@@ -52,8 +52,8 @@ You can help by looking at any of the following areas (ordered by priority):
 - [Optimizing the code](https://github.com/StanAngeloff/compass-magick/blob/master/lib/magick/canvas.rb#L98) as floating point math may not always be needed and too many object copies sucks
 - [Writing tests](https://github.com/StanAngeloff/compass-magick/tree/master/spec) to make sure nothing breaks in new versions
 - [Performing code reviews](https://github.com/StanAngeloff/compass-magick/tree/master/lib) since this is my very first Ruby project and I don't have any experience with the language so there are probably many st**OO**pid things in code
-- [Improving RDoc](http://stanangeloff.github.com/compass-magick/doc/frames.html) because you can never have too much documentation
-- [Adding new plugins](http://stanangeloff.github.com/compass-magick/doc/Compass/Magick/Plugins.html). Compass Magick [looks](https://github.com/StanAngeloff/compass-magick/blob/master/lib/magick.rb#L39) for Ruby files and imports those on startup
+- [Improving RDoc](http://rubydoc.info/gems/compass-magick/frames) because you can never have too much documentation
+- [Adding new plugins](http://rubydoc.info/gems/compass-magick/Compass/Magick/Plugins.html). Compass Magick [looks](https://github.com/StanAngeloff/compass-magick/blob/master/lib/magick.rb#L39) for Ruby files and imports those on startup
 - [Submitting more examples](https://github.com/StanAngeloff/compass-magick/tree/gh-pages) to show off what Compass Magick can do
 - [Opening issues](https://github.com/StanAngeloff/compass-magick/issues) for features you find missing or broken
 - Porting over some of [CamanJS](http://camanjs.com/)' goodness, we all love visual effects
@@ -66,4 +66,4 @@ You can help by looking at any of the following areas (ordered by priority):
 
 ### Copyright
 
-Copyright (c) 2011 Stan Angeloff. See [LICENSE.md](https://github.com/StanAngeloff/compass-magick/blob/master/LICENSE.md) for details.
+> Copyright (c) 2011 Stan Angeloff. See [LICENSE.md](https://github.com/StanAngeloff/compass-magick/blob/master/LICENSE.md) for details.
