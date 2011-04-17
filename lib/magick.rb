@@ -42,6 +42,8 @@ module Compass::Magick
     File.join(Dir.getwd,              'plugins')
   ]
 
+  EXTRAS_PATH = File.expand_path(File.join(File.dirname(__FILE__), '..', 'extras'))
+
   # Default exception class for Compass Magick
   class Exception < ::StandardError; end
 

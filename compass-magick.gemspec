@@ -20,5 +20,6 @@ Gem::Specification.new do |s|
 
   s.files      = ['README.md', 'LICENSE.md']
   s.files     += Dir.glob('lib/**/*.*')
+  s.files     += Dir.glob('extras/**/*.*')
   s.test_files = Dir.glob('spec/**/*.*')
 end
