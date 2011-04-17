@@ -1,5 +1,3 @@
-require 'tempfile'
-
 module Compass::Magick
   module Configuration
     # Registers a new property in config.rb `phantom_executable` which allows
