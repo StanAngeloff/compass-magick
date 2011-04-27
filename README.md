@@ -1,7 +1,7 @@
 Compass Magick
 ==============
 
-Dynamic image generation for Compass using ChunkyPNG (no dependency on RMagick).
+Dynamic image generation for Compass using ChunkyPNG/PhantomJS (no dependency on RMagick).
 
 Example
 -------
@@ -21,6 +21,8 @@ Installation
 Installation is simple via RubyGems. [Compass](http://beta.compass-style.org) and [ChunkyPNG](https://github.com/wvanbergen/chunky_png) are required.
 
     gem install compass-magick
+
+If you wish to use [PhantomJS](http://www.phantomjs.org/), please follow the [build instructions](http://code.google.com/p/phantomjs/wiki/BuildInstructions).
 
 Usage
 -----

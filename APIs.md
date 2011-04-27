@@ -40,6 +40,49 @@ Compass Magick APIs
 
 ----
 
+    magick-phantom(width, height, *args)
+
+  Create a new canvas and render a styled box using [PhantomJS](http://www.phantomjs.org/). The `phantomjs` binary is assumed to be on `$PATH` (see below for configuration options).
+
+  **What is PhantomJS?**
+
+> PhantomJS is a headless WebKit with JavaScript API. It has fast and native support for various web standards: DOM handling, CSS selector, JSON, Canvas, and SVG.  
+> [www.phantomjs.org](http://www.phantomjs.org/)
+
+  **Example:**
+
+    // config.rb should have this line:
+    // images_dir = 'images'
+
+    magick-phantom(320, 200,
+      // Quotes are required for complex expressions
+      $background-image: '-webkit-gradient(linear, left top, left bottom, from(#00abeb), to(#fff), color-stop(0.5, #fff), color-stop(0.5, #66cc00))',
+      // Units and lists do not require quotes
+      $border-radius: 10px,
+      $box-shadow: 0px 10px 4px 2px rgba(0, 0, 0, 0.25)
+    )
+
+  **How it Works:**
+
+  In the example above, a new `.html` document is generated in `$TMP`. The source of the document contains a single `<div>` element with its width/height set to 320x200. The keyword arguments `$background-image`, `$border-radius` and `$box-shadow` are applied to the `div` element.  
+  The resulting document is then forwarded to PhantomJS which renders the page in a temporary `.png` file inside your `images_dir`. The image is cropped off all transparent pixels and returned as a Base64 encoded Data URL.
+
+  You can use `magick-phantom` as an argument to `magick-sprite` to save the rendered image to a file.
+
+  **Configuration:**
+
+  If you have the `phantomjs` binary installed in a different location, you can specify the absolute path in your `config.rb` file using the `phantom_executable` property:
+
+    require 'magick'
+
+    phantom_executable = '/opt/PhantomJS/phantom'
+
+  **Limitations:**
+
+  The headless WebKit from Qt does not support soft-shadows, i.e., the CSS shadow blur option is ignored.
+
+----
+
     magick-fill(type, [x1[, y1[, x2[, y2]]]])
 
   Fills the canvas with any of the supported types:
