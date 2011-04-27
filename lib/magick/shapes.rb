@@ -45,7 +45,7 @@ module Compass::Magick
             else
               if sqdist < rpf2
                 fact = (((center - Math.sqrt(sqdist)) * 2.0 / feather) * 0.5 + 0.5)
-                mask.set_pixel(x, y, ChunkyPNG::Color.rgba(255, 255, 255, 255 * [0, [fact, 1].min].max))
+                mask.set_pixel(x, y, ChunkyPNG::Color.rgba(255, 255, 255, (255 * [0, [fact, 1].min].max).to_i))
               end
             end
           end
@@ -75,13 +75,13 @@ module Compass::Magick
                 if sqdist < romf2
                   if sqdist < ripf2
                     fact = (((Math.sqrt(sqdist) - inrad) * 2 / feather) * 0.5 + 0.5)
-                    mask.set_pixel(x, y, ChunkyPNG::Color.rgba(255, 255, 255, 255 * [0, [fact, 1].min].max))
+                    mask.set_pixel(x, y, ChunkyPNG::Color.rgba(255, 255, 255, (255 * [0, [fact, 1].min].max).to_i))
                   else
                     mask.set_pixel(x, y, ChunkyPNG::Color::WHITE)
                   end
                 else
                   fact = (((center - Math.sqrt(sqdist)) * 2 / feather) * 0.5 + 0.5)
-                  mask.set_pixel(x, y, ChunkyPNG::Color.rgba(255, 255, 255, 255 * [0, [fact, 1].min].max))
+                  mask.set_pixel(x, y, ChunkyPNG::Color.rgba(255, 255, 255, (255 * [0, [fact, 1].min].max).to_i))
                 end
               end
             end

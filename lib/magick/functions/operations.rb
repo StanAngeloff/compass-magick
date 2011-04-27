@@ -85,7 +85,7 @@ module Compass::Magick
                 ChunkyPNG::Color.r(canvas_pixel),
                 ChunkyPNG::Color.g(canvas_pixel),
                 ChunkyPNG::Color.b(canvas_pixel),
-                ChunkyPNG::Color.a(canvas_pixel) * (mask_alpha / 255.0)
+                (ChunkyPNG::Color.a(canvas_pixel) * (mask_alpha / 255.0)).to_i
               ))
             end
           end

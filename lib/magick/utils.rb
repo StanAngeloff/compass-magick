@@ -35,7 +35,7 @@ module Compass::Magick
     # @param [Sass::Script::Color] color The source color in Sass' format.
     # @return [ChunkyPNG::Color] The source color in ChunkyPNG's format.
     def to_chunky_color(color)
-      ChunkyPNG::Color.rgba(color.red, color.green, color.blue, color.alpha * 255)
+      ChunkyPNG::Color.rgba(color.red, color.green, color.blue, (color.alpha * 255).to_i)
     end
 
     # Converts a fill type (solid color or gradient) to a {Canvas} object.
