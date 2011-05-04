@@ -80,7 +80,7 @@ module Compass::Magick
       canvas = ChunkyPNG::Canvas.new(width, height)
       for y in (0...height)
         for x in (0...width)
-          canvas.set_pixel(x, y, @pixels[(x % @width) + (y % @height) * @height])
+          canvas.set_pixel(x, y, @pixels[(x % @width) + (y % @height) * @width])
         end
       end
       canvas
