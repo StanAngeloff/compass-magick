@@ -73,6 +73,11 @@ module Compass::Magick
 
     alias :to_s :to_data_uri
 
+    # @return [Boolean] `true` (the Ruby boolean value)
+    def to_bool
+      true
+    end
+
     # Tile the Canvas to fill the region defined by `width` and `height`.
     #
     # @return {Canvas} A new Canvas instance that fills the given region.
