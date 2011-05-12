@@ -32,7 +32,7 @@ module Compass::Magick
   # The current version of Compass Magick. This value is updated manually on
   # release. If you are using a Git clone, the version will always end with
   # '.git'.
-  VERSION = '0.1.3.git'
+  VERSION = '0.1.4.git'
 
   # The locations where plug-ins are located. These paths are scanned for
   # *.rb files and loaded in order.

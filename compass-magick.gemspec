@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.add_runtime_dependency('compass',    '~> 0.11.beta.5')
-  s.add_runtime_dependency('chunky_png', '~> 1.1.0')
+  s.add_runtime_dependency('chunky_png', '~> 1.1')
 
   s.add_development_dependency('rspec',  '~> 2.0.0')
 
