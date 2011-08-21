@@ -44,6 +44,16 @@ APIs
 
 RDoc is also [available for the entire project](http://rubydoc.info/gems/compass-magick/frames).
 
+Similar Projects
+----------------
+
+[compass-canvas](http://StanAngeloff.github.com/compass-canvas/) is a Compass plugin that provides a drawing surface similar to the `<canvas>` element in JavaScript and [Turtle graphics][turtle] in other programming languages.
+It uses [Cairo][cairo] as a back-end to perform all graphics operations.
+The project supports anti-aliasing, vector graphics, gradients, masks, clipping, complex operations like drop shadow and many more.
+
+  [turtle]: http://en.wikipedia.org/wiki/Turtle_graphics
+  [cairo]:  http://en.wikipedia.org/wiki/Cairo_(graphics)
+
 Contribute
 ----------
 
