@@ -18,10 +18,10 @@ module Compass::Magick
         Compass::Magick::Utils.assert_type 'canvas',   canvas,   ChunkyPNG::Canvas
         extension = '.png'
         filename  = basename.value.chomp(extension) + extension
-        filepath  = File.join(Compass.configuration.images_path, filename)
+        filepath  = File.join(Compass.configuration.generated_images_path, filename)
         FileUtils.mkpath(File.dirname(filepath))
         canvas.save(filepath, :best_compression)
-        image_url(Sass::Script::String.new(filename))
+        generated_image_url(Sass::Script::String.new(filename))
       end
     end
   end

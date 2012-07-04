@@ -21,7 +21,7 @@ module Compass::Magick
       #     the Canvas instance.
       # @overload magick_canvas(path, *commands)
       #   @param [Sass::Script::String] path The path to the image, relative
-      #     to the configured <tt>images_dir</tt>.
+      #     to the configured <tt>generated_images_path</tt> or <tt>images_path</tt>.
       #   @param [Array<Command>] commands The list of commands to execute on
       #     the Canvas instance.
       # @overload magick_canvas(width, height, *commands)

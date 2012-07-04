@@ -24,13 +24,13 @@ Compass Magick APIs
     magick-sprite(basename, canvas)
 
   Writes the canvas to a file encoded as a PNG image. The output is optimized for best compression.  
-  The file is saved in the configured images directory with a `.png` extension. Directory names are allowed and can be used to group a set of objects together.  
+  The file is saved in the configured images directory (`generated_images_dir` or `images_dir`) with a `.png` extension. Directory names are allowed and can be used to group a set of objects together.  
   *depending on your configuration* The returned path is relative and has the cache buster appended after the file extension:
 
   **Example:**
 
     // config.rb should have this line:
-    // images_dir = 'images'
+    // generated_images_dir = 'images'
 
     // Writes a transparent 10x10 canvas to images/blank.png
     magick-sprite('blank', magick-canvas(10px, 10px))
@@ -52,7 +52,7 @@ Compass Magick APIs
   **Example:**
 
     // config.rb should have this line:
-    // images_dir = 'images'
+    // generated_images_dir = 'images'
 
     magick-phantom(320, 200,
       // Quotes are required for complex expressions
@@ -65,7 +65,7 @@ Compass Magick APIs
   **How it Works:**
 
   In the example above, a new `.html` document is generated in `$TMP`. The source of the document contains a single `<div>` element with its width/height set to 320x200. The keyword arguments `$background-image`, `$border-radius` and `$box-shadow` are applied to the `div` element.  
-  The resulting document is then forwarded to PhantomJS which renders the page in a temporary `.png` file inside your `images_dir`. The image is cropped off all transparent pixels and returned as a Base64 encoded Data URL.
+  The resulting document is then forwarded to PhantomJS which renders the page in a temporary `.png` file inside your `generated_images_dir`. The image is cropped off all transparent pixels and returned as a Base64 encoded Data URL.
 
   You can use `magick-phantom` as an argument to `magick-sprite` to save the rendered image to a file.
 

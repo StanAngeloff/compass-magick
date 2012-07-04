@@ -93,7 +93,7 @@ module Compass::Magick
         elements.push(instructions.join('; '))
       end
       basename = "~magick-phantom-#{ rand(36**8).to_s(36) }.png"
-      filename = File.join(Compass.configuration.images_path, basename)
+      filename = File.join(Compass.configuration.generated_images_path, basename)
       command  = [Compass.configuration.phantom_executable, Compass.configuration.phantom_script]
       command  = command.concat([width.to_s, height.to_s])
       command  = command.concat(elements)

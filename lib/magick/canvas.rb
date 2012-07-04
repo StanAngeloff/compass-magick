@@ -34,7 +34,7 @@ module Compass::Magick
     #     the Canvas instance.
     # @overload initialize(path, *commands)
     #   @param [Sass::Script::String] path The path to the image, relative to
-    #     the configured <tt>images_dir</tt>.
+    #     the configured <tt>generated_images_path</tt> or <tt>images_path</tt>.
     #   @param [Array<Command>] commands The list of commands to execute on
     #     the Canvas instance.
     # @overload initialize(width, height, *commands)
@@ -118,8 +118,12 @@ module Compass::Magick
             canvas   = ChunkyPNG::Canvas.from_file(path)
           end
         else
-          path   = File.join(Compass.configuration.images_path, source.value.split('?').shift())
-          canvas = ChunkyPNG::Canvas.from_file(path)
+          basename = source.value.split('?').shift()
+          path     = File.join(Compass.configuration.generated_images_path, basename)
+          if not File.exists?(path)
+            path   = File.join(Compass.configuration.images_path, basename)
+          end
+          canvas   = ChunkyPNG::Canvas.from_file(path)
         end
         inherit canvas, false
       else
